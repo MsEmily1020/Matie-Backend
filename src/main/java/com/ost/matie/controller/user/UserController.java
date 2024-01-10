@@ -7,7 +7,6 @@ import com.ost.matie.dto.user.UserResponse;
 import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,5 +40,11 @@ public class UserController {
                                             @Valid @ResponseBody UpdateUserRequest request) {
         Users users = userService.update(id, request);
         return ResponseEntity.ok().body(users);
+    }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }
