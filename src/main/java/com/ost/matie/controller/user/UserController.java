@@ -2,16 +2,15 @@ package com.ost.matie.controller.user;
 
 import com.ost.matie.domain.user.Users;
 import com.ost.matie.dto.user.AddUserRequest;
+import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.dto.user.UserResponse;
 import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +34,12 @@ public class UserController {
                 .toList();
 
         return ResponseEntity.ok().body(userResponses);
+    }
+
+    @PutMapping("/users/{id}")
+    public ResponseEntity<Users> updateUser(@PathVariable Long id,
+                                            @Valid @ResponseBody UpdateUserRequest request) {
+        Users users = userService.update(id, request);
+        return ResponseEntity.ok().body(users);
     }
 }
