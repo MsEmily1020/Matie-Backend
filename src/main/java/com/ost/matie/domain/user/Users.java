@@ -1,6 +1,7 @@
 package com.ost.matie.domain.user;
 
 import com.ost.matie.domain.BaseTimeEntity;
+import com.ost.matie.domain.image.Image;
 import jakarta.persistence.*;
 import lombok.*;
 
