@@ -1,0 +1,1 @@
+INSERT INTO image (url) VALUES ('http://localhost/1.jpg');
