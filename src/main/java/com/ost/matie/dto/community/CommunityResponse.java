@@ -16,7 +16,7 @@ public class CommunityResponse {
     private final Long agree;
     private final Long disagree;
     private final LocalDateTime createdDate;
-    private final Users user;
+    private final Users creatorUser;
 
     public CommunityResponse(Community community) {
         this.id = community.getId();
@@ -26,6 +26,6 @@ public class CommunityResponse {
         this.agree = community.getAgree();
         this.disagree = community.getDisagree();
         this.createdDate = community.getCreatedDate();
-        this.user = community.getUser();
+        this.creatorUser = community.getCreatorUser();
     }
 }

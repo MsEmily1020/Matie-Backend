@@ -30,7 +30,7 @@ public class AddCommunityRequest {
     private Long disagree;
 
     @NotNull
-    private Users user;
+    private Users creatorUser;
 
     public Community toEntity() {
         return Community.builder()
@@ -39,7 +39,7 @@ public class AddCommunityRequest {
                 .type(type)
                 .agree(agree)
                 .disagree(disagree)
-                .user(user)
+                .creatorUser(creatorUser)
                 .build();
     }
 }

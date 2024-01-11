@@ -1,10 +1,8 @@
 package com.ost.matie.service.community;
 
 import com.ost.matie.domain.community.Community;
-import com.ost.matie.domain.user.Users;
 import com.ost.matie.dto.community.AddCommunityRequest;
 import com.ost.matie.dto.community.UpdateCommunityRequest;
-import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.repository.CommunityRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

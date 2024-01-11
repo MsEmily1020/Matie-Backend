@@ -34,16 +34,16 @@ public class Community extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users user;
+    private Users creatorUser;
 
     @Builder
-    public Community(String title, String description, String type, Long agree, Long disagree, Users user) {
+    public Community(String title, String description, String type, Long agree, Long disagree, Users creatorUser) {
         this.title = title;
         this.description = description;
         this.type = type;
         this.agree = agree;
         this.disagree = disagree;
-        this.user = user;
+        this.creatorUser = creatorUser;
     }
 
     public void update(String title, String description, Long agree, Long disagree) {
