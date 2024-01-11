@@ -1,9 +1,13 @@
 package com.ost.matie.domain.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ost.matie.domain.BaseTimeEntity;
 import com.ost.matie.domain.image.Image;
+import com.ost.matie.domain.point.Point;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,6 +30,10 @@ public class Users extends BaseTimeEntity {
     @ManyToOne
     @JoinColumn(name = "mascot_id")
     private Image mascot;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Point> pointList;
 
     @Builder
     public Users(String name, String email, String pw, Image mascot) {
