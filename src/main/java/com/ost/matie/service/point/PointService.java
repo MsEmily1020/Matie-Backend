@@ -3,7 +3,9 @@ package com.ost.matie.service.point;
 import com.ost.matie.domain.point.Point;
 import com.ost.matie.domain.user.Users;
 import com.ost.matie.dto.point.AddPointRequest;
+import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.repository.PointRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +22,4 @@ public class PointService {
 
     public List<Point> findAll() { return pointRepository.findAll(); }
 
-    public void delete(Long id) {
-        Point point = pointRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found " + id));
-
-        pointRepository.deleteById(id);
-    }
 }
