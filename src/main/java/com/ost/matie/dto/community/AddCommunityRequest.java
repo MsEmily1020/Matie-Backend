@@ -26,9 +26,6 @@ public class AddCommunityRequest {
     @NotEmpty
     private String type;
 
-    private Long agree;
-    private Long disagree;
-
     @NotNull
     private Users creatorUser;
 
@@ -37,8 +34,8 @@ public class AddCommunityRequest {
                 .title(title)
                 .description(description)
                 .type(type)
-                .agree(agree)
-                .disagree(disagree)
+                .agree(0L)
+                .disagree(0L)
                 .creatorUser(creatorUser)
                 .build();
     }
