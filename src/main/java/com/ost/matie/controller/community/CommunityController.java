@@ -36,4 +36,12 @@ public class CommunityController {
 
         return ResponseEntity.ok().body(communityResponses);
     }
+
+    @GetMapping("/community/{id}")
+    public ResponseEntity<CommunityResponse> findCommunity(@PathVariable Long id) {
+        Community community = communityService.findById(id);
+
+        return ResponseEntity.ok()
+                .body(new CommunityResponse(community));
+    }
 }
