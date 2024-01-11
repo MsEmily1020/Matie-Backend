@@ -1,5 +1,6 @@
 package com.ost.matie.dto.point;
 
+import com.ost.matie.domain.point.Point;
 import com.ost.matie.domain.user.Users;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -20,4 +21,12 @@ public class AddPointRequest {
 
     @NotNull
     private Users user;
+
+    public Point toEntity() {
+        return Point.builder()
+                .variation(variation)
+                .balance(balance)
+                .user(user)
+                .build();
+    }
 }
