@@ -28,5 +28,5 @@ public class Image {
 
     @JsonIgnore
     @OneToMany(mappedBy = "image", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
-    private List<Team> groupList;
+    private List<Team> teamList;
 }

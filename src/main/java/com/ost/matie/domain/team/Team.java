@@ -1,5 +1,6 @@
 package com.ost.matie.domain.team;
 
+import com.ost.matie.config.LongListConverter;
 import com.ost.matie.domain.image.Image;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -30,7 +31,7 @@ public class Team {
     @Column(name = "finish_date")
     private LocalDateTime finishDate;
 
-    @Column(name = "user_list")
+    @Convert(converter = LongListConverter.class)
     private List<Long> userList;
 
     @ManyToOne
