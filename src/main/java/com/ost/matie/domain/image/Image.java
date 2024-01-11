@@ -22,6 +22,6 @@ public class Image {
     private String url;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "character", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToMany(mappedBy = "mascot", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Users> usersList;
 }
