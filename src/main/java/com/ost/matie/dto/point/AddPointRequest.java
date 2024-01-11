@@ -19,9 +19,10 @@ public class AddPointRequest {
     @NotNull
     private Users user;
 
-    public Point toEntity() {
+    public Point toEntity(Long balances) {
         return Point.builder()
                 .variation(variation)
+                .balance(balances)
                 .user(user)
                 .build();
     }
