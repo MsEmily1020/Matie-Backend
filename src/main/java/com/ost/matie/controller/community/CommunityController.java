@@ -2,10 +2,13 @@ package com.ost.matie.controller.community;
 
 import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.point.Point;
+import com.ost.matie.domain.team.Team;
 import com.ost.matie.dto.community.AddCommunityRequest;
 import com.ost.matie.dto.community.CommunityResponse;
+import com.ost.matie.dto.community.UpdateCommunityRequest;
 import com.ost.matie.dto.point.AddPointRequest;
 import com.ost.matie.dto.point.PointResponse;
+import com.ost.matie.dto.team.UpdateTeamRequest;
 import com.ost.matie.service.community.CommunityService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -43,5 +46,12 @@ public class CommunityController {
 
         return ResponseEntity.ok()
                 .body(new CommunityResponse(community));
+    }
+
+    @PutMapping("/community/{id}")
+    public ResponseEntity<Community> updateCommunity(@PathVariable Long id,
+                                           @Valid @RequestBody UpdateCommunityRequest request) {
+        Community community = communityService.update(id, request);
+        return ResponseEntity.ok().body(community);
     }
 }
