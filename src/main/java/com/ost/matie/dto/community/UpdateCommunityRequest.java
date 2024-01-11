@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class UserCommunityRequest {
+public class UpdateCommunityRequest {
     @NotEmpty
     private String title;
 
