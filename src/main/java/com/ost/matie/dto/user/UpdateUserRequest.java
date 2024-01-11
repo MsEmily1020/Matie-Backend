@@ -20,5 +20,5 @@ public class UpdateUserRequest {
     private String pw;
 
     @NotNull
-    private Image character;
+    private Image mascot;
 }

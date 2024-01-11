@@ -12,13 +12,13 @@ public class UserResponse {
     private final String name;
     private final String email;
     private final LocalDateTime createdDate;
-    private final Image character;
+    private final Image mascot;
 
     public UserResponse(Users users) {
         this.id = users.getId();
         this.name = users.getName();
         this.email = users.getEmail();
         this.createdDate = users.getCreatedDate();
-        this.character = users.getCharacter();
+        this.mascot = users.getMascot();
     }
 }

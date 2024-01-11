@@ -28,14 +28,14 @@ public class AddUserRequest {
     private String pw;
 
     @NotNull
-    private Image character;
+    private Image mascot;
 
     public Users toEntity() {
         return Users.builder()
                 .name(name)
                 .email(email)
                 .pw(pw)
-                .character(character)
+                .mascot(mascot)
                 .build();
     }
 }

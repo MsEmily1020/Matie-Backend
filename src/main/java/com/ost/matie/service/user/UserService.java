@@ -36,7 +36,7 @@ public class UserService {
         users.update(
                 request.getName(),
                 request.getPw(),
-                request.getCharacter()
+                request.getMascot()
         );
 
         return users;

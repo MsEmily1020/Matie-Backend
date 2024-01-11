@@ -24,20 +24,20 @@ public class Users extends BaseTimeEntity {
     private String pw;
 
     @ManyToOne
-    @JoinColumn(name = "character_id")
-    private Image character;
+    @JoinColumn(name = "mascot_id")
+    private Image mascot;
 
     @Builder
-    public Users(String name, String email, String pw, Image character) {
+    public Users(String name, String email, String pw, Image mascot) {
         this.name = name;
         this.email = email;
         this.pw = pw;
-        this.character = character;
+        this.mascot = mascot;
     }
 
-    public void update(String name, String pw, Image character) {
+    public void update(String name, String pw, Image mascot) {
         this.name = name;
         this.pw = pw;
-        this.character = character;
+        this.mascot = mascot;
     }
 }
