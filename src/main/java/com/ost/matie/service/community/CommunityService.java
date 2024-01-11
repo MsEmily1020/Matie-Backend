@@ -20,4 +20,9 @@ public class CommunityService {
     public List<Community> findByTypeOrderByCreatedDateDesc(String type) {
         return communityRepository.findByTypeOrderByCreatedDateDesc(type);
     }
+
+    public Community findById(Long id) {
+        return communityRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found " + id));
+    }
 }
