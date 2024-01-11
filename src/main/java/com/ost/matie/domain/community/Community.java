@@ -37,12 +37,13 @@ public class Community extends BaseTimeEntity {
     private Users user;
 
     @Builder
-    public Community(String title, String description, String type, Long agree, Long disagree) {
+    public Community(String title, String description, String type, Long agree, Long disagree, Users user) {
         this.title = title;
         this.description = description;
         this.type = type;
         this.agree = agree;
         this.disagree = disagree;
+        this.user = user;
     }
 
     public void update(String title, String description, Long agree, Long disagree) {
