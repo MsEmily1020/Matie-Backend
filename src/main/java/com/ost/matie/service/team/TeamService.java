@@ -1,9 +1,7 @@
 package com.ost.matie.service.team;
 
 import com.ost.matie.domain.team.Team;
-import com.ost.matie.domain.user.Users;
 import com.ost.matie.dto.team.UpdateTeamRequest;
-import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.repository.TeamRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

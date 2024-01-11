@@ -1,11 +1,8 @@
 package com.ost.matie.controller.team;
 
 import com.ost.matie.domain.team.Team;
-import com.ost.matie.domain.user.Users;
 import com.ost.matie.dto.team.TeamResponse;
 import com.ost.matie.dto.team.UpdateTeamRequest;
-import com.ost.matie.dto.user.UpdateUserRequest;
-import com.ost.matie.dto.user.UserResponse;
 import com.ost.matie.service.team.TeamService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

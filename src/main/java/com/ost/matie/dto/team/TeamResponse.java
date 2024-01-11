@@ -1,7 +1,6 @@
 package com.ost.matie.dto.team;
 
 import com.ost.matie.domain.image.Image;
-import com.ost.matie.domain.point.Point;
 import com.ost.matie.domain.team.Team;
 import lombok.Getter;
 

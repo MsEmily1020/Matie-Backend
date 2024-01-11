@@ -1,12 +1,8 @@
 package com.ost.matie.controller.point;
 
 import com.ost.matie.domain.point.Point;
-import com.ost.matie.domain.user.Users;
 import com.ost.matie.dto.point.AddPointRequest;
 import com.ost.matie.dto.point.PointResponse;
-import com.ost.matie.dto.user.AddUserRequest;
-import com.ost.matie.dto.user.UserResponse;
-import com.ost.matie.repository.PointRepository;
 import com.ost.matie.service.point.PointService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
