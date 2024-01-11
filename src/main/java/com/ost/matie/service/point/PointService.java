@@ -6,6 +6,8 @@ import com.ost.matie.repository.PointRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class PointService {
@@ -15,4 +17,5 @@ public class PointService {
         return pointRepository.save(request.toEntity());
     }
 
+    public List<Point> findAll() { return pointRepository.findAll(); }
 }
