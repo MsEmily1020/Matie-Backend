@@ -17,8 +17,6 @@ public class PointService {
         return pointRepository.save(request.toEntity());
     }
 
-    public List<Point> findAll() { return pointRepository.findAll(); }
-
     public List<Point> findByUserIdOrderByCreatedDateDesc(Long userId) {
         return pointRepository.findByUserIdOrderByCreatedDateDesc(userId);
     }
