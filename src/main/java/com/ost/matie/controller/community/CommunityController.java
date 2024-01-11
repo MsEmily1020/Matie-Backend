@@ -25,7 +25,7 @@ public class CommunityController {
                 .body(community);
     }
 
-    @GetMapping("/community/{type}")
+    @GetMapping("/community/type/{type}")
     public ResponseEntity<List<CommunityResponse>> findByTypeOrderByDateDesc(@PathVariable String type) {
         List<CommunityResponse> communityResponses = communityService.findByTypeOrderByCreatedDateDesc(type)
                 .stream()
