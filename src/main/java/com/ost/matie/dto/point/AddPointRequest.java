@@ -16,16 +16,12 @@ import lombok.Setter;
 public class AddPointRequest {
     private Long variation;
 
-    @Min(0)
-    private Long balance;
-
     @NotNull
     private Users user;
 
     public Point toEntity() {
         return Point.builder()
                 .variation(variation)
-                .balance(balance)
                 .user(user)
                 .build();
     }
