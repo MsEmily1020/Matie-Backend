@@ -6,6 +6,8 @@ import com.ost.matie.repository.CommunityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class CommunityService {
@@ -13,5 +15,9 @@ public class CommunityService {
 
     public Community save(AddCommunityRequest request) {
         return communityRepository.save(request.toEntity());
+    }
+
+    public List<Community> findByTypeOrderByCreatedDateDesc(String type) {
+        return communityRepository.findByTypeOrderByCreatedDateDesc(type);
     }
 }
