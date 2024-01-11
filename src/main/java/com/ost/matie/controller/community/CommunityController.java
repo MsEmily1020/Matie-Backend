@@ -54,4 +54,10 @@ public class CommunityController {
         Community community = communityService.update(id, request);
         return ResponseEntity.ok().body(community);
     }
+
+    @DeleteMapping("/community/{id}")
+    public ResponseEntity<Void> deleteCommunity(@PathVariable Long id) {
+        communityService.delete(id);
+        return ResponseEntity.ok().build();
+    }
 }
