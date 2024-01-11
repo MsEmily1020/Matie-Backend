@@ -10,12 +10,14 @@ import java.time.LocalDateTime;
 public class PointResponse {
     private final Long id;
     private final Long variation;
+    private final Long balance;
     private final LocalDateTime createdDate;
     private final Users user;
 
     public PointResponse(Point point) {
         this.id = point.getId();
         this.variation = point.getVariation();
+        this.balance = point.getBalance();
         this.createdDate = point.getCreatedDate();
         this.user = point.getUser();
     }

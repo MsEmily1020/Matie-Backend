@@ -1,6 +1,8 @@
 package com.ost.matie.controller.point;
 
+import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.point.Point;
+import com.ost.matie.dto.community.CommunityResponse;
 import com.ost.matie.dto.point.AddPointRequest;
 import com.ost.matie.dto.point.PointResponse;
 import com.ost.matie.service.point.PointService;
@@ -25,12 +27,8 @@ public class PointController {
     }
 
     @GetMapping("/point/{userId}")
-    public ResponseEntity<List<PointResponse>> findByUserIdOrderByDateDesc(@PathVariable Long userId) {
-        List<PointResponse> pointResponses = pointService.findByUserIdOrderByCreatedDateDesc(userId)
-                .stream()
-                .map(PointResponse::new)
-                .toList();
-
-        return ResponseEntity.ok().body(pointResponses);
+    public ResponseEntity<PointResponse> findFirstByUserIdOrderByCreatedDateDesc(@PathVariable Long userId) {
+        Point point = pointService.findFirstByUserIdOrderByCreatedDateDesc(userId);
+        return ResponseEntity.ok().body(new PointResponse(point));
     }
 }
