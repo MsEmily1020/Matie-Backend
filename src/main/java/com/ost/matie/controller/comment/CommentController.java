@@ -1,15 +1,9 @@
 package com.ost.matie.controller.comment;
 
 import com.ost.matie.domain.comment.Comment;
-import com.ost.matie.domain.community.Community;
-import com.ost.matie.domain.point.Point;
 import com.ost.matie.dto.comment.AddCommentRequest;
 import com.ost.matie.dto.comment.CommentResponse;
 import com.ost.matie.dto.comment.UpdateCommentRequest;
-import com.ost.matie.dto.community.UpdateCommunityRequest;
-import com.ost.matie.dto.point.AddPointRequest;
-import com.ost.matie.dto.point.PointResponse;
-import com.ost.matie.dto.team.TeamResponse;
 import com.ost.matie.service.comment.CommentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

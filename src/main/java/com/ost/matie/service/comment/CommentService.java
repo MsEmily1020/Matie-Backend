@@ -1,10 +1,8 @@
 package com.ost.matie.service.comment;
 
 import com.ost.matie.domain.comment.Comment;
-import com.ost.matie.domain.community.Community;
 import com.ost.matie.dto.comment.AddCommentRequest;
 import com.ost.matie.dto.comment.UpdateCommentRequest;
-import com.ost.matie.dto.community.UpdateCommunityRequest;
 import com.ost.matie.repository.CommentRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
