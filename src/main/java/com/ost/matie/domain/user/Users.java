@@ -2,6 +2,7 @@ package com.ost.matie.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ost.matie.domain.BaseTimeEntity;
+import com.ost.matie.domain.comment.Comment;
 import com.ost.matie.domain.image.Image;
 import com.ost.matie.domain.point.Point;
 import jakarta.persistence.*;
@@ -34,6 +35,10 @@ public class Users extends BaseTimeEntity {
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Point> pointList;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Comment> commentList;
 
     @Builder
     public Users(String name, String email, String pw, Image mascot) {
