@@ -4,6 +4,7 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,14 +14,14 @@ public class LongListConverter implements AttributeConverter<List<Long>, String>
 
     @Override
     public String convertToDatabaseColumn(List<Long> attribute) {
-        return attribute.stream().map(String::valueOf).collect(Collectors.joining(SPLIT_CHAR));
+        return attribute.isEmpty() ? "" : attribute.stream().map(String::valueOf).collect(Collectors.joining(SPLIT_CHAR));
     }
 
     @Override
     public List<Long> convertToEntityAttribute(String dbData) {
-        return Arrays.stream(dbData.split(SPLIT_CHAR))
+        return dbData.equals("") ? Collections.emptyList() :
+                Arrays.stream(dbData.split(SPLIT_CHAR))
                 .map(Long::parseLong)
                 .collect(Collectors.toList());
-
     }
 }
