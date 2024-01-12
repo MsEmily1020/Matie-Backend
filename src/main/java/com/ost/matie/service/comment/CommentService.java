@@ -3,7 +3,10 @@ package com.ost.matie.service.comment;
 import com.ost.matie.domain.comment.Comment;
 import com.ost.matie.domain.community.Community;
 import com.ost.matie.dto.comment.AddCommentRequest;
+import com.ost.matie.dto.comment.UpdateCommentRequest;
+import com.ost.matie.dto.community.UpdateCommunityRequest;
 import com.ost.matie.repository.CommentRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +23,19 @@ public class CommentService {
 
     public List<Comment> findAllByCommunityId(Long communityId) {
         return commentRepository.findAllByCommunityId(communityId);
+    }
+
+    @Transactional
+    public Comment update(Long id, UpdateCommentRequest request) {
+        Comment comment = commentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found " + id));
+
+        comment.update(
+                request.getDescription(),
+                request.getUpvotes(),
+                request.getUpvoteUserList()
+        );
+
+        return comment;
     }
 }
