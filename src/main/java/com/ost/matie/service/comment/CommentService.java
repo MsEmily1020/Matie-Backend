@@ -25,6 +25,8 @@ public class CommentService {
         return commentRepository.findAllByCommunityId(communityId);
     }
 
+    public void delete(Long id) { commentRepository.deleteById(id); }
+
     @Transactional
     public Comment update(Long id, UpdateCommentRequest request) {
         Comment comment = commentRepository.findById(id)

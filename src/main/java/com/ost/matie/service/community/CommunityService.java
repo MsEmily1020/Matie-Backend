@@ -28,12 +28,7 @@ public class CommunityService {
                 .orElseThrow(() -> new IllegalArgumentException("not found " + id));
     }
 
-    public void delete(Long id) {
-        Community community = communityRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found " + id));
-
-        communityRepository.deleteById(id);
-    }
+    public void delete(Long id) { communityRepository.deleteById(id); }
 
     @Transactional
     public Community update(Long id, UpdateCommunityRequest request) {

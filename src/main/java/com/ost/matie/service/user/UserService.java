@@ -21,12 +21,7 @@ public class UserService {
 
     public List<Users> findAll() { return userRepository.findAll(); }
 
-    public void delete(Long id) {
-        Users users = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found " + id));
-
-        userRepository.deleteById(id);
-    }
+    public void delete(Long id) { userRepository.deleteById(id); }
 
     @Transactional
     public Users update(Long id, UpdateUserRequest request) {
