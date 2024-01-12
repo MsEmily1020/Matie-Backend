@@ -1,8 +1,6 @@
 package com.ost.matie.controller.point;
 
-import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.point.Point;
-import com.ost.matie.dto.community.CommunityResponse;
 import com.ost.matie.dto.point.AddPointRequest;
 import com.ost.matie.dto.point.PointResponse;
 import com.ost.matie.service.point.PointService;
@@ -11,8 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
