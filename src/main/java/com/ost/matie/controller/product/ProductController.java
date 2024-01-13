@@ -6,6 +6,7 @@ import com.ost.matie.domain.product.Product;
 import com.ost.matie.dto.community.CommunityResponse;
 import com.ost.matie.dto.point.PointResponse;
 import com.ost.matie.dto.product.ProductResponse;
+import com.ost.matie.dto.team.TeamResponse;
 import com.ost.matie.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,16 @@ import java.util.List;
 @RestController
 public class ProductController {
     private final ProductService productService;
+
+    @GetMapping("/product")
+    public ResponseEntity<List<ProductResponse>> findAllProducts() {
+        List<ProductResponse> productResponses = productService.findAll()
+                .stream()
+                .map(ProductResponse::new)
+                .toList();
+
+        return ResponseEntity.ok().body(productResponses);
+    }
 
     @GetMapping("/products/category/{categoryId}")
     public ResponseEntity<List<ProductResponse>> findAllByCategoryId(@PathVariable Long categoryId) {
