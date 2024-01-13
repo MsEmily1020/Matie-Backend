@@ -17,7 +17,7 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
-    private Long cart;
+    private Long id;
 
     @Convert(converter = LongListConverter.class)
     private List<Long> count;
