@@ -7,6 +7,8 @@ import com.ost.matie.repository.CartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class CartService {
@@ -16,4 +18,7 @@ public class CartService {
         return cartRepository.save(request.toEntity());
     }
 
+    public List<Cart> findAllByUserId(Long userId) {
+        return cartRepository.findAllByUserId(userId);
+    }
 }
