@@ -4,8 +4,10 @@ import com.ost.matie.domain.cart.Cart;
 import com.ost.matie.domain.comment.Comment;
 import com.ost.matie.dto.cart.AddCartRequest;
 import com.ost.matie.dto.cart.CartResponse;
+import com.ost.matie.dto.cart.UpdateCartRequest;
 import com.ost.matie.dto.comment.AddCommentRequest;
 import com.ost.matie.dto.comment.CommentResponse;
+import com.ost.matie.dto.comment.UpdateCommentRequest;
 import com.ost.matie.service.cart.CartService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -35,5 +37,12 @@ public class CartController {
                 .toList();
 
         return ResponseEntity.ok().body(cartResponses);
+    }
+
+    @PutMapping("/cart/{id}")
+    public ResponseEntity<Cart> updateCart(@PathVariable Long id,
+                                           @RequestBody UpdateCartRequest request) {
+        Cart cart = cartService.update(id, request);
+        return ResponseEntity.ok().body(cart);
     }
 }
