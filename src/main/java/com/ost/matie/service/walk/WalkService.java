@@ -22,8 +22,8 @@ public class WalkService {
         return walkRepository.save(request.toEntity());
     }
 
-    public List<Walk> findByUserId(Long userId) {
-        return walkRepository.findByUserId(userId);
+    public List<Walk> findAllByUserId(Long userId) {
+        return walkRepository.findAllByUserId(userId);
     }
 
     public Walk findByUserIdAndDate(Long userId, LocalDate date) {

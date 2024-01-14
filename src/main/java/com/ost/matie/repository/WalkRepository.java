@@ -7,6 +7,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface WalkRepository extends JpaRepository<Walk, Long> {
-    List<Walk> findByUserId(Long userId);
+    List<Walk> findAllByUserId(Long userId);
     Walk findByUserIdAndDate(Long userId, LocalDate date);
 }
