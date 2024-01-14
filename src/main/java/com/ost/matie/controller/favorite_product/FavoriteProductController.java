@@ -3,15 +3,15 @@ package com.ost.matie.controller.favorite_product;
 import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.favorite_product.FavoriteProduct;
 import com.ost.matie.dto.community.AddCommunityRequest;
+import com.ost.matie.dto.community.CommunityResponse;
 import com.ost.matie.dto.favorite_product.AddFavoriteProductRequest;
+import com.ost.matie.dto.favorite_product.FavoriteProductResponse;
 import com.ost.matie.service.favorite_product.FavoriteProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,5 +23,13 @@ public class FavoriteProductController {
         FavoriteProduct favoriteProduct = favoriteProductService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(favoriteProduct);
+    }
+
+    @GetMapping("/favorite-product/{userId}")
+    public ResponseEntity<FavoriteProductResponse> findByUserIdProductResponse(@PathVariable Long userId) {
+        FavoriteProduct favoriteProduct = favoriteProductService.findByUserId(userId);
+
+        return ResponseEntity.ok()
+                .body(new FavoriteProductResponse(favoriteProduct));
     }
 }
