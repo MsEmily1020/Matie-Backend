@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @NoArgsConstructor
@@ -22,6 +23,7 @@ public class AddClearRequest {
 
     public Clear toEntity() {
         return Clear.builder()
+                .date(LocalDate.now())
                 .challenge(challenge)
                 .user(user)
                 .build();
