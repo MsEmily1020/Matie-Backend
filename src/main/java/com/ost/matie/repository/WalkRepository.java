@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface WalkRepository extends JpaRepository<Walk, Long> {
     List<Walk> findAllByUserId(Long userId);
-    Walk findByUserIdAndDate(Long userId, LocalDate date);
+    Walk findFirstByUserIdAndDateOrderByDateDesc(Long userId, LocalDate date);
 }

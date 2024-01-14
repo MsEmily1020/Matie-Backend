@@ -26,13 +26,13 @@ public class WalkService {
         return walkRepository.findAllByUserId(userId);
     }
 
-    public Walk findByUserIdAndDate(Long userId, LocalDate date) {
-        return walkRepository.findByUserIdAndDate(userId, date);
+    public Walk findFirstByUserIdAndDateOrderByDateDesc(Long userId, LocalDate date) {
+        return walkRepository.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
     }
 
     @Transactional
     public Walk update(Long userId, LocalDate date, UpdateWalkRequest request) {
-        Walk walk = walkRepository.findByUserIdAndDate(userId, date);
+        Walk walk = walkRepository.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
         walk.update(request.getCount());
         return walk;
     }

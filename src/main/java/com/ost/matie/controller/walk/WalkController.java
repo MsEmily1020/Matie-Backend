@@ -1,9 +1,6 @@
 package com.ost.matie.controller.walk;
 
-import com.ost.matie.domain.user.Users;
 import com.ost.matie.domain.walk.Walk;
-import com.ost.matie.dto.user.AddUserRequest;
-import com.ost.matie.dto.user.UserResponse;
 import com.ost.matie.dto.walk.AddWalkRequest;
 import com.ost.matie.dto.walk.WalkResponse;
 import com.ost.matie.service.walk.WalkService;
@@ -13,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -35,5 +33,12 @@ public class WalkController {
                 .toList();
 
         return ResponseEntity.ok().body(walkResponses);
+    }
+
+    @GetMapping("/walk/{userId}/{date}")
+    public ResponseEntity<WalkResponse> findFirstByUserIdAndDateOrderByDateDesc(@PathVariable(name = "userId") Long userId, @PathVariable(name = "date") LocalDate date) {
+        Walk walk = walkService.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
+        return ResponseEntity.ok()
+                .body(new WalkResponse(walk));
     }
 }

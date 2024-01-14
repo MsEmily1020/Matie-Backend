@@ -2,10 +2,7 @@ package com.ost.matie.domain.walk;
 
 import com.ost.matie.domain.user.Users;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -25,7 +22,7 @@ public class Walk {
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "user_id")
     private Users user;
 
     @Builder
