@@ -26,6 +26,12 @@ public class UserController {
                 .body(users);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Users> findLoginUser(LoginUserRequest request) {
+        Users users = userService.findByEmailAndPw(request);
+        return ResponseEntity.ok().body(users);
+    }
+
     @GetMapping("/users")
     public ResponseEntity<List<UserResponse>> findAllUsers() {
         List<UserResponse> userResponses = userService.findAll()
@@ -34,12 +40,6 @@ public class UserController {
                 .toList();
 
         return ResponseEntity.ok().body(userResponses);
-    }
-
-    @GetMapping("/login")
-    public ResponseEntity<Users> findLoginUser(LoginUserRequest request) {
-        Users users = userService.findByEmailAndPw(request);
-        return ResponseEntity.ok().body(users);
     }
 
     @PutMapping("/users/{id}")
