@@ -36,4 +36,8 @@ public class Clear {
         this.challenge = challenge;
         this.user = user;
     }
+
+    public void update(List<Long> challenge) {
+        this.challenge = challenge;
+    }
 }
