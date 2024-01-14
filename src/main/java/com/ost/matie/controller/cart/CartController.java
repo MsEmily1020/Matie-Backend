@@ -1,21 +1,15 @@
 package com.ost.matie.controller.cart;
 
 import com.ost.matie.domain.cart.Cart;
-import com.ost.matie.domain.comment.Comment;
 import com.ost.matie.dto.cart.AddCartRequest;
 import com.ost.matie.dto.cart.CartResponse;
 import com.ost.matie.dto.cart.UpdateCartRequest;
-import com.ost.matie.dto.comment.AddCommentRequest;
-import com.ost.matie.dto.comment.CommentResponse;
-import com.ost.matie.dto.comment.UpdateCommentRequest;
 import com.ost.matie.service.cart.CartService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -30,13 +24,11 @@ public class CartController {
     }
 
     @GetMapping("/cart/{userId}")
-    public ResponseEntity<List<CartResponse>> findAllByUserId(@PathVariable Long userId) {
-        List<CartResponse> cartResponses = cartService.findAllByUserId(userId)
-                .stream()
-                .map(CartResponse::new)
-                .toList();
+    public ResponseEntity<CartResponse> findByUserId(@PathVariable Long userId) {
+        Cart cart = cartService.findByUserId(userId);
 
-        return ResponseEntity.ok().body(cartResponses);
+        return ResponseEntity.ok()
+                .body(new CartResponse(cart));
     }
 
     @PutMapping("/cart/{id}")

@@ -21,8 +21,8 @@ public class CartService {
         return cartRepository.save(request.toEntity());
     }
 
-    public List<Cart> findAllByUserId(Long userId) {
-        return cartRepository.findAllByUserId(userId);
+    public Cart findByUserId(Long userId) {
+        return cartRepository.findByUserId(userId);
     }
 
     @Transactional
