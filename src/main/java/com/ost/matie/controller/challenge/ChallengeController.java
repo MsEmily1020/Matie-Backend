@@ -1,7 +1,10 @@
 package com.ost.matie.controller.challenge;
 
+import com.ost.matie.domain.challenge.Challenge;
+import com.ost.matie.domain.community.Community;
 import com.ost.matie.dto.challenge.ChallengeResponse;
 import com.ost.matie.dto.comment.CommentResponse;
+import com.ost.matie.dto.community.CommunityResponse;
 import com.ost.matie.service.challenge.ChallengeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,5 +27,13 @@ public class ChallengeController {
                 .toList();
 
         return ResponseEntity.ok().body(challengeResponses);
+    }
+
+    @GetMapping("/challenge/{id}")
+    public ResponseEntity<ChallengeResponse> findChallenge(@PathVariable Long id) {
+        Challenge challenge = challengeService.findById(id);
+
+        return ResponseEntity.ok()
+                .body(new ChallengeResponse(challenge));
     }
 }
