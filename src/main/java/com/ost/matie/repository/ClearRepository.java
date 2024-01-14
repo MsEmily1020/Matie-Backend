@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface ClearRepository extends JpaRepository<Clear, Long> {
     List<Clear> findAllByUserId(Long userId);
-    Clear findFirstByUserIdAndDateOrderByDateDesc(Long userId, LocalDate date);
+
+    Clear findFirstByUserIdAndDate(Long userId, LocalDate date);
 }
