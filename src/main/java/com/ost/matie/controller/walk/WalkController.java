@@ -1,7 +1,10 @@
 package com.ost.matie.controller.walk;
 
+import com.ost.matie.domain.user.Users;
 import com.ost.matie.domain.walk.Walk;
+import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.dto.walk.AddWalkRequest;
+import com.ost.matie.dto.walk.UpdateWalkRequest;
 import com.ost.matie.dto.walk.WalkResponse;
 import com.ost.matie.service.walk.WalkService;
 import jakarta.validation.Valid;
@@ -40,5 +43,13 @@ public class WalkController {
         Walk walk = walkService.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
         return ResponseEntity.ok()
                 .body(new WalkResponse(walk));
+    }
+
+    @PutMapping("/walk/{userId}/{date}")
+    public ResponseEntity<Walk> updateWalk(@PathVariable Long userId,
+                                           @PathVariable LocalDate date,
+                                           @RequestBody UpdateWalkRequest request) {
+        Walk walk = walkService.update(userId, date, request);
+        return ResponseEntity.ok().body(walk);
     }
 }
