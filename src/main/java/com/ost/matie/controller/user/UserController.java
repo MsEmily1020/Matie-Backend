@@ -2,6 +2,7 @@ package com.ost.matie.controller.user;
 
 import com.ost.matie.domain.user.Users;
 import com.ost.matie.dto.user.AddUserRequest;
+import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.dto.user.UserResponse;
 import com.ost.matie.service.user.UserService;
@@ -33,6 +34,12 @@ public class UserController {
                 .toList();
 
         return ResponseEntity.ok().body(userResponses);
+    }
+
+    @GetMapping("/login")
+    public ResponseEntity<Users> findLoginUser(LoginUserRequest request) {
+        Users users = userService.findByEmailAndPw(request);
+        return ResponseEntity.ok().body(users);
     }
 
     @PutMapping("/users/{id}")
