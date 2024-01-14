@@ -3,6 +3,7 @@ package com.ost.matie.domain.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ost.matie.domain.BaseTimeEntity;
 import com.ost.matie.domain.cart.Cart;
+import com.ost.matie.domain.clear.Clear;
 import com.ost.matie.domain.comment.Comment;
 import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.favorite_product.FavoriteProduct;
@@ -59,6 +60,10 @@ public class Users extends BaseTimeEntity {
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Walk> walkList;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Clear> clearList;
 
     @Builder
     public Users(String name, String email, String pw, Image mascot) {
