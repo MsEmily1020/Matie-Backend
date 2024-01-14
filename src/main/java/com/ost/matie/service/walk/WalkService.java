@@ -6,6 +6,8 @@ import com.ost.matie.repository.WalkRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class WalkService {
@@ -15,4 +17,7 @@ public class WalkService {
         return walkRepository.save(request.toEntity());
     }
 
+    public List<Walk> findByUserId(Long userId) {
+        return walkRepository.findByUserId(userId);
+    }
 }
