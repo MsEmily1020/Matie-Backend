@@ -2,6 +2,7 @@ package com.ost.matie.service.user;
 
 import com.ost.matie.domain.user.Users;
 import com.ost.matie.dto.user.AddUserRequest;
+import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -21,7 +22,12 @@ public class UserService {
 
     public List<Users> findAll() { return userRepository.findAll(); }
 
+    public Users findByEmailAndPw(LoginUserRequest request) {
+        return userRepository.findByEmailAndPw(request.getEmail(), request.getPw());
+    }
+
     public void delete(Long id) { userRepository.deleteById(id); }
+
 
     @Transactional
     public Users update(Long id, UpdateUserRequest request) {
