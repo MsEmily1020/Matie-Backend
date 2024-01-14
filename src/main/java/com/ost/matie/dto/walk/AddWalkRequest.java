@@ -15,13 +15,12 @@ import java.time.LocalDate;
 @Setter
 public class AddWalkRequest {
     private Long count;
-    private LocalDate date;
     private Users user;
 
     public Walk toEntity() {
         return Walk.builder()
                 .count(count)
-                .date(date)
+                .date(LocalDate.now())
                 .user(user)
                 .build();
     }
