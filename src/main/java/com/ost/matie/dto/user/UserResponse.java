@@ -11,6 +11,7 @@ public class UserResponse {
     private final Long id;
     private final String name;
     private final String email;
+    private final String pw;
     private final LocalDateTime createdDate;
     private final Image mascot;
 
@@ -18,6 +19,7 @@ public class UserResponse {
         this.id = users.getId();
         this.name = users.getName();
         this.email = users.getEmail();
+        this.pw = users.getPw();
         this.createdDate = users.getCreatedDate();
         this.mascot = users.getMascot();
     }
