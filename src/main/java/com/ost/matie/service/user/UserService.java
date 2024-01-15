@@ -23,6 +23,10 @@ public class UserService {
         return userRepository.save(request.toEntity());
     }
 
+    public Users findById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("user not found by id : " + id));
+    }
+
     public Users findByEmailAndPw(LoginUserRequest request) {
         Users users = userRepository.findByEmailAndPw(request.getEmail(), request.getPw());
         if(users == null) throw new UserNotFoundException("user not found by email : " + request.getEmail() + ", pw : " + request.getPw());
@@ -30,7 +34,7 @@ public class UserService {
     }
 
     public void delete(Long id) {
-        if(userRepository.existsById(id)) throw new UserNotFoundException("user not found : " + id);
+        if(userRepository.existsById(id)) throw new UserNotFoundException("user not found by id : " + id);
         userRepository.deleteById(id);
     }
 
@@ -38,7 +42,7 @@ public class UserService {
     @Transactional
     public Users update(Long id, UpdateUserRequest request) {
         Users users = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("user not found : " + id));
+                .orElseThrow(() -> new UserNotFoundException("user not found by id : " + id));
 
         users.update(
                 request.getName(),
