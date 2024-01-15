@@ -1,10 +1,9 @@
 package com.ost.matie.service.walk;
 
-import com.ost.matie.domain.user.Users;
 import com.ost.matie.domain.walk.Walk;
-import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.dto.walk.AddWalkRequest;
 import com.ost.matie.dto.walk.UpdateWalkRequest;
+import com.ost.matie.exception.DataNotFoundException;
 import com.ost.matie.repository.WalkRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +26,8 @@ public class WalkService {
     }
 
     public Walk findFirstByUserIdAndDateOrderByDateDesc(Long userId, LocalDate date) {
+        Walk walk = walkRepository.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
+        if(walk == null) throw new DataNotFoundException("No data by userId : " + userId + ", date : " + date);
         return walkRepository.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
     }
 
