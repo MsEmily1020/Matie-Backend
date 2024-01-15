@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class UserResponse {
     private final Long id;
     private final String name;
+    private final String userId;
     private final String email;
     private final String pw;
     private final LocalDateTime createdDate;
@@ -18,6 +19,7 @@ public class UserResponse {
     public UserResponse(Users users) {
         this.id = users.getId();
         this.name = users.getName();
+        this.userId = users.getUserId();
         this.email = users.getEmail();
         this.pw = users.getPw();
         this.createdDate = users.getCreatedDate();

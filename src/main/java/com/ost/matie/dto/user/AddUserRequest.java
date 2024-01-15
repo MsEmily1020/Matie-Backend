@@ -20,11 +20,15 @@ public class AddUserRequest {
     private String name;
 
     @NotBlank
+    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z]).{8,20}")
+    private String userId;
+
+    @NotBlank
     @Email
     private String email;
 
     @NotBlank
-    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}")
+    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}")
     private String pw;
 
     @NotNull
@@ -33,6 +37,7 @@ public class AddUserRequest {
     public Users toEntity() {
         return Users.builder()
                 .name(name)
+                .userId(userId)
                 .email(email)
                 .pw(pw)
                 .mascot(mascot)

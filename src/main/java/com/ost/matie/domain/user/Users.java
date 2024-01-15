@@ -27,6 +27,9 @@ public class Users extends BaseTimeEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "user_id", unique = true)
+    private String userId;
+
     @Column(name = "email", unique = true)
     private String email;
 
@@ -66,8 +69,9 @@ public class Users extends BaseTimeEntity {
     private List<Clear> clearList;
 
     @Builder
-    public Users(String name, String email, String pw, Image mascot) {
+    public Users(String name, String userId, String email, String pw, Image mascot) {
         this.name = name;
+        this.userId = userId;
         this.email = email;
         this.pw = pw;
         this.mascot = mascot;
