@@ -19,7 +19,7 @@ public class WalkService {
     private final WalkRepository walkRepository;
 
     public Walk save(AddWalkRequest request) {
-        if(walkRepository.findFirstByUserIdAndDateOrderByDateDesc(request.getUser().getId(), LocalDate.now()) != null)
+        if(walkRepository.existsByUserIdAndDate(request.getUser().getId(), LocalDate.now()))
             throw new DuplicateException("duplicate data by user id : " + request.getUser().getId() + ", date : " + LocalDate.now());
         return walkRepository.save(request.toEntity());
     }
