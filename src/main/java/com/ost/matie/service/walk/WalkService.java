@@ -5,7 +5,6 @@ import com.ost.matie.dto.walk.AddWalkRequest;
 import com.ost.matie.dto.walk.UpdateWalkRequest;
 import com.ost.matie.exception.DataNotFoundException;
 import com.ost.matie.exception.DuplicateException;
-import com.ost.matie.exception.FkNotFoundException;
 import com.ost.matie.repository.WalkRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +19,7 @@ public class WalkService {
     private final WalkRepository walkRepository;
 
     public Walk save(AddWalkRequest request) {
-        userFkNotFound(request.getUser().getId());
+        if(request.getCount() == null) request.setCount(0L);
 
         if(walkRepository.existsByUserIdAndDate(request.getUser().getId(), LocalDate.now()))
             throw new DuplicateException("duplicate data by user id : " + request.getUser().getId() + ", date : " + LocalDate.now());
@@ -29,8 +28,6 @@ public class WalkService {
     }
 
     public List<Walk> findAllByUserId(Long userId) {
-        userFkNotFound(userId);
-
         List<Walk> walks = walkRepository.findAllByUserId(userId);
         if(walks.isEmpty()) throw new DataNotFoundException("No data by userId : " + userId);
 
@@ -38,8 +35,6 @@ public class WalkService {
     }
 
     public Walk findFirstByUserIdAndDateOrderByDateDesc(Long userId, LocalDate date) {
-        userFkNotFound(userId);
-
         Walk walk = walkRepository.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
         if(walk == null) throw new DataNotFoundException("No data by userId : " + userId + ", date : " + date);
 
@@ -48,16 +43,10 @@ public class WalkService {
 
     @Transactional
     public Walk update(Long userId, LocalDate date, UpdateWalkRequest request) {
-        userFkNotFound(userId);
-
         Walk walk = walkRepository.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
         if(walk == null) throw new DataNotFoundException("No data by userId : " + userId + ", date : " + date);
 
         walk.update(request.getCount());
         return walk;
-    }
-
-    public void userFkNotFound(Long userId) {
-        if(walkRepository.existsByUserId(userId)) throw new FkNotFoundException("fk null user id : " + userId);
     }
 }

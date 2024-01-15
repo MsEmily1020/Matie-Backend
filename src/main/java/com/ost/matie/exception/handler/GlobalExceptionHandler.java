@@ -2,7 +2,6 @@ package com.ost.matie.exception.handler;
 
 import com.ost.matie.exception.DataNotFoundException;
 import com.ost.matie.exception.DuplicateException;
-import com.ost.matie.exception.FkNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +28,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler({DataNotFoundException.class, FkNotFoundException.class, DuplicateException.class})
+    @ExceptionHandler({DataNotFoundException.class, DuplicateException.class })
     public ResponseEntity<Map<String, List<String>>> handleDataNotFoundException(DataNotFoundException e) {
         List<String> errors = Collections.singletonList(e.getMessage());
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.NOT_FOUND);
