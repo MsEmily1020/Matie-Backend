@@ -19,7 +19,6 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private final PointRepository pointRepository;
 
     public Users save(AddUserRequest request) {
         if(userRepository.existsByUserIdOrEmail(request.getUserId(), request.getEmail()))
@@ -31,7 +30,9 @@ public class UserService {
     public List<Users> findAll() { return userRepository.findAll(); }
 
     public Users findByEmailAndPw(LoginUserRequest request) {
-        return userRepository.findByEmailAndPw(request.getEmail(), request.getPw());
+        Users users = userRepository.findByEmailAndPw(request.getEmail(), request.getPw());
+        if(users == null) throw new UserNotFoundException("user not found by email : " + request.getEmail() + ", pw : " + request.getPw());
+        return users;
     }
 
     public void delete(Long id) {
