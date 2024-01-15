@@ -1,5 +1,6 @@
 package com.ost.matie.exception.handler;
 
+import com.ost.matie.exception.DataNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +25,12 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.toList());
 
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(DataNotFoundException.class)
+    public ResponseEntity<Map<String, List<String>>> handleDataNotFoundException(DataNotFoundException e) {
+        List<String> errors = Collections.singletonList(e.getMessage());
+        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.NOT_FOUND);
     }
 
     private Map<String, List<String>> getErrorsMap(List<String> errors) {
