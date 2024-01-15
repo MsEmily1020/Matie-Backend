@@ -4,6 +4,7 @@ import com.ost.matie.domain.walk.Walk;
 import com.ost.matie.dto.walk.AddWalkRequest;
 import com.ost.matie.dto.walk.UpdateWalkRequest;
 import com.ost.matie.exception.DataNotFoundException;
+import com.ost.matie.exception.DuplicateException;
 import com.ost.matie.repository.WalkRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,8 @@ public class WalkService {
     private final WalkRepository walkRepository;
 
     public Walk save(AddWalkRequest request) {
-
+        if(walkRepository.findFirstByUserIdAndDateOrderByDateDesc(request.getUser().getId(), LocalDate.now()) != null)
+            throw new DuplicateException("duplicate data by user id : " + request.getUser().getId() + ", date : " + LocalDate.now());
         return walkRepository.save(request.toEntity());
     }
 
