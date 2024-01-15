@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @Getter
 public class LoginUserRequest {
     @NotBlank
-    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z]).{8,20}")
-    private String userId;
+    @Email
+    private String email;
 
     @NotBlank
     private String pw;
