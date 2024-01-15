@@ -35,16 +35,6 @@ public class UserController {
         return ResponseEntity.ok().body(users);
     }
 
-    @GetMapping("/users")
-    public ResponseEntity<List<UserResponse>> findAllUsers() {
-        List<UserResponse> userResponses = userService.findAll()
-                .stream()
-                .map(UserResponse::new)
-                .toList();
-
-        return ResponseEntity.ok().body(userResponses);
-    }
-
     @PutMapping("/users/{id}")
     public ResponseEntity<Users> updateUser(@PathVariable Long id,
                                             @Valid @RequestBody UpdateUserRequest request) {
