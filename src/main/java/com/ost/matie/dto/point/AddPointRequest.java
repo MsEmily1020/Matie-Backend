@@ -16,7 +16,7 @@ import lombok.Setter;
 public class AddPointRequest {
     private Long variation;
 
-    @NotNull
+    @NotNull(message = "user의 id를 넣어주세요.")
     private Users user;
 
     public Point toEntity(Long balances) {
