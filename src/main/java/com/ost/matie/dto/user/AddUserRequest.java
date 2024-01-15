@@ -16,22 +16,21 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AddUserRequest {
-    @NotBlank
+    @NotBlank(message = "이름 칸이 비어있습니다.")
     private String name;
 
-    @NotBlank
-    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z]).{8,20}")
+    @NotBlank(message = "아이디 칸이 비어있습니다.")
+    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z]).{6,12}", message = "6~12자 이내로 영문과 숫자만 가능합니다.")
     private String userId;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "이메일 칸이 비어있습니다.")
+    @Email(message = "이메일 형식이 올바르지 않습니다.")
     private String email;
 
-    @NotBlank
-    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}")
+    @NotBlank(message = "비밀번호 칸이 비어있습니다.")
+    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}", message = "8~20자 이내로 영문과 숫자, 특수기호가 들어가야 합니다.")
     private String pw;
 
-    @NotNull
     private Image mascot;
 
     public Users toEntity() {

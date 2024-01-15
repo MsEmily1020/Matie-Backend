@@ -4,6 +4,7 @@ import com.ost.matie.domain.user.Users;
 import com.ost.matie.dto.user.AddUserRequest;
 import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
+import com.ost.matie.exception.DuplicateException;
 import com.ost.matie.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,9 @@ public class UserService {
     private final UserRepository userRepository;
 
     public Users save(AddUserRequest request) {
+        if(userRepository.existsByUserIdOrEmail(request.getUserId(), request.getEmail()))
+            throw new DuplicateException("duplicate date by userId : " + request.getUserId() + ", email : " + request.getEmail());
+
         return userRepository.save(request.toEntity());
     }
 
