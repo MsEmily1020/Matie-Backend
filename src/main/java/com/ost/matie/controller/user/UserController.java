@@ -5,7 +5,6 @@ import com.ost.matie.dto.point.AddPointRequest;
 import com.ost.matie.dto.user.AddUserRequest;
 import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
-import com.ost.matie.dto.user.UserResponse;
 import com.ost.matie.service.point.PointService;
 import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;
@@ -13,8 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -25,6 +22,7 @@ public class UserController {
     @PostMapping("/users")
     public ResponseEntity<Users> addUser(@Valid @RequestBody AddUserRequest request) {
         Users users = userService.save(request);
+        pointService.save(new AddPointRequest(0L, users));
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(users);
     }
