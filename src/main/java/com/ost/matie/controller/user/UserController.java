@@ -28,7 +28,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<Users> findLoginUser(@RequestBody LoginUserRequest request) {
-        Users users = userService.findByEmailAndPw(request);
+        Users users = userService.findByUserIdAndPw(request);
         return ResponseEntity.ok().body(users);
     }
 
