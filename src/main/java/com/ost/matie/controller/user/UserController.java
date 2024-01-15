@@ -1,10 +1,12 @@
 package com.ost.matie.controller.user;
 
 import com.ost.matie.domain.user.Users;
+import com.ost.matie.dto.point.AddPointRequest;
 import com.ost.matie.dto.user.AddUserRequest;
 import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.dto.user.UserResponse;
+import com.ost.matie.service.point.PointService;
 import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import java.util.List;
 @RestController
 public class UserController {
     private final UserService userService;
+    private final PointService pointService;
 
     @PostMapping("/users")
     public ResponseEntity<Users> addUser(@Valid @RequestBody AddUserRequest request) {
