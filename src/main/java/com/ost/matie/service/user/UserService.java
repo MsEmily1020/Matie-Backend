@@ -26,8 +26,8 @@ public class UserService {
 
     public List<Users> findAll() { return userRepository.findAll(); }
 
-    public Users findByUserIdAndPw(LoginUserRequest request) {
-        return userRepository.findByUserIdAndPw(request.getUserId(), request.getPw());
+    public Users findByEmailAndPw(LoginUserRequest request) {
+        return userRepository.findByEmailAndPw(request.getEmail(), request.getPw());
     }
 
     public void delete(Long id) { userRepository.deleteById(id); }
