@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Users> findByEmailAndPw(@RequestBody LoginUserRequest request) {
+    public ResponseEntity<Users> findByEmailAndPw(@Valid @RequestBody LoginUserRequest request) {
         Users users = userService.findByEmailAndPw(request);
         return ResponseEntity.ok().body(users);
     }
