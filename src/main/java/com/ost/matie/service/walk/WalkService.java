@@ -18,11 +18,14 @@ public class WalkService {
     private final WalkRepository walkRepository;
 
     public Walk save(AddWalkRequest request) {
+
         return walkRepository.save(request.toEntity());
     }
 
     public List<Walk> findAllByUserId(Long userId) {
-        return walkRepository.findAllByUserId(userId);
+        List<Walk> walks = walkRepository.findAllByUserId(userId);
+        if(walks.isEmpty()) throw new DataNotFoundException("No data by userId : " + userId);
+        return walks;
     }
 
     public Walk findFirstByUserIdAndDateOrderByDateDesc(Long userId, LocalDate date) {
@@ -34,6 +37,7 @@ public class WalkService {
     @Transactional
     public Walk update(Long userId, LocalDate date, UpdateWalkRequest request) {
         Walk walk = walkRepository.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
+        if(walk == null) throw new DataNotFoundException("No data by userId : " + userId + ", date : " + date);
         walk.update(request.getCount());
         return walk;
     }
