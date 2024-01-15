@@ -6,6 +6,7 @@ import com.ost.matie.dto.user.AddUserRequest;
 import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.exception.DuplicateException;
+import com.ost.matie.exception.UserNotFoundException;
 import com.ost.matie.repository.PointRepository;
 import com.ost.matie.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -33,13 +34,16 @@ public class UserService {
         return userRepository.findByEmailAndPw(request.getEmail(), request.getPw());
     }
 
-    public void delete(Long id) { userRepository.deleteById(id); }
+    public void delete(Long id) {
+        if(userRepository.existsById(id)) throw new UserNotFoundException("user not found : " + id);
+        userRepository.deleteById(id);
+    }
 
 
     @Transactional
     public Users update(Long id, UpdateUserRequest request) {
         Users users = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found " + id));
+                .orElseThrow(() -> new UserNotFoundException("user not found : " + id));
 
         users.update(
                 request.getName(),
