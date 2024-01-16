@@ -17,7 +17,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     public Users save(AddUserRequest request) {
-        if(userRepository.existsByUserIdOrEmail(request.getUserId(), request.getEmail()))
+        if(!userRepository.existsByUserIdOrEmail(request.getUserId(), request.getEmail()))
             throw new DuplicateException("duplicate date by userId : " + request.getUserId() + ", email : " + request.getEmail());
 
         return userRepository.save(request.toEntity());
@@ -34,7 +34,7 @@ public class UserService {
     }
 
     public void delete(Long id) {
-        if(userRepository.existsById(id)) throw new UserNotFoundException("user not found by id : " + id);
+        if(!userRepository.existsById(id)) throw new UserNotFoundException("user not found by id : " + id);
         userRepository.deleteById(id);
     }
 
