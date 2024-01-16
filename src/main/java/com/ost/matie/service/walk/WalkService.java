@@ -20,32 +20,23 @@ public class WalkService {
 
     public Walk save(AddWalkRequest request) {
         if(request.getCount() == null) request.setCount(0L);
-
         if(walkRepository.existsByUserIdAndDate(request.getUser().getId(), LocalDate.now()))
-            throw new DuplicateException("duplicate data by user id : " + request.getUser().getId() + ", date : " + LocalDate.now());
-
+            throw new DuplicateException("이미 오늘의 사용자 기록은 존재합니다.");
         return walkRepository.save(request.toEntity());
     }
 
     public List<Walk> findAllByUserId(Long userId) {
-        List<Walk> walks = walkRepository.findAllByUserId(userId);
-        if(walks.isEmpty()) throw new DataNotFoundException("No data by userId : " + userId);
-
-        return walks;
+        return walkRepository.findAllByUserId(userId);
     }
 
     public Walk findFirstByUserIdAndDateOrderByDateDesc(Long userId, LocalDate date) {
-        Walk walk = walkRepository.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
-        if(walk == null) throw new DataNotFoundException("No data by userId : " + userId + ", date : " + date);
-
         return walkRepository.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
     }
 
     @Transactional
     public Walk update(Long userId, LocalDate date, UpdateWalkRequest request) {
+        if(request.getCount() == null) request.setCount(0L);
         Walk walk = walkRepository.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
-        if(walk == null) throw new DataNotFoundException("No data by userId : " + userId + ", date : " + date);
-
         walk.update(request.getCount());
         return walk;
     }
