@@ -24,10 +24,6 @@ public class ClearService {
         return clearRepository.findAllByUserId(userId);
     }
 
-    public Clear findFirstByUserIdAndDate(Long userId, LocalDate date) {
-        return clearRepository.findFirstByUserIdAndDate(userId, date);
-    }
-
     @Transactional
     public Clear update(Long userId, LocalDate date, UpdateClearRequest request) {
         Clear clear = clearRepository.findFirstByUserIdAndDate(userId, date);
