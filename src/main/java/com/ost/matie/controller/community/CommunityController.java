@@ -5,6 +5,7 @@ import com.ost.matie.dto.community.AddCommunityRequest;
 import com.ost.matie.dto.community.CommunityResponse;
 import com.ost.matie.dto.community.UpdateCommunityRequest;
 import com.ost.matie.service.community.CommunityService;
+import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,9 +18,11 @@ import java.util.List;
 @RestController
 public class CommunityController {
     private final CommunityService communityService;
+    private final UserService userService;
 
     @PostMapping("/community")
     public ResponseEntity<Community> addCommunity(@Valid @RequestBody AddCommunityRequest request) {
+        userService.findById(request.getCreatorUser().getId());
         Community community = communityService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(community);

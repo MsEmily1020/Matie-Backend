@@ -18,23 +18,23 @@ public class UserService {
 
     public Users save(AddUserRequest request) {
         if(!userRepository.existsByUserIdOrEmail(request.getUserId(), request.getEmail()))
-            throw new DuplicateException("duplicate date by userId : " + request.getUserId() + ", email : " + request.getEmail());
+            throw new DuplicateException("아이디 또는 이메일이 중복되었습니다.");
 
         return userRepository.save(request.toEntity());
     }
 
     public Users findById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("user not found by id : " + id));
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("사용자를 찾을 수 없습니다. (id : " + id + ")"));
     }
 
     public Users findByEmailAndPw(LoginUserRequest request) {
         Users users = userRepository.findByEmailAndPw(request.getEmail(), request.getPw());
-        if(users == null) throw new UserNotFoundException("user not found by email : " + request.getEmail() + ", pw : " + request.getPw());
+        if(users == null) throw new UserNotFoundException("사용자를 찾을 수 없습니다. (email : " + request.getEmail() + ", pw : " + request.getPw() + ")");
         return users;
     }
 
     public void delete(Long id) {
-        if(!userRepository.existsById(id)) throw new UserNotFoundException("user not found by id : " + id);
+        if(!userRepository.existsById(id)) throw new UserNotFoundException("사용자를 찾을 수 없습니다. (id : " + id + ")");
         userRepository.deleteById(id);
     }
 
@@ -42,7 +42,7 @@ public class UserService {
     @Transactional
     public Users update(Long id, UpdateUserRequest request) {
         Users users = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("user not found by id : " + id));
+                .orElseThrow(() -> new UserNotFoundException("사용자를 찾을 수 없습니다. (id : " + id + ")"));
 
         users.update(
                 request.getName(),

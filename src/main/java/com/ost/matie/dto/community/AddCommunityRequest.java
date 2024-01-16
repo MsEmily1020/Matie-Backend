@@ -17,16 +17,16 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class AddCommunityRequest {
-    @NotEmpty
+    @NotEmpty(message = "제목 칸이 비어있습니다.")
     private String title;
 
-    @NotEmpty
+    @NotEmpty(message = "설명 칸이 비어있습니다.")
     private String description;
 
-    @NotEmpty
+    @NotEmpty(message = "타입 칸이 비어있습니다.")
     private String type;
 
-    @NotNull
+    @NotNull(message = "user의 id를 넣어주세요.")
     private Users creatorUser;
 
     public Community toEntity() {
