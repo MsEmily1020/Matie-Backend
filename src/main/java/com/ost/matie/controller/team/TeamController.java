@@ -4,6 +4,7 @@ import com.ost.matie.domain.team.Team;
 import com.ost.matie.dto.team.TeamResponse;
 import com.ost.matie.dto.team.UpdateTeamRequest;
 import com.ost.matie.service.team.TeamService;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,16 @@ public class TeamController {
     @GetMapping("/team")
     public ResponseEntity<List<TeamResponse>> findAllTeams() {
         List<TeamResponse> teamResponses = teamService.findAll()
+                .stream()
+                .map(TeamResponse::new)
+                .toList();
+
+        return ResponseEntity.ok().body(teamResponses);
+    }
+
+    @GetMapping("/team/{userId}")
+    public ResponseEntity<List<TeamResponse>> findByUserListInUserId(@PathVariable Long userId) {
+        List<TeamResponse> teamResponses = teamService.findUserListInUserId(userId)
                 .stream()
                 .map(TeamResponse::new)
                 .toList();
