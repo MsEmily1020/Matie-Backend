@@ -4,6 +4,7 @@ import com.ost.matie.domain.community.Community;
 import com.ost.matie.dto.community.AddCommunityRequest;
 import com.ost.matie.dto.community.UpdateCommunityRequest;
 import com.ost.matie.exception.DataNotFoundException;
+import com.ost.matie.exception.TypeNotFoundException;
 import com.ost.matie.repository.CommunityRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class CommunityService {
     }
 
     public List<Community> findByTypeOrderByCreatedDateDesc(String type) {
+        if(!(type.equals("Q&A") && type.equals("Debate"))) throw new TypeNotFoundException("type은 Q&A 또는 Debate만 가능합니다.");
         return communityRepository.findByTypeOrderByCreatedDateDesc(type);
     }
 

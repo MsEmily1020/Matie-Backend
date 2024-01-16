@@ -17,13 +17,13 @@ import java.util.Collections;
 @Getter
 @Setter
 public class AddCommentRequest {
-    @NotEmpty
+    @NotEmpty(message = "설명 칸이 비어있습니다.")
     private String description;
 
-    @NotNull
+    @NotNull(message = "user의 id를 넣어주세요.")
     private Users user;
 
-    @NotNull
+    @NotNull(message = "community의 id를 넣어주세요.")
     private Community community;
 
     public Comment toEntity() {

@@ -10,6 +10,7 @@ import com.ost.matie.dto.comment.AddCommentRequest;
 import com.ost.matie.dto.comment.CommentResponse;
 import com.ost.matie.dto.walk.UpdateWalkRequest;
 import com.ost.matie.service.clear.ClearService;
+import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,11 @@ import java.util.List;
 @RestController
 public class ClearController {
     private final ClearService clearService;
+    private final UserService userService;
 
     @PostMapping("/clear")
     public ResponseEntity<Clear> addClear(@Valid @RequestBody AddClearRequest request) {
+        userService.findById(request.getUser().getId());
         Clear clear = clearService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(clear);
@@ -33,6 +36,7 @@ public class ClearController {
 
     @GetMapping("/clear/{userId}")
     public ResponseEntity<List<ClearResponse>> findAllByUserId(@PathVariable Long userId) {
+        userService.findById(userId);
         List<ClearResponse> commentResponses = clearService.findAllByUserId(userId)
                 .stream()
                 .map(ClearResponse::new)
@@ -43,8 +47,9 @@ public class ClearController {
 
     @PutMapping("/clear/{userId}/{date}")
     public ResponseEntity<Clear> updateClear(@PathVariable Long userId,
-                                           @PathVariable LocalDate date,
-                                           @RequestBody UpdateClearRequest request) {
+                                             @PathVariable LocalDate date,
+                                             @RequestBody UpdateClearRequest request) {
+        userService.findById(userId);
         Clear clear = clearService.update(userId, date, request);
         return ResponseEntity.ok().body(clear);
     }

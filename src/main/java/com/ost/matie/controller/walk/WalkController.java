@@ -6,6 +6,7 @@ import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.dto.walk.AddWalkRequest;
 import com.ost.matie.dto.walk.UpdateWalkRequest;
 import com.ost.matie.dto.walk.WalkResponse;
+import com.ost.matie.service.user.UserService;
 import com.ost.matie.service.walk.WalkService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,11 @@ import java.util.List;
 @RestController
 public class WalkController {
     private final WalkService walkService;
+    private final UserService userService;
 
     @PostMapping("/walk")
     public ResponseEntity<Walk> addWalk(@Valid @RequestBody AddWalkRequest request) {
+        userService.findById(request.getUser().getId());
         Walk walk = walkService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(walk);
@@ -30,6 +33,7 @@ public class WalkController {
 
     @GetMapping("/walk/{userId}")
     public ResponseEntity<List<WalkResponse>> findAllByUserId(@PathVariable Long userId) {
+        userService.findById(userId);
         List<WalkResponse> walkResponses = walkService.findAllByUserId(userId)
                 .stream()
                 .map(WalkResponse::new)
@@ -40,6 +44,7 @@ public class WalkController {
 
     @GetMapping("/walk/{userId}/{date}")
     public ResponseEntity<WalkResponse> findFirstByUserIdAndDateOrderByDateDesc(@PathVariable(name = "userId") Long userId, @PathVariable(name = "date") LocalDate date) {
+        userService.findById(userId);
         Walk walk = walkService.findFirstByUserIdAndDateOrderByDateDesc(userId, date);
         return ResponseEntity.ok()
                 .body(new WalkResponse(walk));
@@ -49,6 +54,7 @@ public class WalkController {
     public ResponseEntity<Walk> updateWalk(@PathVariable Long userId,
                                            @PathVariable LocalDate date,
                                            @RequestBody UpdateWalkRequest request) {
+        userService.findById(userId);
         Walk walk = walkService.update(userId, date, request);
         return ResponseEntity.ok().body(walk);
     }

@@ -16,9 +16,10 @@ import java.util.List;
 @Getter
 @Setter
 public class AddClearRequest {
+    @NotNull(message = "클리어 한 챌린지 리스트를 넣어주세요.")
     private List<Long> challenge;
 
-    @NotNull
+    @NotNull(message = "user의 id를 넣어주세요.")
     private Users user;
 
     public Clear toEntity() {
