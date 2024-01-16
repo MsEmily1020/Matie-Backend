@@ -5,6 +5,8 @@ import com.ost.matie.dto.comment.AddCommentRequest;
 import com.ost.matie.dto.comment.CommentResponse;
 import com.ost.matie.dto.comment.UpdateCommentRequest;
 import com.ost.matie.service.comment.CommentService;
+import com.ost.matie.service.community.CommunityService;
+import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,9 +19,13 @@ import java.util.List;
 @RestController
 public class CommentController {
     private final CommentService commentService;
+    private final UserService userService;
+    private final CommunityService communityService;
 
     @PostMapping("/comment")
     public ResponseEntity<Comment> addComment(@Valid @RequestBody AddCommentRequest request) {
+        userService.findById(request.getUser().getId());
+        communityService.findById(request.getCommunity().getId());
         Comment comment = commentService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(comment);
@@ -27,6 +33,8 @@ public class CommentController {
 
     @GetMapping("/comment/{communityId}")
     public ResponseEntity<List<CommentResponse>> findAllByCommunityId(@PathVariable Long communityId) {
+        communityService.findById(communityId);
+
         List<CommentResponse> commentResponses = commentService.findAllByCommunityId(communityId)
                 .stream()
                 .map(CommentResponse::new)
