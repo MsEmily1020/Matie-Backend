@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CollectionId;
 
 import java.util.List;
 
@@ -21,4 +22,7 @@ public class Image {
 
     @Column(name = "url")
     private String url;
+
+    @Column(name = "type")
+    private Integer type;
 }
