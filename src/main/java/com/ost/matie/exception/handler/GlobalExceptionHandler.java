@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler({DataNotFoundException.class, DuplicateException.class, UserNotFoundException.class})
+    @ExceptionHandler({DataNotFoundException.class, DuplicateException.class, UserNotFoundException.class, TypeNotPresentException.class})
     public ResponseEntity<Map<String, List<String>>> handleDataNotFoundException(Exception e) {
         List<String> errors = Collections.singletonList(e.getMessage());
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.NOT_FOUND);
