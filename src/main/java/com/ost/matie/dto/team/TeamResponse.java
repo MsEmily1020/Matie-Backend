@@ -15,7 +15,6 @@ public class TeamResponse {
     private final LocalDateTime startDate;
     private final LocalDateTime finishDate;
     private final List<Long> userList;
-    private final Image image;
 
     public TeamResponse(Team team) {
         this.id = team.getId();
@@ -24,6 +23,5 @@ public class TeamResponse {
         this.startDate = team.getStartDate();
         this.finishDate = team.getFinishDate();
         this.userList = team.getUserList();
-        this.image = team.getImage();
     }
 }

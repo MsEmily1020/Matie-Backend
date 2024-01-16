@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CollectionId;
 
 import java.util.List;
 
@@ -22,11 +23,6 @@ public class Image {
     @Column(name = "url")
     private String url;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "mascot", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
-    private List<Users> usersList;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "image", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
-    private List<Team> teamList;
+    @Column(name = "type")
+    private Integer type;
 }
