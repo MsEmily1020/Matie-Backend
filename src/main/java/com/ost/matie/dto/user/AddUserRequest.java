@@ -31,15 +31,12 @@ public class AddUserRequest {
     @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}", message = "8~20자 이내로 영문과 숫자, 특수기호가 들어가야 합니다.")
     private String pw;
 
-    private Image mascot;
-
     public Users toEntity() {
         return Users.builder()
                 .name(name)
                 .userId(userId)
                 .email(email)
                 .pw(pw)
-                .mascot(mascot)
                 .build();
     }
 }

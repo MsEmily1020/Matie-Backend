@@ -34,10 +34,6 @@ public class Team {
     @Convert(converter = LongListConverter.class)
     private List<Long> userList;
 
-    @ManyToOne
-    @JoinColumn(name = "image_id")
-    private Image image;
-
     public void update(List<Long> userList) {
         this.userList = userList;
     }

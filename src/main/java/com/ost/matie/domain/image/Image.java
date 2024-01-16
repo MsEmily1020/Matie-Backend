@@ -21,12 +21,4 @@ public class Image {
 
     @Column(name = "url")
     private String url;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "mascot", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
-    private List<Users> usersList;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "image", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
-    private List<Team> teamList;
 }

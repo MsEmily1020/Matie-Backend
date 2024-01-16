@@ -36,10 +36,6 @@ public class Users extends BaseTimeEntity {
     @Column(name = "pw")
     private String pw;
 
-    @ManyToOne
-    @JoinColumn(name = "mascot_id")
-    private Image mascot;
-
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Point> pointList;
@@ -69,17 +65,15 @@ public class Users extends BaseTimeEntity {
     private List<Clear> clearList;
 
     @Builder
-    public Users(String name, String userId, String email, String pw, Image mascot) {
+    public Users(String name, String userId, String email, String pw) {
         this.name = name;
         this.userId = userId;
         this.email = email;
         this.pw = pw;
-        this.mascot = mascot;
     }
 
-    public void update(String name, String pw, Image mascot) {
+    public void update(String name, String pw) {
         this.name = name;
         this.pw = pw;
-        this.mascot = mascot;
     }
 }
