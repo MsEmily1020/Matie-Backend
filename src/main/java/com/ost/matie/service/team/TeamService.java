@@ -22,7 +22,7 @@ public class TeamService {
     public List<Team> findAll() { return teamRepository.findAll(); }
 
     public List<Team> findUserListInUserId(Long userId) {
-        if(!userRepository.existsById(userId)) throw new UserNotFoundException("user not found by id : " + userId);
+        if(!userRepository.existsById(userId)) throw new UserNotFoundException("사용자를 찾을 수 없습니다. (id : " + userId + ")");
 
         List<Team> team = teamRepository.findAll()
                 .stream()
@@ -35,7 +35,7 @@ public class TeamService {
     @Transactional
     public Team update(Long id, UpdateTeamRequest request) {
         Team team = teamRepository.findById(id)
-                .orElseThrow(() -> new DataNotFoundException("team not found by id : " + id));
+                .orElseThrow(() -> new DataNotFoundException("그룹 챌린지 정보를 찾을 수 없습니다. (id : " + id + ")"));
 
         team.update(request.getUserList());
 
