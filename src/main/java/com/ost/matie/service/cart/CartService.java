@@ -5,6 +5,7 @@ import com.ost.matie.domain.comment.Comment;
 import com.ost.matie.dto.cart.AddCartRequest;
 import com.ost.matie.dto.cart.UpdateCartRequest;
 import com.ost.matie.dto.comment.UpdateCommentRequest;
+import com.ost.matie.exception.DataNotFoundException;
 import com.ost.matie.repository.CartRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,7 @@ public class CartService {
     @Transactional
     public Cart update(Long id, UpdateCartRequest request) {
         Cart cart = cartRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found " + id));
+                .orElseThrow(() -> new DataNotFoundException("카트 정보를 찾을 수 없습니다. (id : " + id + ")"));
 
         cart.update(
                 request.getCount(),
