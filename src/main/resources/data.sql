@@ -1,7 +1,7 @@
-INSERT INTO image (url) VALUES ('http://localhost:8080/1.svg');
-INSERT INTO image (url) VALUES ('http://localhost:8080/2.svg');
-INSERT INTO image (url) VALUES ('http://localhost:8080/3.svg');
-INSERT INTO image (url) VALUES ('http://localhost:8080/4.svg');
+INSERT INTO image (url, type) VALUES ('http://localhost:8080/1.svg', 2);
+INSERT INTO image (url, type) VALUES ('http://localhost:8080/2.svg', 2);
+INSERT INTO image (url, type) VALUES ('http://localhost:8080/3.svg', 2);
+INSERT INTO image (url, type) VALUES ('http://localhost:8080/4.svg', 2);
 
 INSERT INTO users (name, user_id, email, pw, created_date) VALUES ('김혜승', 'hyeseung', 's2224@e-mirim.hs.kr', 'hyeseung1!', '2023-10-20 10:11:20');
 INSERT INTO point (variation, balance, user_id) VALUES (0, 0, 1);
