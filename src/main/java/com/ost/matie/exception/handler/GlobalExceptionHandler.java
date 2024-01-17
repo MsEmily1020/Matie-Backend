@@ -31,9 +31,15 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler({DataNotFoundException.class, DuplicateException.class, UserNotFoundException.class, TypeNotFoundException.class})
-    public ResponseEntity<Map<String, List<String>>> handleException(Exception e) {
+    public ResponseEntity<Map<String, List<String>>> handleNotFoundException(Exception e) {
         List<String> errors = Collections.singletonList(e.getMessage());
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DuplicateException.class)
+    public ResponseEntity<Map<String, List<String>>> handleDuplicateException(Exception e) {
+        List<String> errors = Collections.singletonList(e.getMessage());
+        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.CONFLICT);
     }
 
     private Map<String, List<String>> getErrorsMap(List<String> errors) {
