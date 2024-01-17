@@ -6,6 +6,7 @@ import com.ost.matie.dto.cart.AddCartRequest;
 import com.ost.matie.dto.cart.UpdateCartRequest;
 import com.ost.matie.dto.comment.UpdateCommentRequest;
 import com.ost.matie.exception.DataNotFoundException;
+import com.ost.matie.exception.DuplicateException;
 import com.ost.matie.repository.CartRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +20,12 @@ public class CartService {
     private final CartRepository cartRepository;
 
     public Cart save(AddCartRequest request) {
+        if(cartRepository.existsByUserId(request.getUser().getId())) throw new DuplicateException("이미 해당 유저의 카트가 존재합니다. update를 해주세요.");
         return cartRepository.save(request.toEntity());
     }
 
     public Cart findByUserId(Long userId) {
-        return cartRepository.findByUserId(userId);
+        return cartRepository.findFirstByUserId(userId);
     }
 
     @Transactional
