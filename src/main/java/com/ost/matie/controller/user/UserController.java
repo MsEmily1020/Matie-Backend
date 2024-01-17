@@ -9,7 +9,6 @@ import com.ost.matie.service.point.PointService;
 import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,8 +28,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Users> findByEmailAndPw(@Valid @RequestBody LoginUserRequest request) {
-        Users users = userService.findByEmailAndPw(request);
+    public ResponseEntity<Users> loginUser(@Valid @RequestBody LoginUserRequest request) {
+        Users users = userService.login(request);
         return ResponseEntity.ok().body(users);
     }
 

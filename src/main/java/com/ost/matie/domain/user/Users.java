@@ -7,7 +7,6 @@ import com.ost.matie.domain.clear.Clear;
 import com.ost.matie.domain.comment.Comment;
 import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.favorite_product.FavoriteProduct;
-import com.ost.matie.domain.image.Image;
 import com.ost.matie.domain.point.Point;
 import com.ost.matie.domain.walk.Walk;
 import jakarta.persistence.*;
