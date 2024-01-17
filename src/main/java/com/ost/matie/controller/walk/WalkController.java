@@ -54,7 +54,6 @@ public class WalkController {
         return ResponseEntity.ok().body(walkResponses);
     }
 
-
     @GetMapping("/walk/{userId}/{date}")
     public ResponseEntity<WalkResponse> findFirstByUserIdAndDateOrderByDateDesc(@PathVariable(name = "userId") Long userId, @PathVariable(name = "date") LocalDate date) {
         userService.findById(userId);
