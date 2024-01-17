@@ -29,6 +29,16 @@ public class ChallengeController {
         return ResponseEntity.ok().body(challengeResponses);
     }
 
+    @GetMapping("/challenge/type/{type}")
+    public ResponseEntity<List<ChallengeResponse>> findAllByTypeChallenge(@PathVariable Integer type) {
+        List<ChallengeResponse> challengeResponses = challengeService.findAllByChallenge(type)
+                .stream()
+                .map(ChallengeResponse::new)
+                .toList();
+
+        return ResponseEntity.ok().body(challengeResponses);
+    }
+
     @GetMapping("/challenge/{id}")
     public ResponseEntity<ChallengeResponse> findChallenge(@PathVariable Long id) {
         Challenge challenge = challengeService.findById(id);

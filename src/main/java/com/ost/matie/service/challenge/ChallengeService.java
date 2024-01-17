@@ -15,6 +15,10 @@ public class ChallengeService {
 
     public List<Challenge> findAll() { return challengeRepository.findAll(); }
 
+    public List<Challenge> findAllByChallenge(Integer type) {
+        return challengeRepository.findAllByType(type);
+    }
+
     public Challenge findById(Long id) {
         return challengeRepository.findById(id)
                 .orElseThrow(() -> new DataNotFoundException("챌린지의 정보를 찾을 수 없습니다. (id : " + id + ")"));
