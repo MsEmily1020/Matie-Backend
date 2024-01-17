@@ -20,6 +20,8 @@ public class TeamResponse {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private final LocalDateTime finishDate;
 
+    private final Long point;
+
     private final List<Long> userList;
 
     public TeamResponse(Team team) {
@@ -28,6 +30,7 @@ public class TeamResponse {
         this.description = team.getDescription();
         this.startDate = team.getStartDate();
         this.finishDate = team.getFinishDate();
+        this.point = team.getPoint();
         this.userList = team.getUserList();
     }
 }

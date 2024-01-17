@@ -31,6 +31,9 @@ public class Team {
     @Column(name = "finish_date")
     private LocalDateTime finishDate;
 
+    @Column(name = "point")
+    private Long point;
+
     @Convert(converter = LongListConverter.class)
     private List<Long> userList;
 
