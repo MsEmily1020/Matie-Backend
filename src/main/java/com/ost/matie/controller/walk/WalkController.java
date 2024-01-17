@@ -24,11 +24,11 @@ public class WalkController {
     private final UserService userService;
 
     @PostMapping("/walk")
-    public ResponseEntity<Walk> addWalk(@Valid @RequestBody AddWalkRequest request) {
+    public ResponseEntity<WalkResponse> addWalk(@Valid @RequestBody AddWalkRequest request) {
         userService.findById(request.getUser().getId());
         Walk walk = walkService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(walk);
+                .body(new WalkResponse(walk));
     }
 
     @GetMapping("/walk/{userId}")
@@ -51,11 +51,11 @@ public class WalkController {
     }
 
     @PutMapping("/walk/{userId}/{date}")
-    public ResponseEntity<Walk> updateWalk(@PathVariable Long userId,
+    public ResponseEntity<WalkResponse> updateWalk(@PathVariable Long userId,
                                            @PathVariable LocalDate date,
                                            @RequestBody UpdateWalkRequest request) {
         userService.findById(userId);
         Walk walk = walkService.update(userId, date, request);
-        return ResponseEntity.ok().body(walk);
+        return ResponseEntity.ok().body(new WalkResponse(walk));
     }
 }

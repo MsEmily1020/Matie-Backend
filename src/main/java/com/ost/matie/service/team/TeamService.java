@@ -37,6 +37,9 @@ public class TeamService {
         Team team = teamRepository.findById(id)
                 .orElseThrow(() -> new DataNotFoundException("그룹 챌린지 정보를 찾을 수 없습니다. (id : " + id + ")"));
 
+        for(Long userId : request.getUserList())
+            if(!userRepository.existsById(userId)) throw new UserNotFoundException("사용자 정보를 찾을 수 없습니다. (id : " + userId + ")");
+
         team.update(request.getUserList());
 
         return team;

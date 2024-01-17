@@ -27,11 +27,11 @@ public class ClearController {
     private final UserService userService;
 
     @PostMapping("/clear")
-    public ResponseEntity<Clear> addClear(@Valid @RequestBody AddClearRequest request) {
+    public ResponseEntity<ClearResponse> addClear(@Valid @RequestBody AddClearRequest request) {
         userService.findById(request.getUser().getId());
         Clear clear = clearService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(clear);
+                .body(new ClearResponse(clear));
     }
 
     @GetMapping("/clear/{userId}")
@@ -46,11 +46,11 @@ public class ClearController {
     }
 
     @PutMapping("/clear/{userId}/{date}")
-    public ResponseEntity<Clear> updateClear(@PathVariable Long userId,
+    public ResponseEntity<ClearResponse> updateClear(@PathVariable Long userId,
                                              @PathVariable LocalDate date,
                                              @RequestBody UpdateClearRequest request) {
         userService.findById(userId);
         Clear clear = clearService.update(userId, date, request);
-        return ResponseEntity.ok().body(clear);
+        return ResponseEntity.ok().body(new ClearResponse(clear));
     }
 }

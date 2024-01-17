@@ -23,12 +23,12 @@ public class CommentController {
     private final CommunityService communityService;
 
     @PostMapping("/comment")
-    public ResponseEntity<Comment> addComment(@Valid @RequestBody AddCommentRequest request) {
+    public ResponseEntity<CommentResponse> addComment(@Valid @RequestBody AddCommentRequest request) {
         userService.findById(request.getUser().getId());
         communityService.findById(request.getCommunity().getId());
         Comment comment = commentService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(comment);
+                .body(new CommentResponse(comment));
     }
 
     @GetMapping("/comment/{communityId}")
@@ -44,10 +44,10 @@ public class CommentController {
     }
 
     @PutMapping("/comment/{id}")
-    public ResponseEntity<Comment> updateComment(@PathVariable Long id,
+    public ResponseEntity<CommentResponse> updateComment(@PathVariable Long id,
                                                      @Valid @RequestBody UpdateCommentRequest request) {
         Comment comment = commentService.update(id, request);
-        return ResponseEntity.ok().body(comment);
+        return ResponseEntity.ok().body(new CommentResponse(comment));
     }
 
     @DeleteMapping("/comment/{id}")
