@@ -19,4 +19,7 @@ public class Challenge {
 
     @Column(name = "point")
     private Long point;
+
+    @Column(name = "type")
+    private Integer type;
 }
