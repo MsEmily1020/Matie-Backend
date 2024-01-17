@@ -29,4 +29,4 @@ INSERT INTO category (name) VALUES ('잡화');
 INSERT INTO product (name, description, point, category_id) VALUES ('상의', '상의입니다', 200, 1);
 INSERT INTO product (name, description, point, category_id) VALUES ('잡화', '잡화입니다', 100, 2);
 
-INSERT INTO challenge (description, point, type) VALUES ('만보기 100번 걷기', 100, 1);
+INSERT INTO challenge (title, description, point, type) VALUES ('만보기 100번 걷기', '설명입니다.', 100, 1);
