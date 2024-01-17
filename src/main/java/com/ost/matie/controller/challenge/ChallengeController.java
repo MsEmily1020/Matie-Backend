@@ -32,8 +32,6 @@ public class ChallengeController {
 
     @GetMapping("/challenge/type/{type}")
     public ResponseEntity<List<ChallengeResponse>> findAllByTypeChallenge(@PathVariable Integer type) {
-        if(!(type == 5 || type == 6 || type == 7 || type == 8)) throw new TypeNotFoundException("type은 5, 6, 7, 8 중 선택해주세요.");
-
         List<ChallengeResponse> challengeResponses = challengeService.findAllByChallenge(type)
                 .stream()
                 .map(ChallengeResponse::new)
