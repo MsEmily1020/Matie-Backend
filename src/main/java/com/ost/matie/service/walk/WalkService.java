@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -27,6 +28,15 @@ public class WalkService {
 
     public List<Walk> findAllByUserId(Long userId) {
         return walkRepository.findAllByUserId(userId);
+    }
+
+    public List<Walk> findAllSevenDays(Long userId) {
+        List<Walk> walks = walkRepository.findAllByUserId(userId)
+                .stream()
+                .filter(walk -> walk.getDate().isAfter(LocalDate.now().minusDays(7)))
+                .collect(Collectors.toList());
+
+        return walks;
     }
 
     public Walk findFirstByUserIdAndDateOrderByDateDesc(Long userId, LocalDate date) {
