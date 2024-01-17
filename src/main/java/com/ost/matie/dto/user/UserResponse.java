@@ -1,6 +1,5 @@
 package com.ost.matie.dto.user;
 
-import com.ost.matie.domain.image.Image;
 import com.ost.matie.domain.user.Users;
 import lombok.Getter;
 
@@ -12,7 +11,6 @@ public class UserResponse {
     private final String name;
     private final String userId;
     private final String email;
-    private final String pw;
     private final LocalDateTime createdDate;
 
     public UserResponse(Users users) {
@@ -20,7 +18,6 @@ public class UserResponse {
         this.name = users.getName();
         this.userId = users.getUserId();
         this.email = users.getEmail();
-        this.pw = users.getPw();
         this.createdDate = users.getCreatedDate();
     }
 }
