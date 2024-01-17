@@ -22,7 +22,7 @@ public class CommunityService {
     }
 
     public List<Community> findByTypeOrderByCreatedDateDesc(String type) {
-        if(!(type.equals("Q&A") && type.equals("Debate"))) throw new TypeNotFoundException("type은 Q&A 또는 Debate만 가능합니다.");
+        if(!(type.equals("Q&A") || type.equals("Debate"))) throw new TypeNotFoundException("type은 Q&A 또는 Debate만 가능합니다.");
         return communityRepository.findByTypeOrderByCreatedDateDesc(type);
     }
 

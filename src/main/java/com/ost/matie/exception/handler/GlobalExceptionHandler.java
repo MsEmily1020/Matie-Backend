@@ -2,6 +2,7 @@ package com.ost.matie.exception.handler;
 
 import com.ost.matie.exception.DataNotFoundException;
 import com.ost.matie.exception.DuplicateException;
+import com.ost.matie.exception.TypeNotFoundException;
 import com.ost.matie.exception.UserNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler({MethodArgumentNotValidException.class})
-    public ResponseEntity<Map<String, List<String>>> handleValidationErrors(MethodArgumentNotValidException e) {
+    public ResponseEntity<Map<String, List<String>>> handleExceptions(MethodArgumentNotValidException e) {
         List<String> errors = e.getBindingResult().getFieldErrors()
                 .stream()
                 .map(FieldError::getDefaultMessage)
@@ -29,8 +30,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler({DataNotFoundException.class, DuplicateException.class, UserNotFoundException.class, TypeNotPresentException.class})
-    public ResponseEntity<Map<String, List<String>>> handleDataNotFoundException(Exception e) {
+    @ExceptionHandler({DataNotFoundException.class, DuplicateException.class, UserNotFoundException.class, TypeNotFoundException.class})
+    public ResponseEntity<Map<String, List<String>>> handleException(Exception e) {
         List<String> errors = Collections.singletonList(e.getMessage());
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.NOT_FOUND);
     }

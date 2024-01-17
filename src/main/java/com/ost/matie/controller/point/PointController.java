@@ -19,11 +19,11 @@ public class PointController {
     private final UserService userService;
 
     @PostMapping("/point")
-    public ResponseEntity<Point> addPoint(@Valid @RequestBody AddPointRequest request) {
+    public ResponseEntity<PointResponse> addPoint(@Valid @RequestBody AddPointRequest request) {
         userService.findById(request.getUser().getId());
         Point point = pointService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(point);
+                .body(new PointResponse(point));
     }
 
     @GetMapping("/point/{userId}")

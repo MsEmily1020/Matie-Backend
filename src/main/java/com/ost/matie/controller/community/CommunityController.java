@@ -4,6 +4,7 @@ import com.ost.matie.domain.community.Community;
 import com.ost.matie.dto.community.AddCommunityRequest;
 import com.ost.matie.dto.community.CommunityResponse;
 import com.ost.matie.dto.community.UpdateCommunityRequest;
+import com.ost.matie.exception.TypeNotFoundException;
 import com.ost.matie.service.community.CommunityService;
 import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;
@@ -21,16 +22,16 @@ public class CommunityController {
     private final UserService userService;
 
     @PostMapping("/community")
-    public ResponseEntity<Community> addCommunity(@Valid @RequestBody AddCommunityRequest request) {
+    public ResponseEntity<CommunityResponse> addCommunity(@Valid @RequestBody AddCommunityRequest request) {
         userService.findById(request.getCreatorUser().getId());
         Community community = communityService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(community);
+                .body(new CommunityResponse(community));
     }
 
-    @GetMapping("/community/type/{type}")
-    public ResponseEntity<List<CommunityResponse>> findByTypeOrderByDateDesc(@PathVariable String type) {
-        List<CommunityResponse> communityResponses = communityService.findByTypeOrderByCreatedDateDesc(type)
+    @GetMapping("/community/type/{typeName}")
+    public ResponseEntity<List<CommunityResponse>> findByTypeOrderByDateDesc(@PathVariable String typeName) {
+        List<CommunityResponse> communityResponses = communityService.findByTypeOrderByCreatedDateDesc(typeName)
                 .stream()
                 .map(CommunityResponse::new)
                 .toList();
@@ -47,10 +48,10 @@ public class CommunityController {
     }
 
     @PutMapping("/community/{id}")
-    public ResponseEntity<Community> updateCommunity(@PathVariable Long id,
+    public ResponseEntity<CommunityResponse> updateCommunity(@PathVariable Long id,
                                            @Valid @RequestBody UpdateCommunityRequest request) {
         Community community = communityService.update(id, request);
-        return ResponseEntity.ok().body(community);
+        return ResponseEntity.ok().body(new CommunityResponse(community));
     }
 
     @DeleteMapping("/community/{id}")
