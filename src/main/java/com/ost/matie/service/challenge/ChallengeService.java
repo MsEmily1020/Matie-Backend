@@ -2,6 +2,7 @@ package com.ost.matie.service.challenge;
 
 import com.ost.matie.domain.challenge.Challenge;
 import com.ost.matie.exception.DataNotFoundException;
+import com.ost.matie.exception.TypeNotFoundException;
 import com.ost.matie.repository.ChallengeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ public class ChallengeService {
     public List<Challenge> findAll() { return challengeRepository.findAll(); }
 
     public List<Challenge> findAllByChallenge(Integer type) {
+        if(!(type == 1 || type == 2 || type == 3 || type == 4)) throw new TypeNotFoundException("type은 1, 2, 3, 4 중 선택해주세요.");
         return challengeRepository.findAllByType(type);
     }
 
