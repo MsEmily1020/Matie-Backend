@@ -42,6 +42,19 @@ public class WalkController {
         return ResponseEntity.ok().body(walkResponses);
     }
 
+    @GetMapping("/walk/day/{userId}")
+    public ResponseEntity<List<WalkResponse>> findDay7ByUserId(@PathVariable Long userId) {
+        userService.findById(userId);
+
+        List<WalkResponse> walkResponses = walkService.findAllSevenDays(userId)
+                .stream()
+                .map(WalkResponse::new)
+                .toList();
+
+        return ResponseEntity.ok().body(walkResponses);
+    }
+
+
     @GetMapping("/walk/{userId}/{date}")
     public ResponseEntity<WalkResponse> findFirstByUserIdAndDateOrderByDateDesc(@PathVariable(name = "userId") Long userId, @PathVariable(name = "date") LocalDate date) {
         userService.findById(userId);

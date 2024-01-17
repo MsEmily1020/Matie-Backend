@@ -11,6 +11,17 @@ INSERT INTO team (title, description, start_date, finish_date, user_list) VALUES
 INSERT INTO team (title, description, start_date, finish_date, user_list) VALUES ('title', 'description', '2023-10-20 00:00:00', '2024-01-30 00:00:00', '1');
 INSERT INTO team (title, description, start_date, finish_date, user_list) VALUES ('title', 'description', '2023-10-20 00:00:00', '2024-02-01 00:00:00', '1');
 
+INSERT INTO walk (count, date, user_id) VALUES (100, '2023-10-20', 1);
+INSERT INTO walk (count, date, user_id) VALUES (200, '2023-11-20', 1);
+INSERT INTO walk (count, date, user_id) VALUES (300, '2023-12-20', 1);
+INSERT INTO walk (count, date, user_id) VALUES (400, '2024-01-10', 1);
+INSERT INTO walk (count, date, user_id) VALUES (500, '2024-01-11', 1);
+INSERT INTO walk (count, date, user_id) VALUES (250, '2024-01-12', 1);
+INSERT INTO walk (count, date, user_id) VALUES (330, '2024-01-13', 1);
+INSERT INTO walk (count, date, user_id) VALUES (190, '2024-01-14', 1);
+INSERT INTO walk (count, date, user_id) VALUES (242, '2024-01-15', 1);
+INSERT INTO walk (count, date, user_id) VALUES (983, '2024-01-16', 1);
+INSERT INTO walk (count, date, user_id) VALUES (10, '2024-01-17', 1);
 
 INSERT INTO category (name) VALUES ('의류');
 INSERT INTO category (name) VALUES ('잡화');
