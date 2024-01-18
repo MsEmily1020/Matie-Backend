@@ -36,6 +36,7 @@ public class ClearController {
 
     @GetMapping("/clear/{userId}")
     public ResponseEntity<List<ClearResponse>> findAllByUserId(@PathVariable Long userId) {
+        userService.findById(userId);
         List<ClearResponse> clearResponses = clearService.findAllByUserId(userId)
                 .stream()
                 .map(ClearResponse::new)
@@ -46,6 +47,7 @@ public class ClearController {
 
     @GetMapping("/clear/day/{userId}")
     public ResponseEntity<List<ClearResponse>> findDay7ByUserId(@PathVariable Long userId) {
+        userService.findById(userId);
         List<ClearResponse> clearResponses = clearService.findAllSevenDays(userId)
                 .stream()
                 .map(ClearResponse::new)
@@ -58,6 +60,7 @@ public class ClearController {
     public ResponseEntity<ClearResponse> updateClear(@PathVariable Long userId,
                                              @PathVariable LocalDate date,
                                              @RequestBody UpdateClearRequest request) {
+        userService.findById(userId);
         Clear clear = clearService.update(userId, date, request);
         return ResponseEntity.ok().body(new ClearResponse(clear));
     }
