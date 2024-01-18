@@ -18,20 +18,16 @@ import java.util.stream.Collectors;
 @Service
 public class ClearService {
     private final ClearRepository clearRepository;
-    private final UserRepository userRepository;
 
     public Clear save(AddClearRequest request) {
         return clearRepository.save(request.toEntity());
     }
 
     public List<Clear> findAllByUserId(Long userId) {
-        userRepository.findById(userId);
         return clearRepository.findAllByUserId(userId);
     }
 
     public List<Clear> findAllSevenDays(Long userId) {
-        userRepository.findById(userId);
-
         List<Clear> clears = clearRepository.findAllByUserId(userId)
                 .stream()
                 .filter(clear -> clear.getDate().isAfter(LocalDate.now().minusDays(7)))
@@ -42,7 +38,6 @@ public class ClearService {
 
     @Transactional
     public Clear update(Long userId, LocalDate date, UpdateClearRequest request) {
-        userRepository.findById(userId);
         Clear clear = clearRepository.findFirstByUserIdAndDate(userId, date);
         clear.update(request.getChallenge());
         return clear;
