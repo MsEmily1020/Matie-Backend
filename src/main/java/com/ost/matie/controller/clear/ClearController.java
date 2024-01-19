@@ -34,17 +34,6 @@ public class ClearController {
                 .body(new ClearResponse(clear));
     }
 
-    @GetMapping("/clear/{userId}")
-    public ResponseEntity<List<ClearResponse>> findAllByUserId(@PathVariable Long userId) {
-        userService.findById(userId);
-        List<ClearResponse> clearResponses = clearService.findAllByUserId(userId)
-                .stream()
-                .map(ClearResponse::new)
-                .toList();
-
-        return ResponseEntity.ok().body(clearResponses);
-    }
-
     @GetMapping("/clear/day/{userId}")
     public ResponseEntity<List<ClearResponse>> findDay7ByUserId(@PathVariable Long userId) {
         userService.findById(userId);
@@ -56,12 +45,11 @@ public class ClearController {
         return ResponseEntity.ok().body(clearResponses);
     }
 
-    @PutMapping("/clear/{userId}/{date}")
+    @PutMapping("/clear/{userId}")
     public ResponseEntity<ClearResponse> updateClear(@PathVariable Long userId,
-                                             @PathVariable LocalDate date,
-                                             @RequestBody UpdateClearRequest request) {
+                                                     @Valid @RequestBody UpdateClearRequest request) {
         userService.findById(userId);
-        Clear clear = clearService.update(userId, date, request);
+        Clear clear = clearService.update(userId, request);
         return ResponseEntity.ok().body(new ClearResponse(clear));
     }
 }

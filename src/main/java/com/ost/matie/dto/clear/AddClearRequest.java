@@ -16,8 +16,11 @@ import java.util.List;
 @Getter
 @Setter
 public class AddClearRequest {
-    @NotNull(message = "클리어 한 챌린지 리스트를 넣어주세요.")
+    @NotNull(message = "데일리 챌린지 list를 넣어주세요.")
     private List<Long> challenge;
+
+    @NotNull(message = "그룹 챌린지 list를 넣어주세요.")
+    private List<Long> team;
 
     @NotNull(message = "user의 id를 넣어주세요.")
     private Users user;
@@ -26,6 +29,7 @@ public class AddClearRequest {
         return Clear.builder()
                 .date(LocalDate.now())
                 .challenge(challenge)
+                .team(team)
                 .user(user)
                 .build();
     }

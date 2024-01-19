@@ -18,14 +18,6 @@ public class FavoriteProductController {
     private final FavoriteProductService favoriteProductService;
     private final UserService userService;
 
-    @PostMapping("/favorite-product")
-    public ResponseEntity<FavoriteProductResponse> addFavoriteProduct(@Valid @RequestBody AddFavoriteProductRequest request) {
-        userService.findById(request.getUser().getId());
-        FavoriteProduct favoriteProduct = favoriteProductService.save(request);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new FavoriteProductResponse(favoriteProduct));
-    }
-
     @GetMapping("/favorite-product/{userId}")
     public ResponseEntity<FavoriteProductResponse> findByUserIdProductResponse(@PathVariable Long userId) {
         userService.findById(userId);

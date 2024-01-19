@@ -3,7 +3,6 @@ package com.ost.matie.service.walk;
 import com.ost.matie.domain.walk.Walk;
 import com.ost.matie.dto.walk.AddWalkRequest;
 import com.ost.matie.dto.walk.UpdateWalkRequest;
-import com.ost.matie.exception.DataNotFoundException;
 import com.ost.matie.exception.DuplicateException;
 import com.ost.matie.repository.WalkRepository;
 import jakarta.transaction.Transactional;

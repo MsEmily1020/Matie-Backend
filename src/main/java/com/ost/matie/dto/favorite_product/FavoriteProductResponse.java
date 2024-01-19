@@ -3,6 +3,7 @@ package com.ost.matie.dto.favorite_product;
 import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.favorite_product.FavoriteProduct;
 import com.ost.matie.domain.user.Users;
+import com.ost.matie.dto.user.UserResponse;
 import lombok.Getter;
 
 import java.util.List;
@@ -11,11 +12,11 @@ import java.util.List;
 public class FavoriteProductResponse {
     private final Long id;
     private final List<Long> product;
-    private final Users user;
+    private final UserResponse user;
 
     public FavoriteProductResponse(FavoriteProduct favoriteProduct) {
         this.id = favoriteProduct.getId();
         this.product = favoriteProduct.getProduct();
-        this.user = favoriteProduct.getUser();
+        this.user = new UserResponse(favoriteProduct.getUser());
     }
 }

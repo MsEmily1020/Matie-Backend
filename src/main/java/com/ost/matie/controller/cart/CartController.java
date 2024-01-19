@@ -18,16 +18,8 @@ public class CartController {
     private final CartService cartService;
     private final UserService userService;
 
-    @PostMapping("/cart")
-    public ResponseEntity<CartResponse> addCart(@Valid @RequestBody AddCartRequest request) {
-        userService.findById(request.getUser().getId());
-        Cart cart = cartService.save(request);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new CartResponse(cart));
-    }
-
     @GetMapping("/cart/{userId}")
-    public ResponseEntity<CartResponse> findByUserId(@PathVariable Long userId) {
+    public ResponseEntity<CartResponse> findByUserIdCart(@PathVariable Long userId) {
         userService.findById(userId);
 
         Cart cart = cartService.findByUserId(userId);
@@ -36,10 +28,11 @@ public class CartController {
                 .body(new CartResponse(cart));
     }
 
-    @PutMapping("/cart/{id}")
-    public ResponseEntity<CartResponse> updateCart(@PathVariable Long id,
+    @PutMapping("/cart/{userId}")
+    public ResponseEntity<CartResponse> updateCart(@PathVariable Long userId,
                                            @RequestBody UpdateCartRequest request) {
-        Cart cart = cartService.update(id, request);
+        userService.findById(userId);
+        Cart cart = cartService.update(userId, request);
         return ResponseEntity.ok().body(new CartResponse(cart));
     }
 }

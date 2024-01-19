@@ -5,7 +5,7 @@ import com.ost.matie.dto.user.AddUserRequest;
 import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.exception.DuplicateException;
-import com.ost.matie.exception.UserNotFoundException;
+import com.ost.matie.exception.NotFoundException;
 import com.ost.matie.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -28,17 +28,17 @@ public class UserService {
     }
 
     public Users findById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("사용자를 찾을 수 없습니다. (id : " + id + ")"));
+        return userRepository.findById(id).orElseThrow(() -> new NotFoundException("사용자를 찾을 수 없습니다. (id : " + id + ")"));
     }
 
     public Users login(LoginUserRequest request) {
         Users users = userRepository.findByUserId(request.getUserId());
-        if(users == null || !bCryptPasswordEncoder.matches(request.getPw(), users.getPw())) throw new UserNotFoundException("아이디 또는 비밀번호를 확인해주세요.");
+        if(users == null || !bCryptPasswordEncoder.matches(request.getPw(), users.getPw())) throw new NotFoundException("아이디 또는 비밀번호를 확인해주세요.");
         return users;
     }
 
     public void delete(Long id) {
-        if(!userRepository.existsById(id)) throw new UserNotFoundException("사용자를 찾을 수 없습니다. (id : " + id + ")");
+        if(!userRepository.existsById(id)) throw new NotFoundException("사용자를 찾을 수 없습니다. (id : " + id + ")");
         userRepository.deleteById(id);
     }
 
@@ -46,7 +46,7 @@ public class UserService {
     @Transactional
     public Users update(Long id, UpdateUserRequest request) {
         Users users = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("사용자를 찾을 수 없습니다. (id : " + id + ")"));
+                .orElseThrow(() -> new NotFoundException("사용자를 찾을 수 없습니다. (id : " + id + ")"));
 
         users.update(
                 request.getName(),

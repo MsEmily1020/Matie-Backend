@@ -11,6 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 public class UpdateClearRequest {
-    @NotNull(message = "클리어 한 챌린지 리스트를 넣어주세요.")
+    @NotNull(message = "클리어 한 데일리 챌린지 리스트를 넣어주세요.")
     private List<Long> challenge;
+
+    @NotNull(message = "클리어 한 그룹 챌린지 리스트를 넣어주세요.")
+    private List<Long> team;
 }

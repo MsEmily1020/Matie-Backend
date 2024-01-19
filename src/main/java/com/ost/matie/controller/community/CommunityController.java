@@ -4,7 +4,6 @@ import com.ost.matie.domain.community.Community;
 import com.ost.matie.dto.community.AddCommunityRequest;
 import com.ost.matie.dto.community.CommunityResponse;
 import com.ost.matie.dto.community.UpdateCommunityRequest;
-import com.ost.matie.exception.TypeNotFoundException;
 import com.ost.matie.service.community.CommunityService;
 import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;

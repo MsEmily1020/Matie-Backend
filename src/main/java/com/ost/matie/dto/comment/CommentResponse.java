@@ -3,6 +3,8 @@ package com.ost.matie.dto.comment;
 import com.ost.matie.domain.comment.Comment;
 import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.user.Users;
+import com.ost.matie.dto.community.CommunityResponse;
+import com.ost.matie.dto.user.UserResponse;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -16,7 +18,7 @@ public class CommentResponse {
     private final List<Long> upvoteUserList;
     private final LocalDateTime createdDate;
     private final LocalDateTime modifiedDate;
-    private final Users user;
+    private final UserResponse user;
     private final Community community;
 
     public CommentResponse(Comment comment) {
@@ -26,7 +28,7 @@ public class CommentResponse {
         this.upvoteUserList = comment.getUpvoteUserList();
         this.createdDate = comment.getCreatedDate();
         this.modifiedDate = comment.getModifiedDate();
-        this.user = comment.getUser();
+        this.user = new UserResponse(comment.getUser());
         this.community = comment.getCommunity();
     }
 }

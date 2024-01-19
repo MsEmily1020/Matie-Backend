@@ -16,10 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 public class AddFavoriteProductRequest {
-    @NotNull(message = "상품 리스트를 넣어주세요.")
     private List<Long> product;
-
-    @NotNull(message = "user의 id를 넣어주세요.")
     private Users user;
 
     public FavoriteProduct toEntity() {
