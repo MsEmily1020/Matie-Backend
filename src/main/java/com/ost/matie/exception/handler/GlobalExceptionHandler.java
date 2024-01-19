@@ -28,26 +28,29 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<Map<String, List<String>>> handleNotFoundException(Exception e) {
-        List<String> errors = Collections.singletonList(e.getMessage());
-        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.NOT_FOUND);
+    public ResponseEntity<Map<String, String>> handleNotFoundException(Exception e) {
+        return new ResponseEntity<>(getErrorMap(e.getMessage()), new HttpHeaders(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(DuplicateException.class)
-    public ResponseEntity<Map<String, List<String>>> handleDuplicateException(Exception e) {
-        List<String> errors = Collections.singletonList(e.getMessage());
-        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.CONFLICT);
+    public ResponseEntity<Map<String, String>> handleDuplicateException(Exception e) {
+        return new ResponseEntity<>(getErrorMap(e.getMessage()), new HttpHeaders(), HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(SizePreconditionFailException.class)
-    public ResponseEntity<Map<String, List<String>>> handlePreconditionFailException(Exception e) {
-        List<String> errors = Collections.singletonList(e.getMessage());
-        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.PRECONDITION_FAILED);
+    public ResponseEntity<Map<String, String>> handlePreconditionFailException(Exception e) {
+        return new ResponseEntity<>(getErrorMap(e.getMessage()), new HttpHeaders(), HttpStatus.PRECONDITION_FAILED);
     }
 
     private Map<String, List<String>> getErrorsMap(List<String> errors) {
         Map<String, List<String>> errorResponse = new HashMap<>();
         errorResponse.put("errors", errors);
+        return errorResponse;
+    }
+
+    private Map<String, String> getErrorMap(String error) {
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("error", error);
         return errorResponse;
     }
 }
