@@ -32,7 +32,7 @@ public class UserService {
     }
 
     public Users login(LoginUserRequest request) {
-        Users users = userRepository.findByUserId(request.getUserId());
+        Users users = userRepository.findByUserIdOrEmail(request.getUserId(), request.getUserId());
         if(users == null || !bCryptPasswordEncoder.matches(request.getPw(), users.getPw())) throw new NotFoundException("아이디 또는 비밀번호를 확인해주세요.");
         return users;
     }

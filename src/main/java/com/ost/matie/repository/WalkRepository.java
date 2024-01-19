@@ -10,5 +10,4 @@ public interface WalkRepository extends JpaRepository<Walk, Long> {
     List<Walk> findAllByUserId(Long userId);
     Walk findFirstByUserIdAndDateOrderByDateDesc(Long userId, LocalDate date);
     boolean existsByUserIdAndDate(Long userId, LocalDate date);
-    boolean existsByUserId(Long userId);
 }
