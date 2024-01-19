@@ -3,6 +3,7 @@ package com.ost.matie.dto.community;
 import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.point.Point;
 import com.ost.matie.domain.user.Users;
+import com.ost.matie.dto.user.UserResponse;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -16,7 +17,7 @@ public class CommunityResponse {
     private final Long agree;
     private final Long disagree;
     private final LocalDateTime createdDate;
-    private final Users creatorUser;
+    private final UserResponse creatorUser;
 
     public CommunityResponse(Community community) {
         this.id = community.getId();
@@ -26,6 +27,6 @@ public class CommunityResponse {
         this.agree = community.getAgree();
         this.disagree = community.getDisagree();
         this.createdDate = community.getCreatedDate();
-        this.creatorUser = community.getCreatorUser();
+        this.creatorUser = new UserResponse(community.getCreatorUser());
     }
 }

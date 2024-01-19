@@ -3,15 +3,20 @@ package com.ost.matie.service.favorite_product;
 import com.ost.matie.domain.favorite_product.FavoriteProduct;
 import com.ost.matie.dto.favorite_product.AddFavoriteProductRequest;
 import com.ost.matie.dto.favorite_product.UpdateFavoriteProductRequest;
+import com.ost.matie.exception.NotFoundException;
 import com.ost.matie.repository.FavoriteProductRepository;
+import com.ost.matie.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 public class FavoriteProductService {
     private final FavoriteProductRepository favoriteProductRepository;
+    private final ProductRepository productRepository;
 
     public FavoriteProduct save(AddFavoriteProductRequest request) {
         return favoriteProductRepository.save(request.toEntity());
@@ -23,8 +28,14 @@ public class FavoriteProductService {
 
     @Transactional
     public FavoriteProduct update(Long userId, UpdateFavoriteProductRequest request) {
+        checkProductId(request.getProduct());
         FavoriteProduct favoriteProduct = favoriteProductRepository.findByUserId(userId);
         favoriteProduct.update(request.getProduct());
         return favoriteProduct;
+    }
+
+    private void checkProductId(List<Long> products) {
+        for(Long productId : products)
+            if(!productRepository.existsById(productId)) throw new NotFoundException("상품의 정보를 찾을 수 없습니다. (id : " + productId + ")");
     }
 }

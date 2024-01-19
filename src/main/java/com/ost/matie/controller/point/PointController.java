@@ -3,7 +3,6 @@ package com.ost.matie.controller.point;
 import com.ost.matie.domain.point.Point;
 import com.ost.matie.dto.point.AddPointRequest;
 import com.ost.matie.dto.point.PointResponse;
-import com.ost.matie.exception.UserNotFoundException;
 import com.ost.matie.service.point.PointService;
 import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;
@@ -28,6 +27,7 @@ public class PointController {
 
     @GetMapping("/point/{userId}")
     public ResponseEntity<PointResponse> findFirstByUserIdOrderByCreatedDateDesc(@PathVariable Long userId) {
+        userService.findById(userId);
         Point point = pointService.findFirstByUserIdOrderByCreatedDateDesc(userId);
         return ResponseEntity.ok().body(new PointResponse(point));
     }

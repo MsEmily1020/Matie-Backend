@@ -26,18 +26,23 @@ public class Clear {
     @Convert(converter = LongListConverter.class)
     private List<Long> challenge;
 
+    @Convert(converter = LongListConverter.class)
+    private List<Long> team;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users user;
 
     @Builder
-    public Clear(LocalDate date, List<Long> challenge, Users user) {
+    public Clear(LocalDate date, List<Long> challenge, List<Long> team, Users user) {
         this.date = date;
         this.challenge = challenge;
+        this.team = team;
         this.user = user;
     }
 
-    public void update(List<Long> challenge) {
+    public void update(List<Long> challenge, List<Long> team) {
         this.challenge = challenge;
+        this.team = team;
     }
 }

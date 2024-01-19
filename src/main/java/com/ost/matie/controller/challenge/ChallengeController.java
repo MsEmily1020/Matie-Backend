@@ -1,11 +1,7 @@
 package com.ost.matie.controller.challenge;
 
 import com.ost.matie.domain.challenge.Challenge;
-import com.ost.matie.domain.community.Community;
 import com.ost.matie.dto.challenge.ChallengeResponse;
-import com.ost.matie.dto.comment.CommentResponse;
-import com.ost.matie.dto.community.CommunityResponse;
-import com.ost.matie.exception.TypeNotFoundException;
 import com.ost.matie.service.challenge.ChallengeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

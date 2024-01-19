@@ -1,9 +1,6 @@
 package com.ost.matie.exception.handler;
 
-import com.ost.matie.exception.DataNotFoundException;
-import com.ost.matie.exception.DuplicateException;
-import com.ost.matie.exception.TypeNotFoundException;
-import com.ost.matie.exception.UserNotFoundException;
+import com.ost.matie.exception.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +27,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler({DataNotFoundException.class, UserNotFoundException.class, TypeNotFoundException.class})
+    @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Map<String, List<String>>> handleNotFoundException(Exception e) {
         List<String> errors = Collections.singletonList(e.getMessage());
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.NOT_FOUND);
@@ -40,6 +37,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, List<String>>> handleDuplicateException(Exception e) {
         List<String> errors = Collections.singletonList(e.getMessage());
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(SizePreconditionFailException.class)
+    public ResponseEntity<Map<String, List<String>>> handlePreconditionFailException(Exception e) {
+        List<String> errors = Collections.singletonList(e.getMessage());
+        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.PRECONDITION_FAILED);
     }
 
     private Map<String, List<String>> getErrorsMap(List<String> errors) {

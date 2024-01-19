@@ -2,8 +2,6 @@ package com.ost.matie.service.point;
 
 import com.ost.matie.domain.point.Point;
 import com.ost.matie.dto.point.AddPointRequest;
-import com.ost.matie.exception.DataNotFoundException;
-import com.ost.matie.exception.UserNotFoundException;
 import com.ost.matie.repository.PointRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,8 +19,6 @@ public class PointService {
     }
 
     public Point findFirstByUserIdOrderByCreatedDateDesc(Long userId) {
-        Point point = pointRepository.findFirstByUserIdOrderByCreatedDateDesc(userId);
-        if(point == null) throw new UserNotFoundException("사용자를 찾을 수 없습니다. (id : " + userId + ")");
-        return point;
+        return pointRepository.findFirstByUserIdOrderByCreatedDateDesc(userId);
     }
 }
