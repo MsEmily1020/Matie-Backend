@@ -55,6 +55,18 @@ public class UserController {
         return ResponseEntity.ok().body(new UserResponse(users));
     }
 
+    @GetMapping("/users/duplicate1/{email}")
+    public ResponseEntity<Void> checkDuplicateEmail(@PathVariable String email) {
+        userService.duplicateEmail(email);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/users/duplicate2/{userId}")
+    public ResponseEntity<Void> checkDuplicateUserId(@PathVariable String userId) {
+        userService.duplicateUserId(userId);
+        return ResponseEntity.ok().build();
+    }
+
     @PutMapping("/users/{id}")
     public ResponseEntity<UserResponse> updateUser(@PathVariable Long id,
                                             @Valid @RequestBody UpdateUserRequest request) {

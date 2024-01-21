@@ -19,15 +19,20 @@ public class UserService {
     private final PasswordEncoder bCryptPasswordEncoder;
 
     public Users save(AddUserRequest request) {
-        if(userRepository.existsByUserId(request.getUserId()))
-            throw new DuplicateException("userId", "아이디가 중복되었습니다.");
-
-        if(userRepository.existsByEmail(request.getEmail()))
-            throw new DuplicateException("email", "이메일이 중복되었습니다.");
+        duplicateUserId(request.getUserId());
+        duplicateEmail(request.getEmail());
 
         request.setPw(bCryptPasswordEncoder.encode(request.getPw()));
 
         return userRepository.save(request.toEntity());
+    }
+
+    public void duplicateEmail(String email) {
+        if(userRepository.existsByEmail(email)) throw new DuplicateException("email", "Email already exists, use another email address or login");
+    }
+
+    public void duplicateUserId(String userId) {
+        if(userRepository.existsByUserId(userId)) throw new DuplicateException("userId", "ID already exists, use another ID");
     }
 
     public Users findById(Long id) {
