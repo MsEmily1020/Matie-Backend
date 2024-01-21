@@ -1,15 +1,22 @@
 package com.ost.matie.exception;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+@Getter
+@Setter
 @ResponseStatus(HttpStatus.CONFLICT)
 public class DuplicateException extends RuntimeException {
+    private String fieldName = "";
+
     public DuplicateException(String message) {
         super(message);
     }
 
-    public DuplicateException(String message, Throwable cause) {
-        super(message, cause);
+    public DuplicateException(String fieldName, String message) {
+        super(message);
+        this.fieldName = fieldName;
     }
 }

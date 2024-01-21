@@ -19,8 +19,11 @@ public class UserService {
     private final PasswordEncoder bCryptPasswordEncoder;
 
     public Users save(AddUserRequest request) {
-        if(userRepository.existsByUserIdOrEmail(request.getUserId(), request.getEmail()))
-            throw new DuplicateException("아이디 또는 이메일이 중복되었습니다.");
+        if(userRepository.existsByUserId(request.getUserId()))
+            throw new DuplicateException("userId", "아이디가 중복되었습니다.");
+
+        if(userRepository.existsByEmail(request.getEmail()))
+            throw new DuplicateException("email", "이메일이 중복되었습니다.");
 
         request.setPw(bCryptPasswordEncoder.encode(request.getPw()));
 
@@ -33,7 +36,7 @@ public class UserService {
 
     public Users login(LoginUserRequest request) {
         Users users = userRepository.findByUserIdOrEmail(request.getUserId(), request.getUserId());
-        if(users == null || !bCryptPasswordEncoder.matches(request.getPw(), users.getPw())) throw new NotFoundException("아이디 또는 비밀번호를 확인해주세요.");
+        if(users == null || !bCryptPasswordEncoder.matches(request.getPw(), users.getPw())) throw new NotFoundException("Check your email/id or password");
         return users;
     }
 

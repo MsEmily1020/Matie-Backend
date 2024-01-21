@@ -8,8 +8,4 @@ public class SizePreconditionFailException extends RuntimeException {
     public SizePreconditionFailException(String message) {
         super(message);
     }
-
-    public SizePreconditionFailException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

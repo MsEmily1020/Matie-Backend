@@ -4,6 +4,7 @@ import com.ost.matie.domain.user.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<Users, Long> {
-    boolean existsByUserIdOrEmail(String userId, String email);
+    boolean existsByUserId(String userId);
+    boolean existsByEmail(String email);
     Users findByUserIdOrEmail(String userId, String email);
 }
