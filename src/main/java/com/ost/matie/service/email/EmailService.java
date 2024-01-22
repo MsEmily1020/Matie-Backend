@@ -1,7 +1,8 @@
-package com.ost.matie.service.service;
+package com.ost.matie.service.email;
 
 import com.ost.matie.config.RedisUtil;
 import com.ost.matie.dto.email.AddEmailRequest;
+import com.ost.matie.exception.ExpirationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -28,10 +29,15 @@ public class EmailService {
         message.setText(authKey);
         javaMailSender.send(message);
 
-        redisUtil.setDataExpire(authKey, request.getEmailAddress(), 60 * 5L);
+        redisUtil.setDataExpire(authKey, request.getEmailAddress(), 60 * 1L);
     }
 
-    public String createCode() {
+    public String getCode(String code) {
+        if(redisUtil.getData(code) == null) throw new ExpirationException("유효한 코드를 찾을 수 없습니다.");
+        return redisUtil.getData(code);
+    }
+
+    private String createCode() {
         return String.valueOf(new Random().nextInt(888888) + 111111);
     }
 }
