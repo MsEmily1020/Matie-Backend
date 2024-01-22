@@ -39,6 +39,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.PRECONDITION_FAILED);
     }
 
+    @ExceptionHandler(ExpirationException.class)
+    public ResponseEntity<String> handleExpirationException(ExpirationException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.REQUEST_TIMEOUT);
+    }
+
     private Map<String, String> getErrorMap(String field, String error) {
         Map<String, String> errorResponse = new HashMap<>();
         errorResponse.put(field, error);
