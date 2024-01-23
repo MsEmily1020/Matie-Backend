@@ -17,9 +17,9 @@ public class EmailController {
         return ResponseEntity.ok().body("성공적으로 보냈습니다.");
     }
 
-    @GetMapping("/email/{code}")
-    public ResponseEntity<String> getEmail(@PathVariable String code) {
-        String email = emailService.getCode(code);
-        return ResponseEntity.ok().body(email + "을 찾았습니다.");
+    @GetMapping("/email/{email}/{code}")
+    public ResponseEntity<String> getEmail(@PathVariable String email, @PathVariable String code) {
+        emailService.getCode(email, code);
+        return ResponseEntity.ok().body(email + "에 해당하는 " + code + "를 찾았습니다");
     }
 }
