@@ -16,10 +16,15 @@ import java.util.Random;
 public class EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
+
     private final RedisUtil redisUtil;
     private String authKey;
 
     public void sendMessage(AddEmailRequest request) {
+        if (redisUtil.existData(request.getEmailAddress())) {
+            redisUtil.deleteData(request.getEmailAddress());
+        }
+
         authKey = createCode();
 
         SimpleMailMessage message = new SimpleMailMessage();
@@ -29,12 +34,12 @@ public class EmailService {
         message.setText(authKey);
         javaMailSender.send(message);
 
-        redisUtil.setDataExpire(authKey, request.getEmailAddress(), 60 * 1L);
+        redisUtil.setDataExpire(request.getEmailAddress(), authKey, 60 * 3L);
     }
 
-    public String getCode(String code) {
-        if(redisUtil.getData(code) == null) throw new ExpirationException("유효한 코드를 찾을 수 없습니다.");
-        return redisUtil.getData(code);
+    public void getCode(String email, String code) {
+        String codeFoundByEmail = redisUtil.getData(email);
+        if(codeFoundByEmail == null || !codeFoundByEmail.equals(code)) throw new ExpirationException("유효한 코드를 찾을 수 없습니다.");
     }
 
     private String createCode() {
