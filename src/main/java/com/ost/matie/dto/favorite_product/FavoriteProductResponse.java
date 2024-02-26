@@ -1,17 +1,14 @@
 package com.ost.matie.dto.favorite_product;
 
-import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.favorite_product.FavoriteProduct;
-import com.ost.matie.domain.user.Users;
+import com.ost.matie.domain.product.Product;
 import com.ost.matie.dto.user.UserResponse;
 import lombok.Getter;
-
-import java.util.List;
 
 @Getter
 public class FavoriteProductResponse {
     private final Long id;
-    private final List<Long> product;
+    private final Product product;
     private final UserResponse user;
 
     public FavoriteProductResponse(FavoriteProduct favoriteProduct) {

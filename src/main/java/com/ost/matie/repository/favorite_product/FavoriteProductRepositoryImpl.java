@@ -5,6 +5,8 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 import static com.ost.matie.domain.favorite_product.QFavoriteProduct.favoriteProduct;
 
 @Repository
@@ -13,10 +15,19 @@ public class FavoriteProductRepositoryImpl implements FavoriteProductRepositoryC
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public FavoriteProduct findByUserId(Long userId) {
+    public List<FavoriteProduct> findByUserId(Long userId) {
         return queryFactory
                 .selectFrom(favoriteProduct)
                 .where(favoriteProduct.user.id.eq(userId))
+                .fetch();
+    }
+
+    @Override
+    public FavoriteProduct findByUserIdAndProductId(Long userId, Long productId) {
+        return queryFactory
+                .selectFrom(favoriteProduct)
+                .where(favoriteProduct.user.id.eq(userId)
+                        .and(favoriteProduct.product.id.eq(productId)))
                 .fetchOne();
     }
 }
