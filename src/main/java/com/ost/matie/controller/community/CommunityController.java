@@ -16,7 +16,7 @@ import java.util.List;
 public class CommunityController {
     private final AddCommunityService addCommunityService;
     private final FindByTypeOrderByDateDescService findByTypeOrderByDateDescService;
-    private final FIndCommunityService findCommunityService;
+    private final FindCommunityService findCommunityService;
     private final UpdateCommunityService updateCommunityService;
     private final DeleteCommunityService deleteCommunityService;
 

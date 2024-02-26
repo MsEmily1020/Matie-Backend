@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class FIndCommunityService {
+public class FindCommunityService {
     private final CommunityRepository communityRepository;
 
     @Transactional
