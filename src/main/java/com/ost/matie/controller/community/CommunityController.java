@@ -1,61 +1,48 @@
 package com.ost.matie.controller.community;
 
-import com.ost.matie.domain.community.Community;
 import com.ost.matie.dto.community.AddCommunityRequest;
 import com.ost.matie.dto.community.CommunityResponse;
 import com.ost.matie.dto.community.UpdateCommunityRequest;
-import com.ost.matie.service.community.CommunityService;
-import com.ost.matie.service.user.UserService;
+import com.ost.matie.service.community.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/community")
 public class CommunityController {
-    private final CommunityService communityService;
-    private final UserService userService;
+    private final AddCommunityService addCommunityService;
+    private final FindByTypeOrderByDateDescService findByTypeOrderByDateDescService;
+    private final FIndCommunityService findCommunityService;
+    private final UpdateCommunityService updateCommunityService;
+    private final DeleteCommunityService deleteCommunityService;
 
-    @PostMapping("/community")
-    public ResponseEntity<CommunityResponse> addCommunity(@Valid @RequestBody AddCommunityRequest request) {
-        userService.findById(request.getCreatorUser().getId());
-        Community community = communityService.save(request);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new CommunityResponse(community));
+    @PostMapping
+    public void addCommunity(@Valid @RequestBody AddCommunityRequest request) {
+        addCommunityService.execute(request);
     }
 
-    @GetMapping("/community/type/{typeName}")
-    public ResponseEntity<List<CommunityResponse>> findByTypeOrderByDateDesc(@PathVariable String typeName) {
-        List<CommunityResponse> communityResponses = communityService.findByTypeOrderByCreatedDateDesc(typeName)
-                .stream()
-                .map(CommunityResponse::new)
-                .toList();
-
-        return ResponseEntity.ok().body(communityResponses);
+    @GetMapping("/type/{typeName}")
+    public List<CommunityResponse> findByTypeOrderByDateDesc(@PathVariable String typeName) {
+        return findByTypeOrderByDateDescService.execute(typeName);
     }
 
-    @GetMapping("/community/{id}")
-    public ResponseEntity<CommunityResponse> findCommunity(@PathVariable Long id) {
-        Community community = communityService.findById(id);
-
-        return ResponseEntity.ok()
-                .body(new CommunityResponse(community));
+    @GetMapping("/{id}")
+    public CommunityResponse findCommunity(@PathVariable Long id) {
+        return findCommunityService.execute(id);
     }
 
-    @PutMapping("/community/{id}")
-    public ResponseEntity<CommunityResponse> updateCommunity(@PathVariable Long id,
-                                           @Valid @RequestBody UpdateCommunityRequest request) {
-        Community community = communityService.update(id, request);
-        return ResponseEntity.ok().body(new CommunityResponse(community));
+    @PutMapping("/{id}")
+    public void updateCommunity(@PathVariable Long id,
+                                @Valid @RequestBody UpdateCommunityRequest request) {
+        updateCommunityService.execute(id, request);
     }
 
-    @DeleteMapping("/community/{id}")
-    public ResponseEntity<Void> deleteCommunity(@PathVariable Long id) {
-        communityService.delete(id);
-        return ResponseEntity.ok().build();
+    @DeleteMapping("/{id}")
+    public void deleteCommunity(@PathVariable Long id) {
+        deleteCommunityService.execute(id);
     }
 }
