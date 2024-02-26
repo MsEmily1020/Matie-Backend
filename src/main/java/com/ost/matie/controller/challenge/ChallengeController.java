@@ -1,6 +1,6 @@
 package com.ost.matie.controller.challenge;
 
-import com.ost.matie.dto.challenge.ChallengeResponse;
+import com.ost.matie.domain.challenge.Challenge;
 import com.ost.matie.service.challenge.FindAllByTypeChallengesService;
 import com.ost.matie.service.challenge.FindAllChallengesService;
 import com.ost.matie.service.challenge.FindChallengeService;
@@ -21,17 +21,17 @@ public class ChallengeController {
     private final FindChallengeService findChallengeService;
 
     @GetMapping
-    public List<ChallengeResponse> findAllChallenges() {
+    public List<Challenge> findAllChallenges() {
         return findAllChallengesService.execute();
     }
 
     @GetMapping("/type/{type}")
-    public List<ChallengeResponse> findAllByTypeChallenges(@PathVariable Integer type) {
+    public List<Challenge> findAllByTypeChallenges(@PathVariable Integer type) {
         return findAllByTypeChallengesService.execute(type);
     }
 
     @GetMapping("/{id}")
-    public ChallengeResponse findChallenge(@PathVariable Long id) {
+    public Challenge findChallenge(@PathVariable Long id) {
         return findChallengeService.execute(id);
     }
 }

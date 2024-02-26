@@ -1,10 +1,10 @@
 package com.ost.matie.controller.product;
 
 import com.ost.matie.domain.product.Product;
-import com.ost.matie.dto.product.ProductResponse;
-import com.ost.matie.service.product.ProductService;
+import com.ost.matie.service.product.FindAllByCategoryIdProductService;
+import com.ost.matie.service.product.FindAllProductService;
+import com.ost.matie.service.product.FindByIdProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,33 +14,22 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 public class ProductController {
-    private final ProductService productService;
+    private final FindAllProductService findAllProductService;
+    private final FindAllByCategoryIdProductService findAllByCategoryIdProductService;
+    private final FindByIdProductService findByIdProductService;
 
     @GetMapping("/product")
-    public ResponseEntity<List<ProductResponse>> findAllProducts() {
-        List<ProductResponse> productResponses = productService.findAll()
-                .stream()
-                .map(ProductResponse::new)
-                .toList();
-
-        return ResponseEntity.ok().body(productResponses);
+    public List<Product> findAllProducts() {
+        return findAllProductService.execute();
     }
 
     @GetMapping("/products/category/{categoryId}")
-    public ResponseEntity<List<ProductResponse>> findAllByCategoryId(@PathVariable Integer categoryId) {
-        List<ProductResponse> productResponses = productService.findAllByCategoryId(categoryId)
-                .stream()
-                .map(ProductResponse::new)
-                .toList();
-
-        return ResponseEntity.ok().body(productResponses);
+    public List<Product> findAllByCategoryId(@PathVariable Integer categoryId) {
+        return findAllByCategoryIdProductService.execute(categoryId);
     }
 
     @GetMapping("/product/{id}")
-    public ResponseEntity<ProductResponse> findProduct(@PathVariable Long id) {
-        Product product = productService.findById(id);
-
-        return ResponseEntity.ok()
-                .body(new ProductResponse(product));
+    public Product findProduct(@PathVariable Long id) {
+        return findByIdProductService.execute(id);
     }
 }

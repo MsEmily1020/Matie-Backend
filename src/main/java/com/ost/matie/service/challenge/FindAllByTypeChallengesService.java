@@ -1,6 +1,6 @@
 package com.ost.matie.service.challenge;
 
-import com.ost.matie.dto.challenge.ChallengeResponse;
+import com.ost.matie.domain.challenge.Challenge;
 import com.ost.matie.repository.challenge.ChallengeRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +14,7 @@ public class FindAllByTypeChallengesService {
     private final ChallengeRepository challengeRepository;
 
     @Transactional
-    public List<ChallengeResponse> execute(Integer type) {
-        return challengeRepository.findAllByType(type)
-                .stream()
-                .map(ChallengeResponse::new)
-                .toList();
+    public List<Challenge> execute(Integer type) {
+        return challengeRepository.findAllByType(type);
     }
 }

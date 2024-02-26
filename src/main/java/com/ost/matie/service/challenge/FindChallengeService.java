@@ -1,6 +1,6 @@
 package com.ost.matie.service.challenge;
 
-import com.ost.matie.dto.challenge.ChallengeResponse;
+import com.ost.matie.domain.challenge.Challenge;
 import com.ost.matie.exception.ChallengeNotFoundException;
 import com.ost.matie.repository.challenge.ChallengeRepository;
 import jakarta.transaction.Transactional;
@@ -13,7 +13,7 @@ public class FindChallengeService {
     private final ChallengeRepository challengeRepository;
 
     @Transactional
-    public ChallengeResponse execute(Long id) {
-        return new ChallengeResponse(challengeRepository.findById(id).orElseThrow(() -> ChallengeNotFoundException.EXCEPTION));
+    public Challenge execute(Long id) {
+        return challengeRepository.findById(id).orElseThrow(() -> ChallengeNotFoundException.EXCEPTION);
     }
 }
