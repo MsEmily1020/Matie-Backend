@@ -5,7 +5,6 @@ import com.ost.matie.dto.user.AddUserRequest;
 import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.dto.user.UserResponse;
-import com.ost.matie.service.point.PointService;
 import com.ost.matie.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
     private final UserService userService;
-    private final PointService pointService;
 
     @PostMapping("/users")
     public ResponseEntity<UserResponse> addUser(@Valid @RequestBody AddUserRequest request) {
