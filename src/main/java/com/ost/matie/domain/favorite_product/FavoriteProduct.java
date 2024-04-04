@@ -1,7 +1,7 @@
 package com.ost.matie.domain.favorite_product;
 
 import com.ost.matie.domain.product.Product;
-import com.ost.matie.domain.user.Users;
+import com.ost.matie.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class FavoriteProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false)
     private Long id;
 
     @ManyToOne
@@ -23,10 +22,10 @@ public class FavoriteProduct {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users user;
+    private User user;
 
     @Builder
-    public FavoriteProduct(Product product, Users user) {
+    public FavoriteProduct(Product product, User user) {
         this.product = product;
         this.user = user;
     }

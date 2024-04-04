@@ -20,7 +20,6 @@ public enum ErrorCode {
 
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "사용자를 찾을 수 없습니다."),
     TYPE_NOT_FOUND(HttpStatus.NOT_FOUND, "type은 1, 2, 3, 4만 찾을 수 있습니다."),
-    TEAM_NOT_FOUND(HttpStatus.NOT_FOUND, "그룹 챌린지 정보를 찾을 수 없습니다."),
     COMMUNITY_TYPE_NOT_FOUND(HttpStatus.NOT_FOUND, "type은 Q&A 또는 Debate만 가능합니다."),
     COMMUNITY_NOT_FOUND(HttpStatus.NOT_FOUND, "커뮤니티 정보를 찾을 수 없습니다."),
     COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "댓글의 정보를 찾을 수 없습니다."),

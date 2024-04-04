@@ -1,6 +1,6 @@
 package com.ost.matie.controller.user;
 
-import com.ost.matie.domain.user.Users;
+import com.ost.matie.domain.user.User;
 import com.ost.matie.dto.user.AddUserRequest;
 import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
@@ -19,22 +19,22 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<UserResponse> addUser(@Valid @RequestBody AddUserRequest request) {
-        Users users = userService.save(request);
+        User user = userService.save(request);
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new UserResponse(users));
+                .body(new UserResponse(user));
     }
 
     @PostMapping("/login")
     public ResponseEntity<UserResponse> loginUser(@Valid @RequestBody LoginUserRequest request) {
-        Users users = userService.login(request);
-        return ResponseEntity.ok().body(new UserResponse(users));
+        User user = userService.login(request);
+        return ResponseEntity.ok().body(new UserResponse(user));
     }
 
     @GetMapping("/users/{id}")
     public ResponseEntity<UserResponse> findByUser(@PathVariable Long id) {
-        Users users = userService.findById(id);
-        return ResponseEntity.ok().body(new UserResponse(users));
+        User user = userService.findById(id);
+        return ResponseEntity.ok().body(new UserResponse(user));
     }
 
     @GetMapping("/users/duplicate1/{email}")
@@ -52,8 +52,8 @@ public class UserController {
     @PutMapping("/users/{email}")
     public ResponseEntity<UserResponse> updateUser(@PathVariable String email,
                                             @Valid @RequestBody UpdateUserRequest request) {
-        Users users = userService.update(email, request);
-        return ResponseEntity.ok().body(new UserResponse(users));
+        User user = userService.update(email, request);
+        return ResponseEntity.ok().body(new UserResponse(user));
     }
 
     @DeleteMapping("/users/{id}")

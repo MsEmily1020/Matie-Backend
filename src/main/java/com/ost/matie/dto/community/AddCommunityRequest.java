@@ -1,8 +1,7 @@
 package com.ost.matie.dto.community;
 
 import com.ost.matie.domain.community.Community;
-import com.ost.matie.domain.point.Point;
-import com.ost.matie.domain.user.Users;
+import com.ost.matie.domain.user.User;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -10,12 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 public class AddCommunityRequest {
     @NotEmpty(message = "제목 칸이 비어있습니다.")
     private String title;
@@ -27,7 +23,7 @@ public class AddCommunityRequest {
     private String type;
 
     @NotNull(message = "user의 id를 넣어주세요.")
-    private Users creatorUser;
+    private User creatorUser;
 
     public Community toEntity() {
         return Community.builder()

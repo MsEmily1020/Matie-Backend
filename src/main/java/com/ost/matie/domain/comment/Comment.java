@@ -3,7 +3,7 @@ package com.ost.matie.domain.comment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ost.matie.domain.BaseTimeEntity;
 import com.ost.matie.domain.community.Community;
-import com.ost.matie.domain.user.Users;
+import com.ost.matie.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -19,7 +19,6 @@ import java.util.List;
 public class Comment extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false)
     private Long id;
 
     @Column(name = "description")
@@ -27,7 +26,7 @@ public class Comment extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users user;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "community_id")
@@ -38,7 +37,7 @@ public class Comment extends BaseTimeEntity {
     private List<Upvote> upvoteList;
 
     @Builder
-    public Comment(String description, Users user, Community community) {
+    public Comment(String description, User user, Community community) {
         this.description = description;
         this.user = user;
         this.community = community;

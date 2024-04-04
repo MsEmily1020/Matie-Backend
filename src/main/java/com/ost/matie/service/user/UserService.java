@@ -1,6 +1,6 @@
 package com.ost.matie.service.user;
 
-import com.ost.matie.domain.user.Users;
+import com.ost.matie.domain.user.User;
 import com.ost.matie.dto.user.AddUserRequest;
 import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
@@ -20,7 +20,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder bCryptPasswordEncoder;
 
-    public Users save(AddUserRequest request) {
+    public User save(AddUserRequest request) {
         duplicateUserId(request.getUserId());
         duplicateEmail(request.getEmail());
 
@@ -37,14 +37,14 @@ public class UserService {
         if(userRepository.existsByUserId(userId)) throw UserIdDuplicateException.EXCEPTION;
     }
 
-    public Users findById(Long id) {
+    public User findById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 
-    public Users login(LoginUserRequest request) {
-        Users users = userRepository.findByUserIdOrEmail(request.getUserId(), request.getUserId());
-        if(users == null || !bCryptPasswordEncoder.matches(request.getPw(), users.getPw())) throw UserIncorrectException.EXCEPTION;
-        return users;
+    public User login(LoginUserRequest request) {
+        User user = userRepository.findByUserIdOrEmail(request.getUserId(), request.getUserId());
+        if(user == null || !bCryptPasswordEncoder.matches(request.getPw(), user.getPw())) throw UserIncorrectException.EXCEPTION;
+        return user;
     }
 
     public void delete(Long id) {
@@ -54,9 +54,9 @@ public class UserService {
 
 
     @Transactional
-    public Users update(String email, UpdateUserRequest request) {
-        Users users = userRepository.findByEmail(email);
-        users.update(bCryptPasswordEncoder.encode(request.getPw()));
-        return users;
+    public User update(String email, UpdateUserRequest request) {
+        User user = userRepository.findByEmail(email);
+        user.update(bCryptPasswordEncoder.encode(request.getPw()));
+        return user;
     }
 }

@@ -1,7 +1,7 @@
 package com.ost.matie.domain.point;
 
 import com.ost.matie.domain.BaseTimeEntity;
-import com.ost.matie.domain.user.Users;
+import com.ost.matie.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class Point extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false)
     private Long id;
 
     @Column(name = "variation")
@@ -25,10 +24,10 @@ public class Point extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users user;
+    private User user;
 
     @Builder
-    public Point(Long variation, Long balance, Users user) {
+    public Point(Long variation, Long balance, User user) {
         this.variation = variation;
         this.balance = balance;
         this.user = user;

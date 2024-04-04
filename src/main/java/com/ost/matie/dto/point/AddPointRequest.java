@@ -1,8 +1,7 @@
 package com.ost.matie.dto.point;
 
 import com.ost.matie.domain.point.Point;
-import com.ost.matie.domain.user.Users;
-import jakarta.validation.constraints.Min;
+import com.ost.matie.domain.user.User;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +16,7 @@ public class AddPointRequest {
     private Long variation;
 
     @NotNull(message = "user의 id를 넣어주세요.")
-    private Users user;
+    private User user;
 
     public Point toEntity(Long balances) {
         return Point.builder()

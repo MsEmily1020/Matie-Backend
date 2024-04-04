@@ -9,7 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 public class UpdateCommunityRequest {
     @NotEmpty(message = "제목 칸이 비어있습니다.")
     private String title;

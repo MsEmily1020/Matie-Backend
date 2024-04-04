@@ -18,12 +18,6 @@ INSERT INTO image (url, type) VALUES ('http://localhost:8080/products/12.svg', 3
 INSERT INTO users (name, user_id, email, pw, created_date) VALUES ('김혜승', 'hyeseung', 's2224@e-mirim.hs.kr', '$2a$10$tEM8I25AuRIaY61FrEEBDe6ljr5F17UEzl50pjZoPe40m0gZrifA6', '2023-10-20 10:11:20');
 INSERT INTO point (variation, balance, user_id) VALUES (0, 0, 1);
 
-INSERT INTO team (title, description, start_date, finish_date, point, user_list) VALUES ('title', 'description', '2023-10-20 00:00:00', '2024-01-12 00:00:00', 100, '1');
-INSERT INTO team (title, description, start_date, finish_date, point, user_list) VALUES ('title', 'description', '2023-10-20 00:00:00', '2024-01-20 00:00:00', 450, '1');
-INSERT INTO team (title, description, start_date, finish_date, point, user_list) VALUES ('title', 'description', '2023-10-20 00:00:00', '2024-01-30 00:00:00', 200, '1');
-INSERT INTO team (title, description, start_date, finish_date, point, user_list) VALUES ('title', 'description', '2023-10-20 00:00:00', '2024-02-01 00:00:00', 150, '1');
-INSERT INTO team (title, description, start_date, finish_date, point, user_list) VALUES ('title', 'description', '2024-02-01 00:00:00', '2024-02-20 00:00:00', 150, '1');
-
 INSERT INTO category (name) VALUES ('Grocery');
 INSERT INTO category (name) VALUES ('Food');
 

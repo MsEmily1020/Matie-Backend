@@ -22,9 +22,8 @@ public class AddClearService {
 
     @Transactional
     public void execute(AddClearRequest request) {
-        if(clearRepository.existsByUserIdAndTeamIdAndChallengeIdAndDate(
+        if(clearRepository.existsByUserIdAndChallengeIdAndDate(
                 request.getUser().getId(),
-                request.getTeam() == null ? null : request.getTeam().getId(),
                 request.getChallenge().getId(),
                 LocalDate.now()
         )) throw UserClearDuplicateException.EXCEPTION;
