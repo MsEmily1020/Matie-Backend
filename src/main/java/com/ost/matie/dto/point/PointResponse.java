@@ -1,7 +1,6 @@
 package com.ost.matie.dto.point;
 
 import com.ost.matie.domain.point.Point;
-import com.ost.matie.domain.user.Users;
 import com.ost.matie.dto.user.UserResponse;
 import lombok.Getter;
 

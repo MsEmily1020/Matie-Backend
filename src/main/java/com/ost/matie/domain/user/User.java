@@ -17,7 +17,8 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Users extends BaseTimeEntity {
+@Table(name = "users")
+public class User extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
@@ -64,7 +65,7 @@ public class Users extends BaseTimeEntity {
     private List<Clear> clearList;
 
     @Builder
-    public Users(String name, String userId, String email, String pw) {
+    public User(String name, String userId, String email, String pw) {
         this.name = name;
         this.userId = userId;
         this.email = email;

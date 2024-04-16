@@ -2,7 +2,7 @@ package com.ost.matie.dto.comment.comment;
 
 import com.ost.matie.domain.comment.Comment;
 import com.ost.matie.domain.community.Community;
-import com.ost.matie.domain.user.Users;
+import com.ost.matie.domain.user.User;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -17,7 +17,7 @@ public class AddCommentRequest {
     private String description;
 
     @NotNull(message = "user의 id를 넣어주세요.")
-    private Users user;
+    private User user;
 
     @NotNull(message = "community의 id를 넣어주세요.")
     private Community community;

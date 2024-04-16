@@ -1,7 +1,7 @@
 package com.ost.matie.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.ost.matie.domain.user.Users;
+import com.ost.matie.domain.user.User;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -15,11 +15,11 @@ public class UserResponse {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private final LocalDateTime createdDate;
 
-    public UserResponse(Users users) {
-        this.id = users.getId();
-        this.name = users.getName();
-        this.userId = users.getUserId();
-        this.email = users.getEmail();
-        this.createdDate = users.getCreatedDate();
+    public UserResponse(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.userId = user.getUserId();
+        this.email = user.getEmail();
+        this.createdDate = user.getCreatedDate();
     }
 }

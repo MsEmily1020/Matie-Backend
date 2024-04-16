@@ -3,7 +3,7 @@ package com.ost.matie.domain.community;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ost.matie.domain.BaseTimeEntity;
 import com.ost.matie.domain.comment.Comment;
-import com.ost.matie.domain.user.Users;
+import com.ost.matie.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -18,7 +18,6 @@ import java.util.List;
 public class Community extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false)
     private Long id;
 
     @Column(name = "title")
@@ -38,14 +37,14 @@ public class Community extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Users creatorUser;
+    private User creatorUser;
 
     @JsonIgnore
     @OneToMany(mappedBy = "community", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Comment> commentList;
 
     @Builder
-    public Community(String title, String description, String type, Long agree, Long disagree, Users creatorUser) {
+    public Community(String title, String description, String type, Long agree, Long disagree, User creatorUser) {
         this.title = title;
         this.description = description;
         this.type = type;

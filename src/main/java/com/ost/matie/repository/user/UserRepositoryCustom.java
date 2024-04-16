@@ -1,8 +1,8 @@
 package com.ost.matie.repository.user;
 
-import com.ost.matie.domain.user.Users;
+import com.ost.matie.domain.user.User;
 
 public interface UserRepositoryCustom {
-    Users findByUserIdOrEmail(String userId, String email);
-    Users findByEmail(String email);
+    User findByUserIdOrEmail(String userId, String email);
+    User findByEmail(String email);
 }
