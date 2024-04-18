@@ -3,7 +3,7 @@ package com.ost.matie.dto.comment.comment;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ost.matie.domain.comment.Comment;
 import com.ost.matie.domain.community.Community;
-import com.ost.matie.dto.user.UserResponse;
+import com.ost.matie.domain.user.User;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ public class CommentResponse {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private final LocalDateTime createdDate;
     private final LocalDateTime modifiedDate;
-    private final UserResponse user;
+    private final User user;
     private final Community community;
 
     public CommentResponse(Comment comment) {
@@ -23,7 +23,7 @@ public class CommentResponse {
         this.description = comment.getDescription();
         this.createdDate = comment.getCreatedDate();
         this.modifiedDate = comment.getModifiedDate();
-        this.user = new UserResponse(comment.getUser());
+        this.user = comment.getUser();
         this.community = comment.getCommunity();
     }
 }
