@@ -1,6 +1,6 @@
 package com.ost.matie.service.clear;
 
-import com.ost.matie.annotation.TransactionalService;
+import com.ost.matie.annotation.ReadOnlyService;
 import com.ost.matie.dto.clear.ClearResponse;
 import com.ost.matie.exception.UserNotFoundException;
 import com.ost.matie.repository.clear.ClearRepository;
@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@TransactionalService
+@ReadOnlyService
 @RequiredArgsConstructor
 public class FindByUserIdService {
     private final ClearRepository clearRepository;

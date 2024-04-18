@@ -1,6 +1,6 @@
 package com.ost.matie.service.favorite_product;
 
-import com.ost.matie.annotation.TransactionalService;
+import com.ost.matie.annotation.ReadOnlyService;
 import com.ost.matie.dto.favorite_product.FavoriteProductResponse;
 import com.ost.matie.exception.UserNotFoundException;
 import com.ost.matie.repository.favorite_product.FavoriteProductRepository;
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-@TransactionalService
+@ReadOnlyService
 @RequiredArgsConstructor
 public class FindByUserIdFavoriteProductService {
     private final FavoriteProductRepository favoriteProductRepository;

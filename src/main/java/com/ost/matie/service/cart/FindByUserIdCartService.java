@@ -1,6 +1,6 @@
 package com.ost.matie.service.cart;
 
-import com.ost.matie.annotation.TransactionalService;
+import com.ost.matie.annotation.ReadOnlyService;
 import com.ost.matie.dto.cart.CartResponse;
 import com.ost.matie.exception.UserNotFoundException;
 import com.ost.matie.repository.cart.CartRepository;
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-@TransactionalService
+@ReadOnlyService
 @RequiredArgsConstructor
 public class FindByUserIdCartService {
     private final CartRepository cartRepository;

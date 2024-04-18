@@ -10,10 +10,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Service
-@Transactional(rollbackFor = Exception.class)
+@Transactional(rollbackFor = Exception.class, readOnly = true)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface TransactionalService {
+public @interface ReadOnlyService {
     @AliasFor(annotation = Transactional.class)
     Class<? extends Throwable>[] noRollbackFor() default {};
 }

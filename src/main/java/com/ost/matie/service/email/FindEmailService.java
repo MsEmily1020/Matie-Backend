@@ -1,11 +1,11 @@
 package com.ost.matie.service.email;
 
-import com.ost.matie.annotation.TransactionalService;
+import com.ost.matie.annotation.ReadOnlyService;
 import com.ost.matie.config.RedisUtil;
 import com.ost.matie.exception.EmailCodeExpiredException;
 import lombok.RequiredArgsConstructor;
 
-@TransactionalService
+@ReadOnlyService
 @RequiredArgsConstructor
 public class FindEmailService {
     private final RedisUtil redisUtil;
