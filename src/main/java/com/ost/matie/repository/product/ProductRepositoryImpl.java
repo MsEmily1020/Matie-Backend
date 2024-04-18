@@ -21,4 +21,12 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
                 .where(product.category.id.eq(categoryId))
                 .fetch();
     }
+
+    @Override
+    public List<Product> findAllByNameContaining(String name) {
+        return queryFactory
+                .selectFrom(product)
+                .where(product.name.contains(name))
+                .fetch();
+    }
 }
