@@ -25,8 +25,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public void loginUser(@Valid @RequestBody LoginUserRequest request) {
-        loginUserService.execute(request);
+    public UserResponse loginUser(@Valid @RequestBody LoginUserRequest request) {
+        return loginUserService.execute(request);
     }
 
     @GetMapping("/{id}")
