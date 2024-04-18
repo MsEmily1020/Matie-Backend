@@ -1,7 +1,7 @@
 package com.ost.matie.domain.comment;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ost.matie.domain.BaseTimeEntity;
+import com.ost.matie.domain.BaseEntity;
 import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.user.User;
 import jakarta.persistence.*;
@@ -16,11 +16,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "comments")
-public class Comment extends BaseTimeEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Comment extends BaseEntity {
     @Column(name = "description")
     private String description;
 

@@ -12,7 +12,7 @@ import java.util.List;
 public class FindAllByCategoryIdProductService {
     private final ProductRepository productRepository;
 
-    public List<Product> execute(Integer categoryId) {
+    public List<Product> execute(Long categoryId) {
         return productRepository.findAllByCategoryId(categoryId);
     }
 }

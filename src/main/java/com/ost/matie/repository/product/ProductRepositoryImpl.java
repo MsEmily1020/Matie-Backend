@@ -15,7 +15,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Product> findAllByCategoryId(Integer categoryId) {
+    public List<Product> findAllByCategoryId(Long categoryId) {
         return queryFactory
                 .selectFrom(product)
                 .where(product.category.id.eq(categoryId))
