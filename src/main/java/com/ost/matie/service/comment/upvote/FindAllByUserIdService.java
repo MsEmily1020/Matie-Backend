@@ -1,6 +1,6 @@
 package com.ost.matie.service.comment.upvote;
 
-import com.ost.matie.annotation.TransactionalService;
+import com.ost.matie.annotation.ReadOnlyService;
 import com.ost.matie.dto.comment.upvote.UpvoteResponse;
 import com.ost.matie.exception.UserNotFoundException;
 import com.ost.matie.repository.comment.upvote.UpvoteRepository;
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-@TransactionalService
+@ReadOnlyService
 @RequiredArgsConstructor
 public class FindAllByUserIdService {
     private final UpvoteRepository upvoteRepository;

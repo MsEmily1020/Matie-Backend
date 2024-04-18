@@ -1,13 +1,13 @@
 package com.ost.matie.service.challenge;
 
-import com.ost.matie.annotation.TransactionalService;
+import com.ost.matie.annotation.ReadOnlyService;
 import com.ost.matie.domain.challenge.Challenge;
 import com.ost.matie.repository.challenge.ChallengeRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-@TransactionalService
+@ReadOnlyService
 @RequiredArgsConstructor
 public class FindAllChallengesService {
     private final ChallengeRepository challengeRepository;

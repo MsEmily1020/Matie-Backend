@@ -1,6 +1,6 @@
 package com.ost.matie.service.clear;
 
-import com.ost.matie.annotation.TransactionalService;
+import com.ost.matie.annotation.ReadOnlyService;
 import com.ost.matie.dto.clear.ClearResponse;
 import com.ost.matie.exception.UserNotFoundException;
 import com.ost.matie.repository.clear.ClearRepository;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@TransactionalService
+@ReadOnlyService
 @RequiredArgsConstructor
 public class FindDay7ByUserIdService {
     private final ClearRepository clearRepository;

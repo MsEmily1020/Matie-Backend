@@ -1,6 +1,6 @@
 package com.ost.matie.service.comment.comment;
 
-import com.ost.matie.annotation.TransactionalService;
+import com.ost.matie.annotation.ReadOnlyService;
 import com.ost.matie.dto.comment.comment.CommentResponse;
 import com.ost.matie.exception.CommunityNotFoundException;
 import com.ost.matie.repository.comment.comment.CommentRepository;
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-@TransactionalService
+@ReadOnlyService
 @RequiredArgsConstructor
 public class FindAllByCommunityIdService {
     private final CommentRepository commentRepository;
