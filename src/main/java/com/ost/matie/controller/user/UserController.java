@@ -1,15 +1,12 @@
 package com.ost.matie.controller.user;
 
-import com.ost.matie.domain.user.User;
 import com.ost.matie.dto.user.AddUserRequest;
 import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.dto.user.UserResponse;
-import com.ost.matie.repository.user.UserRepository;
 import com.ost.matie.service.user.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
