@@ -1,5 +1,6 @@
 package com.ost.matie.service.user;
 
+import com.ost.matie.annotation.TransactionalService;
 import com.ost.matie.dto.user.AddUserRequest;
 import com.ost.matie.exception.EmailDuplicateException;
 import com.ost.matie.exception.UserIdDuplicateException;
@@ -7,15 +8,13 @@ import com.ost.matie.repository.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 
+@TransactionalService
 @RequiredArgsConstructor
-@Service
 public class PostUserService {
     private final UserRepository userRepository;
     private final PasswordEncoder bCryptPasswordEncoder;
 
-    @Transactional
     public void execute(AddUserRequest request) {
         duplicateUserId(request.getUserId());
         duplicateEmail(request.getEmail());

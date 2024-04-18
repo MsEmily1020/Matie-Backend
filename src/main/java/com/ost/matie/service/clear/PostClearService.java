@@ -1,5 +1,6 @@
 package com.ost.matie.service.clear;
 
+import com.ost.matie.annotation.TransactionalService;
 import com.ost.matie.dto.clear.AddClearRequest;
 import com.ost.matie.exception.ChallengeNotFoundException;
 import com.ost.matie.exception.UserClearDuplicateException;
@@ -7,20 +8,17 @@ import com.ost.matie.exception.UserNotFoundException;
 import com.ost.matie.repository.challenge.ChallengeRepository;
 import com.ost.matie.repository.clear.ClearRepository;
 import com.ost.matie.repository.user.UserRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
+@TransactionalService
 @RequiredArgsConstructor
-@Service
 public class PostClearService {
     private final ClearRepository clearRepository;
     private final UserRepository userRepository;
     private final ChallengeRepository challengeRepository;
 
-    @Transactional
     public void execute(AddClearRequest request) {
         if(clearRepository.existsByUserIdAndChallengeIdAndDate(
                 request.getUser().getId(),

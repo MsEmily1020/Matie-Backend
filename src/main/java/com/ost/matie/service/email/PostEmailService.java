@@ -1,22 +1,20 @@
 package com.ost.matie.service.email;
 
+import com.ost.matie.annotation.TransactionalService;
 import com.ost.matie.config.RedisUtil;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
+@TransactionalService
 @RequiredArgsConstructor
-@Service
 public class PostEmailService {
     private final JavaMailSender javaMailSender;
     private final RedisUtil redisUtil;
     private String authKey;
 
-    @Transactional
     public String execute(String email) {
         authKey = createCode();
 
