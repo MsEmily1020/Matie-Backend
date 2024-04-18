@@ -9,6 +9,7 @@ import com.ost.matie.service.comment.comment.FindAllByCommunityIdService;
 import com.ost.matie.service.comment.comment.UpdateCommentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class CommentController {
     private final DeleteCommentService deleteCommentService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void addComment(@Valid @RequestBody AddCommentRequest request) {
         postCommentService.execute(request);
     }

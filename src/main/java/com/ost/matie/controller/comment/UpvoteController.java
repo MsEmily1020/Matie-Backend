@@ -5,6 +5,7 @@ import com.ost.matie.dto.comment.upvote.UpvoteResponse;
 import com.ost.matie.service.comment.upvote.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class UpvoteController {
     private final DeleteUpvoteService deleteUpvoteService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void addUpvote(@Valid @RequestBody AddUpvoteRequest request) {
         postUpvoteService.execute(request);
     }
