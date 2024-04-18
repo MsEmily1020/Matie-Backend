@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ProductRepositoryCustom {
     List<Product> findAllByCategoryId(Integer categoryId);
+    List<Product> findAllByNameContaining(String name);
 }
