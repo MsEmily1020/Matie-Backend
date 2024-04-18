@@ -17,6 +17,7 @@ public enum ErrorCode {
     USER_CLEAR_DUPLICATE(HttpStatus.CONFLICT, "이미 해당 유저의 클리어 여부가 존재합니다."),
     UPVOTE_DUPLICATE(HttpStatus.CONFLICT, "이미 좋아요를 클릭하셨습니다."),
     FAVORITE_PRODUCT_DUPLICATE(HttpStatus.CONFLICT, "이미 좋아요를 클릭하셨습니다."),
+    CART_DUPLICATE(HttpStatus.CONFLICT, "이미 장바구니에 존재하는 제품입니다."),
 
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "사용자를 찾을 수 없습니다."),
     TYPE_NOT_FOUND(HttpStatus.NOT_FOUND, "type은 1, 2, 3, 4만 찾을 수 있습니다."),
