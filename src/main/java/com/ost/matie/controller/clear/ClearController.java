@@ -7,6 +7,7 @@ import com.ost.matie.service.clear.FindByUserIdService;
 import com.ost.matie.service.clear.FindDay7ByUserIdService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class ClearController {
     private final FindByUserIdService findByUserIdService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void addClear(@Valid @RequestBody AddClearRequest request) {
         postClearService.execute(request);
     }

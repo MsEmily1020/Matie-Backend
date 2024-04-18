@@ -7,6 +7,7 @@ import com.ost.matie.service.favorite_product.DeleteFavoriteProductService;
 import com.ost.matie.service.favorite_product.FindByUserIdFavoriteProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class FavoriteProductController {
     private final DeleteFavoriteProductService deleteFavoriteProductService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void addFavoriteProduct(@Valid @RequestBody AddFavoriteProductRequest request) {
         postFavoriteProductService.execute(request);
     }

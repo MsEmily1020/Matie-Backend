@@ -6,6 +6,7 @@ import com.ost.matie.service.point.PostPointService;
 import com.ost.matie.service.point.FindByUserIdPointService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -16,6 +17,7 @@ public class PointController {
     private final FindByUserIdPointService findByUserIdPointService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void addPoint(@Valid @RequestBody AddPointRequest request) {
         postPointService.execute(request);
     }

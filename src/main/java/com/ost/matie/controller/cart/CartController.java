@@ -8,6 +8,7 @@ import com.ost.matie.service.cart.FindByUserIdCartService;
 import com.ost.matie.service.cart.UpdateCartService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class CartController {
     private final UpdateCartService updateCartService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void createCart(@Valid @RequestBody AddCartRequest request) {
         postCartService.execute(request);
     }

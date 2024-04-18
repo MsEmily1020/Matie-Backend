@@ -7,6 +7,7 @@ import com.ost.matie.dto.user.UserResponse;
 import com.ost.matie.service.user.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -20,6 +21,7 @@ public class UserController {
     private final DeleteUserService deleteUserService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void addUser(@Valid @RequestBody AddUserRequest request) {
         postUserService.execute(request);
     }

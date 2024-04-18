@@ -6,6 +6,7 @@ import com.ost.matie.dto.community.UpdateCommunityRequest;
 import com.ost.matie.service.community.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class CommunityController {
     private final DeleteCommunityService deleteCommunityService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void addCommunity(@Valid @RequestBody AddCommunityRequest request) {
         postCommunityService.execute(request);
     }
