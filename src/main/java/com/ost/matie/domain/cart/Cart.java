@@ -1,5 +1,6 @@
 package com.ost.matie.domain.cart;
 
+import com.ost.matie.domain.BaseEntity;
 import com.ost.matie.domain.product.Product;
 import com.ost.matie.domain.user.User;
 import jakarta.persistence.*;
@@ -11,11 +12,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Cart {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Cart extends BaseEntity {
     @Column(name = "count")
     private Long count;
 

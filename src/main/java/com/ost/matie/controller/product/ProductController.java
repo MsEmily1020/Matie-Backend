@@ -26,7 +26,7 @@ public class ProductController {
     }
 
     @GetMapping("/category/{categoryId}")
-    public List<Product> findAllByCategoryId(@PathVariable Integer categoryId) {
+    public List<Product> findAllByCategoryId(@PathVariable Long categoryId) {
         return findAllByCategoryIdProductService.execute(categoryId);
     }
 

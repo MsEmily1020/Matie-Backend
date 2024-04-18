@@ -1,6 +1,7 @@
 package com.ost.matie.domain.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ost.matie.domain.BaseEntity;
 import com.ost.matie.domain.product.Product;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -12,11 +13,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
+public class Category extends BaseEntity {
     @Column(name = "name")
     private String name;
 

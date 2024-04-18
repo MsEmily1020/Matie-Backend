@@ -1,5 +1,6 @@
 package com.ost.matie.domain.clear;
 
+import com.ost.matie.domain.BaseEntity;
 import com.ost.matie.domain.challenge.Challenge;
 import com.ost.matie.domain.user.User;
 import jakarta.persistence.*;
@@ -13,11 +14,7 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Clear {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Clear extends BaseEntity {
     @Column(name = "date")
     private LocalDate date;
 

@@ -1,5 +1,6 @@
 package com.ost.matie.domain.challenge;
 
+import com.ost.matie.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -8,11 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Challenge {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Challenge extends BaseEntity {
     @Column(name = "title")
     private String title;
 

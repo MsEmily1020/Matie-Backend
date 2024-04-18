@@ -1,7 +1,7 @@
 package com.ost.matie.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ost.matie.domain.BaseTimeEntity;
+import com.ost.matie.domain.BaseEntity;
 import com.ost.matie.domain.cart.Cart;
 import com.ost.matie.domain.clear.Clear;
 import com.ost.matie.domain.comment.Comment;
@@ -10,7 +10,10 @@ import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.favorite_product.FavoriteProduct;
 import com.ost.matie.domain.point.Point;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -18,12 +21,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "users")
-public class User extends BaseTimeEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false)
-    private Long id;
-
+public class User extends BaseEntity {
     @Column(name = "name")
     private String name;
 
