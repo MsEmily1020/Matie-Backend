@@ -2,7 +2,7 @@ package com.ost.matie.controller.clear;
 
 import com.ost.matie.dto.clear.AddClearRequest;
 import com.ost.matie.dto.clear.ClearResponse;
-import com.ost.matie.service.clear.AddClearService;
+import com.ost.matie.service.clear.PostClearService;
 import com.ost.matie.service.clear.FindByUserIdService;
 import com.ost.matie.service.clear.FindDay7ByUserIdService;
 import jakarta.validation.Valid;
@@ -15,13 +15,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/clear")
 public class ClearController {
-    private final AddClearService addClearService;
+    private final PostClearService postClearService;
     private final FindDay7ByUserIdService findDay7ByUserIdService;
     private final FindByUserIdService findByUserIdService;
 
     @PostMapping
     public void addClear(@Valid @RequestBody AddClearRequest request) {
-        addClearService.execute(request);
+        postClearService.execute(request);
     }
 
     @GetMapping("/day/{userId}")

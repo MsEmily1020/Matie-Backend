@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class AddCommunityService {
+public class PostCommunityService {
     private final CommunityRepository communityRepository;
     private final UserRepository userRepository;
 

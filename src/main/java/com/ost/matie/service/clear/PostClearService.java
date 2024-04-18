@@ -15,7 +15,7 @@ import java.time.LocalDate;
 
 @RequiredArgsConstructor
 @Service
-public class AddClearService {
+public class PostClearService {
     private final ClearRepository clearRepository;
     private final UserRepository userRepository;
     private final ChallengeRepository challengeRepository;

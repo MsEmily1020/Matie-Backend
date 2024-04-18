@@ -5,60 +5,55 @@ import com.ost.matie.dto.user.AddUserRequest;
 import com.ost.matie.dto.user.LoginUserRequest;
 import com.ost.matie.dto.user.UpdateUserRequest;
 import com.ost.matie.dto.user.UserResponse;
-import com.ost.matie.service.user.UserService;
+import com.ost.matie.repository.user.UserRepository;
+import com.ost.matie.service.user.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/user")
 public class UserController {
-    private final UserService userService;
+    private final PostUserService postUserService;
+    private final LoginUserService loginUserService;
+    private final GetUserService getUserService;
+    private final UpdateUserService updateUserService;
+    private final DeleteUserService deleteUserService;
 
-    @PostMapping("/users")
-    public ResponseEntity<UserResponse> addUser(@Valid @RequestBody AddUserRequest request) {
-        User user = userService.save(request);
-
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new UserResponse(user));
+    @PostMapping
+    public void addUser(@Valid @RequestBody AddUserRequest request) {
+        postUserService.execute(request);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserResponse> loginUser(@Valid @RequestBody LoginUserRequest request) {
-        User user = userService.login(request);
-        return ResponseEntity.ok().body(new UserResponse(user));
+    public void loginUser(@Valid @RequestBody LoginUserRequest request) {
+        loginUserService.execute(request);
     }
 
-    @GetMapping("/users/{id}")
-    public ResponseEntity<UserResponse> findByUser(@PathVariable Long id) {
-        User user = userService.findById(id);
-        return ResponseEntity.ok().body(new UserResponse(user));
+    @GetMapping("/{id}")
+    public UserResponse findByUser(@PathVariable Long id) {
+        return getUserService.execute(id);
     }
 
-    @GetMapping("/users/duplicate1/{email}")
-    public ResponseEntity<Void> checkDuplicateEmail(@PathVariable String email) {
-        userService.duplicateEmail(email);
-        return ResponseEntity.ok().build();
+    @GetMapping("/duplicate1/{email}")
+    public void checkDuplicateEmail(@PathVariable String email) {
+        postUserService.duplicateEmail(email);
     }
 
-    @GetMapping("/users/duplicate2/{userId}")
-    public ResponseEntity<Void> checkDuplicateUserId(@PathVariable String userId) {
-        userService.duplicateUserId(userId);
-        return ResponseEntity.ok().build();
+    @GetMapping("/duplicate2/{userId}")
+    public void checkDuplicateUserId(@PathVariable String userId) {
+        postUserService.duplicateUserId(userId);
     }
 
-    @PutMapping("/users/{email}")
-    public ResponseEntity<UserResponse> updateUser(@PathVariable String email,
-                                            @Valid @RequestBody UpdateUserRequest request) {
-        User user = userService.update(email, request);
-        return ResponseEntity.ok().body(new UserResponse(user));
+    @PutMapping("/{email}")
+    public void updateUser(@PathVariable String email, @Valid @RequestBody UpdateUserRequest request) {
+        updateUserService.execute(email, request);
     }
 
-    @DeleteMapping("/users/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.delete(id);
-        return ResponseEntity.ok().build();
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        deleteUserService.execute(id);
     }
 }

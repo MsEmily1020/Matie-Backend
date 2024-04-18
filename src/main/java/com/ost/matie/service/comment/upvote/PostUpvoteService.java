@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class AddUpvoteService {
+public class PostUpvoteService {
     private final UpvoteRepository upvoteRepository;
     private final UserRepository userRepository;
     private final CommentRepository commentRepository;

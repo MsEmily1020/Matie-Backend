@@ -3,7 +3,7 @@ package com.ost.matie.controller.comment;
 import com.ost.matie.dto.comment.comment.AddCommentRequest;
 import com.ost.matie.dto.comment.comment.CommentResponse;
 import com.ost.matie.dto.comment.comment.UpdateCommentRequest;
-import com.ost.matie.service.comment.comment.AddCommentService;
+import com.ost.matie.service.comment.comment.PostCommentService;
 import com.ost.matie.service.comment.comment.DeleteCommentService;
 import com.ost.matie.service.comment.comment.FindAllByCommunityIdService;
 import com.ost.matie.service.comment.comment.UpdateCommentService;
@@ -17,14 +17,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/comment")
 public class CommentController {
-    private final AddCommentService addCommentService;
+    private final PostCommentService postCommentService;
     private final FindAllByCommunityIdService findAllByCommunityIdService;
     private final UpdateCommentService updateCommentService;
     private final DeleteCommentService deleteCommentService;
 
     @PostMapping
     public void addComment(@Valid @RequestBody AddCommentRequest request) {
-        addCommentService.execute(request);
+        postCommentService.execute(request);
     }
 
     @GetMapping("/{communityId}")

@@ -2,7 +2,7 @@ package com.ost.matie.controller.favorite_product;
 
 import com.ost.matie.dto.favorite_product.AddFavoriteProductRequest;
 import com.ost.matie.dto.favorite_product.FavoriteProductResponse;
-import com.ost.matie.service.favorite_product.AddFavoriteProductService;
+import com.ost.matie.service.favorite_product.PostFavoriteProductService;
 import com.ost.matie.service.favorite_product.DeleteFavoriteProductService;
 import com.ost.matie.service.favorite_product.FindByUserIdFavoriteProductService;
 import jakarta.validation.Valid;
@@ -15,13 +15,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/favorite-product")
 public class FavoriteProductController {
-    private final AddFavoriteProductService addFavoriteProductService;
+    private final PostFavoriteProductService postFavoriteProductService;
     private final FindByUserIdFavoriteProductService findByUserIdService;
     private final DeleteFavoriteProductService deleteFavoriteProductService;
 
     @PostMapping
     public void addFavoriteProduct(@Valid @RequestBody AddFavoriteProductRequest request) {
-        addFavoriteProductService.execute(request);
+        postFavoriteProductService.execute(request);
     }
 
     @GetMapping("/{userId}")

@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/community")
 public class CommunityController {
-    private final AddCommunityService addCommunityService;
+    private final PostCommunityService postCommunityService;
     private final FindByTypeOrderByDateDescService findByTypeOrderByDateDescService;
     private final FindCommunityService findCommunityService;
     private final UpdateCommunityService updateCommunityService;
@@ -22,7 +22,7 @@ public class CommunityController {
 
     @PostMapping
     public void addCommunity(@Valid @RequestBody AddCommunityRequest request) {
-        addCommunityService.execute(request);
+        postCommunityService.execute(request);
     }
 
     @GetMapping("/type/{typeName}")

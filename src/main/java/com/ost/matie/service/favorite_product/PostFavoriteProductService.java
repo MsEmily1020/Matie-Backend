@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class AddFavoriteProductService {
+public class PostFavoriteProductService {
     private final FavoriteProductRepository favoriteProductRepository;
     private final ProductRepository productRepository;
     private final UserRepository userRepository;

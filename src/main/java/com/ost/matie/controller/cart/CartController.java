@@ -3,7 +3,7 @@ package com.ost.matie.controller.cart;
 import com.ost.matie.dto.cart.AddCartRequest;
 import com.ost.matie.dto.cart.CartResponse;
 import com.ost.matie.dto.cart.UpdateCartRequest;
-import com.ost.matie.service.cart.CreateCartService;
+import com.ost.matie.service.cart.PostCartService;
 import com.ost.matie.service.cart.FindByUserIdCartService;
 import com.ost.matie.service.cart.UpdateCartService;
 import jakarta.validation.Valid;
@@ -16,13 +16,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/cart")
 public class CartController {
-    private final CreateCartService createCartService;
+    private final PostCartService postCartService;
     private final FindByUserIdCartService findByUserIdCartService;
     private final UpdateCartService updateCartService;
 
     @PostMapping
     public void createCart(@Valid @RequestBody AddCartRequest request) {
-        createCartService.execute(request);
+        postCartService.execute(request);
     }
 
     @GetMapping("/{userId}")

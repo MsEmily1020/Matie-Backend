@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class CreateCartService {
+public class PostCartService {
     private final CartRepository cartRepository;
 
     @Transactional

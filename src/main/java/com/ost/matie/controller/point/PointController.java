@@ -2,7 +2,7 @@ package com.ost.matie.controller.point;
 
 import com.ost.matie.dto.point.AddPointRequest;
 import com.ost.matie.dto.point.PointResponse;
-import com.ost.matie.service.point.AddPointService;
+import com.ost.matie.service.point.PostPointService;
 import com.ost.matie.service.point.FindByUserIdPointService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/point")
 public class PointController {
-    private final AddPointService addPointService;
+    private final PostPointService postPointService;
     private final FindByUserIdPointService findByUserIdPointService;
 
     @PostMapping
     public void addPoint(@Valid @RequestBody AddPointRequest request) {
-        addPointService.execute(request);
+        postPointService.execute(request);
     }
 
     @GetMapping("/{userId}")

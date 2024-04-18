@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class AddPointService {
+public class PostPointService {
     private final PointRepository pointRepository;
     private final UserRepository userRepository;
 

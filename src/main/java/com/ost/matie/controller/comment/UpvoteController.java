@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/upvote")
 public class UpvoteController {
-    private final AddUpvoteService addUpvoteService;
+    private final PostUpvoteService postUpvoteService;
     private final CountAllByCommentIdService countAllByCommentIdService;
     private final FindAllByUserIdService findAllByUserIdService;
     private final FindByUserIdAndCommentIdService findByUserIdAndCommentIdService;
@@ -21,7 +21,7 @@ public class UpvoteController {
 
     @PostMapping
     public void addUpvote(@Valid @RequestBody AddUpvoteRequest request) {
-        addUpvoteService.execute(request);
+        postUpvoteService.execute(request);
     }
 
     @GetMapping("/count/{commentId}")

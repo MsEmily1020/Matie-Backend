@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class AddCommentService {
+public class PostCommentService {
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
     private final CommunityRepository communityRepository;
