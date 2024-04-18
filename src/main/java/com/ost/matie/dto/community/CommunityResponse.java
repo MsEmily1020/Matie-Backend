@@ -2,7 +2,7 @@ package com.ost.matie.dto.community;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ost.matie.domain.community.Community;
-import com.ost.matie.dto.user.UserResponse;
+import com.ost.matie.domain.user.User;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -18,7 +18,7 @@ public class CommunityResponse {
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private final LocalDateTime createdDate;
-    private final UserResponse creatorUser;
+    private final User creatorUser;
 
     public CommunityResponse(Community community) {
         this.id = community.getId();
@@ -28,6 +28,6 @@ public class CommunityResponse {
         this.agree = community.getAgree();
         this.disagree = community.getDisagree();
         this.createdDate = community.getCreatedDate();
-        this.creatorUser = new UserResponse(community.getCreatorUser());
+        this.creatorUser = community.getCreatorUser();
     }
 }
