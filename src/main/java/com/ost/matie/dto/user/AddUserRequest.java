@@ -1,6 +1,7 @@
 package com.ost.matie.dto.user;
 
 import com.ost.matie.annotation.Password;
+import com.ost.matie.annotation.UserId;
 import com.ost.matie.domain.user.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -19,7 +20,7 @@ public class AddUserRequest {
     private String name;
 
     @NotBlank(message = "아이디 칸이 비어있습니다.")
-    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z]).{6,12}", message = "6~12자 이내로 영문과 숫자만 가능합니다.")
+    @UserId
     private String userId;
 
     @NotBlank(message = "이메일 칸이 비어있습니다.")
