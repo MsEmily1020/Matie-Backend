@@ -1,11 +1,11 @@
 package com.ost.matie.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ost.matie.domain.BaseEntity;
+import com.ost.matie.global.common.BaseEntity;
 import com.ost.matie.domain.cart.Cart;
 import com.ost.matie.domain.clear.Clear;
 import com.ost.matie.domain.comment.Comment;
-import com.ost.matie.domain.comment.Upvote;
+import com.ost.matie.domain.upvote.Upvote;
 import com.ost.matie.domain.community.Community;
 import com.ost.matie.domain.favorite_product.FavoriteProduct;
 import com.ost.matie.domain.point.Point;

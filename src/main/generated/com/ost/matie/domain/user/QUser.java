@@ -20,7 +20,7 @@ public class QUser extends EntityPathBase<User> {
 
     public static final QUser user = new QUser("user");
 
-    public final com.ost.matie.domain.QBaseTimeEntity _super = new com.ost.matie.domain.QBaseTimeEntity(this);
+    public final com.ost.matie.global.common.QBaseEntity _super = new com.ost.matie.global.common.QBaseEntity(this);
 
     public final ListPath<com.ost.matie.domain.cart.Cart, com.ost.matie.domain.cart.QCart> cartList = this.<com.ost.matie.domain.cart.Cart, com.ost.matie.domain.cart.QCart>createList("cartList", com.ost.matie.domain.cart.Cart.class, com.ost.matie.domain.cart.QCart.class, PathInits.DIRECT2);
 
@@ -37,7 +37,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final ListPath<com.ost.matie.domain.favorite_product.FavoriteProduct, com.ost.matie.domain.favorite_product.QFavoriteProduct> favoriteProductList = this.<com.ost.matie.domain.favorite_product.FavoriteProduct, com.ost.matie.domain.favorite_product.QFavoriteProduct>createList("favoriteProductList", com.ost.matie.domain.favorite_product.FavoriteProduct.class, com.ost.matie.domain.favorite_product.QFavoriteProduct.class, PathInits.DIRECT2);
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
+    //inherited
+    public final NumberPath<Long> id = _super.id;
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
@@ -48,7 +49,7 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath pw = createString("pw");
 
-    public final ListPath<com.ost.matie.domain.comment.Upvote, com.ost.matie.domain.comment.QUpvote> upvoteList = this.<com.ost.matie.domain.comment.Upvote, com.ost.matie.domain.comment.QUpvote>createList("upvoteList", com.ost.matie.domain.comment.Upvote.class, com.ost.matie.domain.comment.QUpvote.class, PathInits.DIRECT2);
+    public final ListPath<com.ost.matie.domain.upvote.Upvote, com.ost.matie.domain.upvote.QUpvote> upvoteList = this.<com.ost.matie.domain.upvote.Upvote, com.ost.matie.domain.upvote.QUpvote>createList("upvoteList", com.ost.matie.domain.upvote.Upvote.class, com.ost.matie.domain.upvote.QUpvote.class, PathInits.DIRECT2);
 
     public final StringPath userId = createString("userId");
 

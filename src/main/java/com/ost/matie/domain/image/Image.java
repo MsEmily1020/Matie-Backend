@@ -1,6 +1,6 @@
 package com.ost.matie.domain.image;
 
-import com.ost.matie.domain.BaseEntity;
+import com.ost.matie.global.common.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.AccessLevel;

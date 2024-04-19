@@ -22,11 +22,20 @@ public class QClear extends EntityPathBase<Clear> {
 
     public static final QClear clear = new QClear("clear");
 
+    public final com.ost.matie.global.common.QBaseEntity _super = new com.ost.matie.global.common.QBaseEntity(this);
+
     public final com.ost.matie.domain.challenge.QChallenge challenge;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
 
     public final DatePath<java.time.LocalDate> date = createDate("date", java.time.LocalDate.class);
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
+    //inherited
+    public final NumberPath<Long> id = _super.id;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
 
     public final com.ost.matie.domain.user.QUser user;
 

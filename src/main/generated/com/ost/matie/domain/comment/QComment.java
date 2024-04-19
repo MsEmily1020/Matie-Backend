@@ -22,7 +22,7 @@ public class QComment extends EntityPathBase<Comment> {
 
     public static final QComment comment = new QComment("comment");
 
-    public final com.ost.matie.domain.QBaseTimeEntity _super = new com.ost.matie.domain.QBaseTimeEntity(this);
+    public final com.ost.matie.global.common.QBaseEntity _super = new com.ost.matie.global.common.QBaseEntity(this);
 
     public final com.ost.matie.domain.community.QCommunity community;
 
@@ -31,12 +31,13 @@ public class QComment extends EntityPathBase<Comment> {
 
     public final StringPath description = createString("description");
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
+    //inherited
+    public final NumberPath<Long> id = _super.id;
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
 
-    public final ListPath<Upvote, QUpvote> upvoteList = this.<Upvote, QUpvote>createList("upvoteList", Upvote.class, QUpvote.class, PathInits.DIRECT2);
+    public final ListPath<com.ost.matie.domain.upvote.Upvote, com.ost.matie.domain.upvote.QUpvote> upvoteList = this.<com.ost.matie.domain.upvote.Upvote, com.ost.matie.domain.upvote.QUpvote>createList("upvoteList", com.ost.matie.domain.upvote.Upvote.class, com.ost.matie.domain.upvote.QUpvote.class, PathInits.DIRECT2);
 
     public final com.ost.matie.domain.user.QUser user;
 

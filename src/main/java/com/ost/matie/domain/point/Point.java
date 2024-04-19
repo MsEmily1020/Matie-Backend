@@ -1,6 +1,6 @@
 package com.ost.matie.domain.point;
 
-import com.ost.matie.domain.BaseEntity;
+import com.ost.matie.global.common.BaseEntity;
 import com.ost.matie.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;

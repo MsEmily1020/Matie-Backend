@@ -22,9 +22,18 @@ public class QCart extends EntityPathBase<Cart> {
 
     public static final QCart cart = new QCart("cart");
 
+    public final com.ost.matie.global.common.QBaseEntity _super = new com.ost.matie.global.common.QBaseEntity(this);
+
     public final NumberPath<Long> count = createNumber("count", Long.class);
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
+
+    //inherited
+    public final NumberPath<Long> id = _super.id;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
 
     public final com.ost.matie.domain.product.QProduct product;
 
