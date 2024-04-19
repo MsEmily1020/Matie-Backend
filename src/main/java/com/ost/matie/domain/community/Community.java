@@ -1,7 +1,7 @@
 package com.ost.matie.domain.community;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ost.matie.domain.BaseEntity;
+import com.ost.matie.global.common.BaseEntity;
 import com.ost.matie.domain.comment.Comment;
 import com.ost.matie.domain.user.User;
 import jakarta.persistence.*;

@@ -1,8 +1,9 @@
 package com.ost.matie.domain.comment;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ost.matie.domain.BaseEntity;
+import com.ost.matie.global.common.BaseEntity;
 import com.ost.matie.domain.community.Community;
+import com.ost.matie.domain.upvote.Upvote;
 import com.ost.matie.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;

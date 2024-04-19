@@ -22,7 +22,7 @@ public class QCommunity extends EntityPathBase<Community> {
 
     public static final QCommunity community = new QCommunity("community");
 
-    public final com.ost.matie.domain.QBaseTimeEntity _super = new com.ost.matie.domain.QBaseTimeEntity(this);
+    public final com.ost.matie.global.common.QBaseEntity _super = new com.ost.matie.global.common.QBaseEntity(this);
 
     public final NumberPath<Long> agree = createNumber("agree", Long.class);
 
@@ -37,7 +37,8 @@ public class QCommunity extends EntityPathBase<Community> {
 
     public final NumberPath<Long> disagree = createNumber("disagree", Long.class);
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
+    //inherited
+    public final NumberPath<Long> id = _super.id;
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;

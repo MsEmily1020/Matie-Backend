@@ -22,13 +22,22 @@ public class QProduct extends EntityPathBase<Product> {
 
     public static final QProduct product = new QProduct("product");
 
+    public final com.ost.matie.global.common.QBaseEntity _super = new com.ost.matie.global.common.QBaseEntity(this);
+
     public final QCategory category;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
 
     public final StringPath description = createString("description");
 
     public final ListPath<com.ost.matie.domain.favorite_product.FavoriteProduct, com.ost.matie.domain.favorite_product.QFavoriteProduct> favoriteProductList = this.<com.ost.matie.domain.favorite_product.FavoriteProduct, com.ost.matie.domain.favorite_product.QFavoriteProduct>createList("favoriteProductList", com.ost.matie.domain.favorite_product.FavoriteProduct.class, com.ost.matie.domain.favorite_product.QFavoriteProduct.class, PathInits.DIRECT2);
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
+    //inherited
+    public final NumberPath<Long> id = _super.id;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
 
     public final StringPath name = createString("name");
 

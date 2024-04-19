@@ -1,7 +1,7 @@
 package com.ost.matie.domain.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ost.matie.domain.BaseEntity;
+import com.ost.matie.global.common.BaseEntity;
 import com.ost.matie.domain.favorite_product.FavoriteProduct;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
