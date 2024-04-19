@@ -1,5 +1,6 @@
 package com.ost.matie.dto.user;
 
+import com.ost.matie.annotation.Password;
 import com.ost.matie.domain.user.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -26,7 +27,7 @@ public class AddUserRequest {
     private String email;
 
     @NotBlank(message = "비밀번호 칸이 비어있습니다.")
-    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}", message = "8~20자 이내로 영문과 숫자, 특수기호가 들어가야 합니다.")
+    @Password
     private String pw;
 
     public User toEntity() {
