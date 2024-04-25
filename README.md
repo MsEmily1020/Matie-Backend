@@ -16,7 +16,7 @@
 [Notion 앱 구체화](https://pastoral-grip-d4d.notion.site/Matie-8de8c517fbcb41e09ed302dd96905f76?pvs=4) &nbsp;&nbsp;&nbsp;&nbsp;
 [Notion 백엔드 추가 사항](https://pastoral-grip-d4d.notion.site/da151cfda515402988275381549eebcf?pvs=4)
 
-<table align="center">
+<table>
 <tr>
   <td>
       
@@ -37,12 +37,17 @@
   | DevOps | Docker 24.0.5 |
   
   </td>
-
-   <td><img src="https://github.com/hyeseung12.png" width="120px"/><br/><a href="https://github.com/hyeseung12">김혜승</a></td>
-    <td><img src="https://github.com/rlagkdms.png" width="120px"/><br/><a href="https://github.com/rlagkdms">김하은</a></td>
 </tr>
 </table>
 
+## Contributors
+
+<table>
+  <tr>
+   <td><img src="https://github.com/hyeseung12.png" width="120px"/><br/><a href="https://github.com/hyeseung12">김혜승</a></td>
+   <td><img src="https://github.com/rlagkdms.png" width="120px"/><br/><a href="https://github.com/rlagkdms">김하은</a></td>
+  </tr>
+</table>
 <br>
 
 ## 주요 기능
