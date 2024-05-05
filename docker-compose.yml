@@ -1,0 +1,42 @@
+version: '3.9'
+services:
+  mysqldb:
+    image: mysql:8.0.34
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: matie
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - my_network
+    ports:
+      - "3307:3306"
+
+  redis:
+    image: redis:7.2.4
+    restart: always
+    networks:
+      - my_network
+    ports:
+      - "6379:6379"
+
+  app:
+    image: matie:3.2.1
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+      - redis
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/matie?serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: secret
+    networks:
+      - my_network
+
+networks:
+  my_network:
+
+volumes:
+  mysql-data:
