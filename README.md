@@ -57,3 +57,21 @@
 - 그룹 챌린지 : 다른 사람들과 함께하는 챌린지 입니다. 열려있는 그룹에 참여하여 다른 참가자와 함께 기간 내 챌린지를 도전해보세요.
 
 - 부가 기능 : 다른 사람들과 토의하는 커뮤니티 기능과 챌린지 달성 갯수에 따른 통계 기능에 함께 추가되어 있습니다.
+
+<br>
+
+## 프로젝트 실행 방법
+
+1. 깃허브 클론
+
+       git clone https://github.com/2024-Australia-Ost/Matie-Backend
+   
+2. [docker 공식 사이트](https://www.docker.com/products/docker-desktop/)에서 Docker desktop 설치 후 터미널에 docker login 명령어를 입력하여 로그인합니다.
+
+4. Docker compose 빌드
+
+       docker-compose build
+   
+5. Docker compose 실행
+
+        docker-compose up -d
