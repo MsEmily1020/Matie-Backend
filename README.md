@@ -68,10 +68,10 @@
    
 2. [docker 공식 사이트](https://www.docker.com/products/docker-desktop/)에서 Docker desktop 설치 후 터미널에 docker login 명령어를 입력하여 로그인합니다.
 
-4. Docker compose 빌드
+4. spring boot 프로젝트 image 빌드
 
-       docker-compose build
+       docker build -t matie:3.2.1 .
    
-5. Docker compose 실행
+5. 추가로 필요한 db image 빌드 및 프로젝트 실행
 
-        docker-compose up -d
+        docker-compose up --build
