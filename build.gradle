@@ -65,3 +65,7 @@ def generated = 'src/main/genderated'
 sourceSets {
 	main.java.srcDirs += [generated]
 }
+
+bootJar {
+    archiveFileName = 'matie.jar'
+}
