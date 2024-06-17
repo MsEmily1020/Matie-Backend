@@ -84,3 +84,4 @@ openapi3 {
 	outputFileNamePrefix = "api"
 }
 
+[compileJava, compileTestJava]*.options*.encoding = "UTF-8"

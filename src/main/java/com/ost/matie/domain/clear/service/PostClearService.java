@@ -1,5 +1,6 @@
 package com.ost.matie.domain.clear.service;
 
+import com.ost.matie.domain.challenge.exception.ChallengeNotFoundException;
 import com.ost.matie.global.annotation.TransactionalService;
 import com.ost.matie.domain.challenge.Challenge;
 import com.ost.matie.domain.clear.dto.AddClearRequest;
@@ -26,7 +27,7 @@ public class PostClearService {
                 LocalDate.now()
         )) throw UserClearDuplicateException.EXCEPTION;
         if(!userRepository.existsById(request.getUser().getId())) throw UserNotFoundException.EXCEPTION;
-        if(!challengeRepository.existsById(request.getChallenge().getId())) throw Challenge.ChallengeNotFoundException.EXCEPTION;
+        if(!challengeRepository.existsById(request.getChallenge().getId())) throw ChallengeNotFoundException.EXCEPTION;
 
         clearRepository.save(request.toEntity());
     }
