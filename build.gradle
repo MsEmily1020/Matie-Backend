@@ -3,6 +3,7 @@ plugins {
 	id 'org.springframework.boot' version '3.2.1'
 	id 'io.spring.dependency-management' version '1.1.4'
 	id 'org.asciidoctor.jvm.convert' version '3.3.2'
+	id 'com.epages.restdocs-api-spec' version '0.17.1'
 }
 
 group = 'com.ost'
@@ -34,6 +35,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+	implementation 'com.h2database:h2'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
@@ -43,12 +46,13 @@ dependencies {
 	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-
+	testImplementation 'com.epages:restdocs-api-spec-mockmvc:0.17.1'
 }
 
 tasks.named('test') {
-	outputs.dir snippetsDir
 	useJUnitPlatform()
+	finalizedBy 'openapi3' // added
+	outputs.dir snippetsDir
 }
 
 tasks.named('asciidoctor') {
@@ -69,3 +73,14 @@ sourceSets {
 bootJar {
     archiveFileName = 'matie.jar'
 }
+
+openapi3 {
+	server = 'https://localhost:8085'
+	title = 'Matie API with Swagger'
+	description = 'Matie 프로젝트의 swagger api 입니다.'
+	version = '0.1.0'
+	format = 'yaml'
+	outputDirectory = 'swagger'
+	outputFileNamePrefix = "api"
+}
+

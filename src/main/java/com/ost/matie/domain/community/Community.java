@@ -16,27 +16,22 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Community extends BaseEntity {
-    @Column(name = "title")
     private String title;
 
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "type")
     private String type;
 
-    @Column(name = "agree")
     private Long agree;
 
-    @Column(name = "disagree")
     private Long disagree;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User creatorUser;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "community", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> commentList;
 
     @Builder
