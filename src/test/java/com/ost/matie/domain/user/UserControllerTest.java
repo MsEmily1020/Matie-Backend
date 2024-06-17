@@ -14,9 +14,11 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static com.epages.restdocs.apispec.ResourceDocumentation.resource;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -92,7 +94,7 @@ class UserControllerTest {
                                 preprocessResponse(prettyPrint()),
                                 resource(
                                         ResourceSnippetParameters.builder()
-                                        .description("로그인 할 수 있습니다.")
+                                                .description("로그인 할 수 있습니다.")
                                                 .summary("로그인 하기")
                                                 .requestFields(
                                                         fieldWithPath("userId").description("사용자 아이디"),
@@ -112,7 +114,36 @@ class UserControllerTest {
     }
 
     @Test
-    void findByUser() {
+    @Order(3)
+    @DisplayName("3. findByUser() : 사용자의 정보를 받아옵니다.")
+    void findByUser() throws Exception {
+        mockMvc.perform(
+                        get("/user/{id}", 1L)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().isOk())
+                .andDo(
+                        document("user-get",
+                                preprocessRequest(prettyPrint()),
+                                preprocessResponse(prettyPrint()),
+                                resource(
+                                        ResourceSnippetParameters.builder()
+                                                .description("사용자의 정보를 받을 수 있습니다.")
+                                                .summary("사용자 정보 얻기")
+                                                .pathParameters(
+                                                        parameterWithName("id").description("사용자 id")
+                                                )
+                                                .responseFields(
+                                                        fieldWithPath("id").description("사용자 id"),
+                                                        fieldWithPath("name").description("사용자 이름"),
+                                                        fieldWithPath("userId").description("사용자 아이디"),
+                                                        fieldWithPath("email").description("사용자 이메일"),
+                                                        fieldWithPath("createdDate").description("사용자 등록 일자")
+                                                )
+                                                .build()
+                                )
+                        )
+                );
     }
 
     @Test

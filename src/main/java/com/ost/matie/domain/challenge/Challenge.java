@@ -1,13 +1,15 @@
 package com.ost.matie.domain.challenge;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ost.matie.global.common.BaseEntity;
-import com.ost.matie.global.exception.error.BusinessException;
-import com.ost.matie.global.exception.error.ErrorCode;
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,4 +22,8 @@ public class Challenge extends BaseEntity {
     private Long point;
 
     private Integer type;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "challenge", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ChallengeConfirm> challengeConfirmList;
 }

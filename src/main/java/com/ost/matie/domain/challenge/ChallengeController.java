@@ -1,9 +1,8 @@
 package com.ost.matie.domain.challenge;
 
-import com.ost.matie.domain.challenge.Challenge;
-import com.ost.matie.domain.challenge.service.FindAllByTypeChallengesService;
-import com.ost.matie.domain.challenge.service.FindAllChallengesService;
-import com.ost.matie.domain.challenge.service.FindChallengeService;
+import com.ost.matie.domain.challenge.service.challenge.FindAllByTypeChallengesService;
+import com.ost.matie.domain.challenge.service.challenge.FindAllChallengesService;
+import com.ost.matie.domain.challenge.service.challenge.FindChallengeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

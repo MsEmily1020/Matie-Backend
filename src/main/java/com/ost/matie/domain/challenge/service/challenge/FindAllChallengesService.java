@@ -1,4 +1,4 @@
-package com.ost.matie.domain.challenge.service;
+package com.ost.matie.domain.challenge.service.challenge;
 
 import com.ost.matie.global.annotation.ReadOnlyService;
 import com.ost.matie.domain.challenge.Challenge;

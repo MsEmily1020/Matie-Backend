@@ -1,6 +1,7 @@
 package com.ost.matie.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ost.matie.domain.challenge.ChallengeConfirm;
 import com.ost.matie.global.common.BaseEntity;
 import com.ost.matie.domain.cart.Cart;
 import com.ost.matie.domain.clear.Clear;
@@ -60,6 +61,10 @@ public class User extends BaseEntity {
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Clear> clearList;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ChallengeConfirm> challengeConfirmList;
 
     @Builder
     public User(String name, String userId, String email, String pw) {
