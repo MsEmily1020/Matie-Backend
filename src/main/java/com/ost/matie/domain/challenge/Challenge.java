@@ -1,11 +1,8 @@
 package com.ost.matie.domain.challenge;
 
 import com.ost.matie.global.common.BaseEntity;
-import com.ost.matie.global.exception.error.BusinessException;
-import com.ost.matie.global.exception.error.ErrorCode;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
