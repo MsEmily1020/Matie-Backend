@@ -26,7 +26,7 @@ public class Community extends BaseEntity {
 
     private Long disagree;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User creatorUser;
 
