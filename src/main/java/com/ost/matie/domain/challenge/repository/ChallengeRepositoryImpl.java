@@ -19,6 +19,7 @@ public class ChallengeRepositoryImpl implements ChallengeRepositoryCustom {
     public List<Challenge> findAllByType(Integer type) {
         return queryFactory
                 .selectFrom(challenge)
+                .where(challenge.type.eq(type))
                 .fetch();
     }
 }
