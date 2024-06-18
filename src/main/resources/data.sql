@@ -525,3 +525,88 @@ insert into challenge_confirm (user_id, challenge_id, count) values (1, 97, 0);
 insert into challenge_confirm (user_id, challenge_id, count) values (1, 98, 0);
 insert into challenge_confirm (user_id, challenge_id, count) values (1, 99, 0);
 insert into challenge_confirm (user_id, challenge_id, count) values (1, 100, 0);
+
+insert into characters (name, description, type) values ('Cuppie', 'Transfer Trochlear Nerve to Hypoglossal Nerve, Percutaneous Endoscopic Approach
+Introduction of Other Antineoplastic into Cranial Cavity and Brain, Percutaneous Approach
+Destruction of Right Inner Ear, Open Approach
+Drainage of Right Ankle Region, Open ApproachBypass Left Femoral Artery to Bilateral Femoral Arteries with Autologous Arterial Tissue, Percutaneous Endoscopic Approach
+Ultrasonography of Stomach
+Fusion of Occipital-cervical Joint with Synthetic Substitute, Posterior Approach, Anterior Column, Open Approach
+Control Bleeding in Left Lower Extremity, Percutaneous Endoscopic Approach
+Removal of Extraluminal Device from Urethra, Percutaneous Endoscopic ApproachDivision of Left Tarsal, Percutaneous Approach
+Extirpation of Matter from Middle Esophagus, Percutaneous Endoscopic Approach
+Drainage of Thyroid Gland, Percutaneous Approach
+Introduction of Other Diagnostic Substance into Female Reproductive, Via Natural or Artificial Opening
+Supplement Lingula Bronchus with Autologous Tissue Substitute, Open Approach
+Removal of Nonautologous Tissue Substitute from Left Knee Joint, Percutaneous Endoscopic Approach', 'Single-use product');
+insert into characters (name, description, type) values ('Tyar', 'Supplement Right Middle Finger with Synthetic Substitute, Open Approach
+Dilation of Left Subclavian Artery, Bifurcation, with Three Intraluminal Devices, Percutaneous Approach
+Dilation of Face Artery, Bifurcation, with Three Drug-eluting Intraluminal Devices, Percutaneous Approach
+Occlusion of Upper Esophagus with Intraluminal Device, Percutaneous Approach
+Computerized Tomography (CT Scan) of Right Lower Extremity Arteries using Other Contrast
+Fluoroscopy of Right Fallopian Tube
+Introduction of Anti-inflammatory into Pleural Cavity, Percutaneous Approach
+Revision of Monitoring Device in Pancreatic Duct, Percutaneous Approach
+Destruction of Hymen, Via Natural or Artificial Opening
+Excision of Left Choroid, Open Approach
+Transfer Left Hand Muscle, Percutaneous Endoscopic Approach
+Dilation of Abdominal Aorta, Bifurcation, with Three Intraluminal Devices, Percutaneous Approach
+Supplement Sacrococcygeal Joint with Nonautologous Tissue Substitute, Percutaneous Approach
+Repair Left Sternoclavicular Joint, Percutaneous Endoscopic Approach
+Removal of Autologous Tissue Substitute from Hepatobiliary Duct, Percutaneous Approach
+Insertion of Intraluminal Device into Right Popliteal Artery, Percutaneous Approach
+Drainage of Lesser Omentum, Open Approach
+Insertion of Monitoring Device into Pancreatic Duct, Percutaneous Endoscopic Approach
+Computerized Tomography (CT Scan) of Bilateral Submandibular Glands using High Osmolar Contrast
+Supplement Superior Mesenteric Vein with Synthetic Substitute, Open Approach
+Removal of Internal Fixation Device from Left Metacarpal, Percutaneous Endoscopic Approach', 'Air pollution');
+insert into characters (name, description, type) values ('Bottly', 'Chiropractic Manipulation of Abdomen, Other Method
+Drainage of Right Thyroid Artery, Percutaneous Approach
+Removal of Monitoring Device from Cerebral Ventricle, External Approach
+Restriction of Left External Carotid Artery, Percutaneous Endoscopic Approach
+Alteration of Lower Back, Open Approach
+Repair Left Elbow Bursa and Ligament, Percutaneous Approach
+Destruction of Left Fibula, Open Approach
+Removal of Synthetic Substitute from Right Knee Joint, Tibial Surface, Percutaneous Endoscopic Approach
+Revision of Synthetic Substitute in Spinal Canal, Percutaneous Endoscopic Approach
+Excision of Bilateral Lungs, Via Natural or Artificial Opening, Diagnostic
+Insertion of Spacer into Cervical Vertebral Joint, Percutaneous Approach
+Drainage of Left Mandible, Percutaneous Endoscopic Approach, Diagnostic
+Excision of Right Rib, Open Approach, Diagnostic
+Replacement of Chordae Tendineae with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach
+Introduction of Liquid Brachytherapy Radioisotope into Upper GI, Via Natural or Artificial Opening
+Restriction of Portal Vein, Percutaneous Endoscopic Approach
+Fluoroscopy of Mouth/Oropharynx using Other Contrast
+Repair Left Foot Skin, External Approach
+Destruction of Prepuce, Percutaneous Endoscopic Approach', 'Recycle');
+insert into characters (name, description, type) values ('Proneer', 'Fusion of Lumbar Vertebral Joint, Posterior Approach, Anterior Column, Percutaneous Endoscopic Approach
+Insertion of Intraluminal Device into Hemiazygos Vein, Percutaneous Endoscopic Approach
+Supplement Right Wrist Joint with Synthetic Substitute, Percutaneous Approach
+Replacement of Nasal Bone with Synthetic Substitute, Open Approach
+Excision of Cervical Vertebral Joint, Open Approach, Diagnostic
+Measurement of Peripheral Nervous Electrical Activity, External Approach
+Drainage of Right Radial Artery with Drainage Device, Percutaneous Endoscopic Approach
+Bypass Stomach to Cutaneous with Nonautologous Tissue Substitute, Via Natural or Artificial Opening Endoscopic
+Removal of Spacer from Right Acromioclavicular Joint, Percutaneous Endoscopic Approach
+Reposition Left Femoral Shaft, Percutaneous Approach
+Excision of Hemiazygos Vein, Percutaneous Endoscopic Approach
+Replacement of Middle Colic Artery with Synthetic Substitute, Percutaneous Endoscopic Approach
+Excision of Splenic Vein, Percutaneous Approach
+Bypass Left Kidney Pelvis to Colocutaneous, Open Approach
+Excision of Left Ovary, Via Natural or Artificial Opening Endoscopic, Diagnostic
+Supplement Esophagus with Autologous Tissue Substitute, Via Natural or Artificial Opening
+Removal of Autologous Tissue Substitute from Left Fibula, Percutaneous Endoscopic Approach
+Reposition Left Ulna with Monoplanar External Fixation Device, Open Approach
+Destruction of Pons, Percutaneous Endoscopic Approach
+Revision of Autologous Tissue Substitute in Right Finger Phalanx, Percutaneous Approach
+Revision of Nonautologous Tissue Substitute in Bladder, Percutaneous Endoscopic Approach
+Drainage of Lumbar Sympathetic Nerve, Percutaneous Approach, Diagnostic
+Repair Nervous System in Products of Conception, Via Natural or Artificial Opening
+Supplement Right Innominate Vein with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach
+Removal of Infusion Device from Left Shoulder Joint, Open Approach
+Occlusion of Jejunum with Intraluminal Device, Open Approach
+Bypass Right Internal Iliac Artery to Left External Iliac Artery, Open Approach
+Reattachment of Duodenum, Percutaneous Endoscopic Approach
+Removal of Synthetic Substitute from Left Hip Joint, Acetabular Surface, Open Approach
+Inspection of Bilateral Femoral Region, External Approach
+Occlusion of Cystic Duct, Via Natural or Artificial Opening', 'Volunteer');

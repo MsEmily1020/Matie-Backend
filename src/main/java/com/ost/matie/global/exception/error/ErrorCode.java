@@ -30,6 +30,7 @@ public enum ErrorCode {
     CART_NOT_FOUND(HttpStatus.NOT_FOUND, "장바구니의 정보를 찾을 수 없습니다."),
     UPVOTE_NOT_FOUND(HttpStatus.NOT_FOUND, "좋아요를 누른 정보를 찾을 수 없습니다."),
     FAVORITE_PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND, "좋아요를 누른 정보를 찾을 수 없습니다"),
+    CHARACTER_NOT_FOUND(HttpStatus.NOT_FOUND, "캐릭터 정보를 찾을 수 없습니다."),
 
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error");
 
