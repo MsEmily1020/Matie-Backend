@@ -52,7 +52,7 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 	finalizedBy 'openapi3' // added
-	outputs.dir snippetsDir
+//	outputs.dir snippetsDir
 }
 
 tasks.named('asciidoctor') {
