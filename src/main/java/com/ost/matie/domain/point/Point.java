@@ -16,7 +16,7 @@ public class Point extends BaseEntity {
 
     private Long balance;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 

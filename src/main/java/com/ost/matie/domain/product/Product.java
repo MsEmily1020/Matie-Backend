@@ -20,7 +20,7 @@ public class Product extends BaseEntity {
 
     private Long point;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
