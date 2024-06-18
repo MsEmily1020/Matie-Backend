@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class Character extends BaseEntity {
     private String name;
     private String description;
+    private String type;
 
     public void update(String name) {
         this.name = name;
