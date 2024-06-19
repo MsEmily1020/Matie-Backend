@@ -1,8 +1,12 @@
 package com.ost.matie.domain.challenge.repository;
 
 import com.ost.matie.domain.challenge.Challenge;
+import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,5 +25,21 @@ public class ChallengeRepositoryImpl implements ChallengeRepositoryCustom {
                 .selectFrom(challenge)
                 .where(challenge.type.eq(type))
                 .fetch();
+    }
+
+    @Override
+    public Page<Challenge> findAllByTypePagination(Integer type, Pageable pageable) {
+        List<Challenge> challenges = queryFactory
+                .selectFrom(challenge)
+                .where(challenge.type.eq(type))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        JPQLQuery<Challenge> count = queryFactory
+                .selectFrom(challenge)
+                .where(challenge.type.eq(type));
+
+        return PageableExecutionUtils.getPage(challenges, pageable, count::fetchCount);
     }
 }

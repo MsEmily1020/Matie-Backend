@@ -21,18 +21,17 @@ services:
     ports:
       - "6379:6379"
 
-  swagger:
-    image: swaggerapi/swagger-ui
-    container_name: swagger
-    networks:
-      - my_network
-    ports:
-      - "8085:8080"
-    volumes:
-      - ./swagger:/usr/share/nginx/html/swagger
-    environment:
-      API_URL: swagger/api.yaml
-
+#  swagger:
+#    image: swaggerapi/swagger-ui
+#    container_name: swagger
+#    networks:
+#      - my_network
+#    ports:
+#      - "8085:8080"
+#    volumes:
+#      - ./swagger:/usr/share/nginx/html/swagger
+#    environment:
+#      API_URL: swagger/api.yaml
 
   app:
     image: matie:3.2.1
@@ -41,7 +40,7 @@ services:
     depends_on:
       - mysqldb
       - redis
-      - swagger
+#      - swagger
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/matie?serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
