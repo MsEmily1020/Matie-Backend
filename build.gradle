@@ -74,14 +74,14 @@ bootJar {
     archiveFileName = 'matie.jar'
 }
 
-openapi3 {
-	server = 'https://localhost:8085'
-	title = 'Matie API with Swagger'
-	description = 'Matie 프로젝트의 swagger api 입니다.'
-	version = '0.1.0'
-	format = 'yaml'
-	outputDirectory = 'swagger'
-	outputFileNamePrefix = "api"
-}
+//openapi3 {
+//	server = 'https://localhost:8085'
+//	title = 'Matie API with Swagger'
+//	description = 'Matie 프로젝트의 swagger api 입니다.'
+//	version = '0.1.0'
+//	format = 'yaml'
+//	outputDirectory = 'swagger'
+//	outputFileNamePrefix = "api"
+//}
 
-[compileJava, compileTestJava]*.options*.encoding = "UTF-8"
+//[compileJava, compileTestJava]*.options*.encoding = "UTF-8"
